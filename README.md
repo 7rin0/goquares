@@ -6,8 +6,8 @@ Mostly broken and to be updated ASAP! :)
 ## Test-drive
 ### Clone and go to directory's game
 ```
-git clone git@github.com:7rin0/goquares.git
-cd goquares
+git clone git@github.com:7rin0/gosquares.git
+cd gosquares
 ```
 
 ### Install dependencies and Run
@@ -32,4 +32,4 @@ make run
 
 
 Feel free to contribute :)
-![alt tag](https://raw.githubusercontent.com/7rin0/goquares/master/images/screenshot.png)
+![alt tag](https://raw.githubusercontent.com/7rin0/gosquares/master/images/screenshot.png)
