@@ -1,3 +1,3 @@
 run:
 	npm install
-	http-server
+	http-server -o
