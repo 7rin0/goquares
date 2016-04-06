@@ -8,7 +8,8 @@ Mostly broken and to be updated ASAP! :)
 - git clone git@github.com:7rin0/goquares.git
 - cd goquares
 - npm install
-- http-server -o
+- [if] ./node_modules/http-server/bin/http-server -o (if http-server isn't installed globally else: http-server -o)
+- [else] ./http-server -o
 
 ## Options:
 #### install and run server using make command
