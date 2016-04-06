@@ -1,23 +1,25 @@
 # GoSquares
-Game written entirely in pure JavaScript!
+SImple game entirely written in JavaScript
 
-GoSquares isn't updated since 2012 surely is incomplete, broken and soon will be improved!
+Mostly broken and to be updated ASAP! :)
 
-## Usage
-### Clone and go to directory's game
+## Test-drive
+### Clone, go to directory's game, Install and Run
 - git clone git@github.com:7rin0/goquares.git
 - cd goquares
-
-### Install and Run:
-
-#### Procedural way
-
 - npm install
 - http-server -o
 
-#### Run sequence of commands using Makefile
-
+## Options:
+#### install and run server using make command
 - make run
+
+## TODO:
+- Debug ...
+- Test coverage
+- Sanity checking
+- Code review
+- Migrate as Android and Chrome application
 
 
 Feel free to contribute :)
