@@ -1,3 +1,3 @@
 run:
 	npm install
-	nohup http-server -o &
+	nohup ./node_modules/http-server/bin/http-server -o &
