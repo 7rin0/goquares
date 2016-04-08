@@ -43,7 +43,7 @@ loading_conteudos();
 function conteudos(nivel_n) {
     "use strict";
     var body = document.getElementsByTagName("body")[0];
-    // 1 - Adicionar Fun��o On Rezise Centrar Jogo
+    // 1 - Adicionar function On Rezise Centrar Jogo
     body.setAttribute("onresize", "centrar_janela_jogo()");
     body.style.cssText = "background:#000000;font-family:arial;";
     body.innerHTML = "";
@@ -62,7 +62,7 @@ function conteudos(nivel_n) {
     // 7 - criar quadradinhos
     criar_q(nivel_n);
     var personagem = document.getElementById("personagem");
-    // 9 Apresenta��o do Nivel
+    // 9 Apresentao do Nivel
     espetaculo_nivel();
 }
 
@@ -78,7 +78,7 @@ function criacao_jogo(body, nivel_n) {
         i_f_jogo,
         teclaSolta,
         teclaPresa;
-    // ac��es
+    // aces
     janela_jogo.setAttribute("id", "janela_jogo");
     janela_jogo.setAttribute("class", "nada");
     janela_jogo.style.cssText = "background:#f0f0f0;color:#333333;width:650px;height:500px;position:absolute;display:block;overflow:hidden";
@@ -108,8 +108,7 @@ function criacao_jogo(body, nivel_n) {
     }
 
     // Variaveis
-    var janela_jogo = document.getElementById("janela_jogo"),
-        background_jogo = document.createElement("div"),
+    var background_jogo = document.createElement("div"),
         dos_variaveis = document.createElement("button"),
         pontos = document.createElement("div"),
         quedas = document.createElement("div"),
@@ -226,14 +225,14 @@ function criacao_jogo(body, nivel_n) {
                         break;
                         // .salto
                     case 38:
-                        // se estiver no ch�o inicia salto
+                        // se estiver no cho inicia salto
                         if (personagem.getAttribute("class").search("cima_i") === -1 && personagem.getAttribute("class").search("baixo_i") === -1) {
                             //redefinir classes
                             personagem.setAttribute("class", personagem.getAttribute("class").replace("cima_p", "cima_i"));
                         }
                         // .salto
                     case 32:
-                        // se estiver no ch�o inicia salto
+                        // se estiver no cho inicia salto
                         if (personagem.getAttribute("class").search("cima_i") === -1 && personagem.getAttribute("class").search("baixo_i") === -1) {
                             //redefinir classes
                             personagem.setAttribute("class", personagem.getAttribute("class").replace("cima_p", "cima_i"));
@@ -284,7 +283,7 @@ function centrar_janela_jogo() {
         //onload Centrar Div Janela de Jogo
         eixo_x = (janela_global_largura - parseInt(janela_jogo.style.width, 10)) / 2,
         eixo_y = (janela_global_altura - parseInt(janela_jogo.style.height, 10)) / 2;
-    //Definir Margens em fun��o do calculo
+    //Definir Margens em function do calculo
     janela_jogo.style.top = eixo_y + "px";
     janela_jogo.style.left = eixo_x + "px";
 }
@@ -325,7 +324,7 @@ function gravidade(personagem) {
         graus = 0,
         variavel = 3.12;
     espetaculo(1);
-    // Fun��o que os atirar� para a terra
+    // function que os atirar para a terra
     function gravidade_accao() {
         "use strict";
         aumentador++;
@@ -337,11 +336,11 @@ function gravidade(personagem) {
             personagem.setAttribute("class", " esq_p dir_p cima_p baixo_p");
             personagem.style.webkitTransform = "";
             document.getElementById("janela_jogo").setAttribute("class", "inicio");
-            // .mover personagem (fun��o)
+            // .mover personagem (function)
             fps_jogo_geral();
         }
     }
-    // Variavel que correr� a gravidade sobre o boneco
+    // Variavel que correr a gravidade sobre o boneco
     var correr_gravidade = setInterval(gravidade_accao, 20);
 }
 
@@ -458,38 +457,38 @@ function fps_jogo_geral() {
     // RECEBER VALORES
     // .blocos
     for (a = 0; a < a_length; a++) {
-        // Variaveis com dimensoes e posi��es do bloco
+        // Variaveis com dimensoes e posies do bloco
         quad_wh = parseInt(array_blocos[a].offsetWidth),
             quad_top = parseInt(array_blocos[a].offsetTop),
             quad_left = parseInt(array_blocos[a].style.left),
             quad_bottom = quad_top + quad_wh,
             quad_rigth = quad_left + quad_wh;
         bloco = array_blocos[a];
-        // Cada Bloco ter� as suas propriedades
+        // Cada Bloco ter as suas propriedades
         blocos[a] = [bloco, quad_top, quad_rigth, quad_bottom, quad_left];
     }
     // .pedras
     for (e = 0; e < e_length; e++) {
-        // Variaveis com dimensoes e posi��es do bloco
+        // Variaveis com dimensoes e posies do bloco
         pedra_wh = parseInt(array_pedras[e].offsetWidth),
             pedra_top = parseInt(array_pedras[e].offsetTop),
             pedra_left = parseInt(array_pedras[e].style.left),
             pedra_bottom = pedra_top + pedra_wh,
             pedra_rigth = pedra_left + pedra_wh;
         pedra = array_pedras[e];
-        // Cada Bloco ter� as suas propriedades
+        // Cada Bloco ter as suas propriedades
         pedras[e] = [pedra, pedra_top, pedra_rigth, pedra_bottom, pedra_left];
     }
     // .auxiliares
     for (f = 0; f < f_length; f++) {
-        // Variaveis com dimensoes e posi��es do bloco
+        // Variaveis com dimensoes e posies do bloco
         auxiliar_wh = parseInt(array_auxiliares[f].offsetWidth),
             auxiliar_top = parseInt(array_auxiliares[f].offsetTop),
             auxiliar_left = parseInt(array_auxiliares[f].style.left),
             auxiliar_bottom = auxiliar_top + auxiliar_wh,
             auxiliar_rigth = auxiliar_left + auxiliar_wh;
         auxiliar = array_auxiliares[f];
-        // Cada Bloco ter� as suas propriedades
+        // Cada Bloco ter as suas propriedades
         auxiliares[f] = [auxiliar, auxiliar_top, auxiliar_rigth, auxiliar_bottom, auxiliar_left];
     }
     // Redefinir valores for in loops
@@ -497,15 +496,15 @@ function fps_jogo_geral() {
     e_length = pedras.length;
     f_length = auxiliares.length;
     id_metade_blocos = parseInt(b_length / 2, 10);
-    // FUN��O GERAL
+    // function GERAL
     // 3
     // 2
     // 1
-    // AC��O
+    // ACO
     function fps_jogo() {
         //"use strict";
         // VARIAVEIS
-        // ac��es de jogo
+        // aces de jogo
         cima_i = personagem.getAttribute("class").search("cima_i");
         dir_i = personagem.getAttribute("class").search("dir_i");
         baixo_i = personagem.getAttribute("class").search("baixo_i");
@@ -514,7 +513,7 @@ function fps_jogo_geral() {
         dir_p = personagem.getAttribute("class").search("dir_p");
         baixo_p = personagem.getAttribute("class").search("baixo_p");
         esq_p = personagem.getAttribute("class").search("esq_p");
-        // .dimens�es personagem
+        // .dimenses personagem
         T1 = parseInt(personagem.style.top, 10);
         R1 = parseInt(personagem.style.left, 10) + parseInt(personagem.style.height, 10);
         B1 = parseInt(personagem.style.left, 10) + parseInt(personagem.style.height, 10);
@@ -549,7 +548,7 @@ function fps_jogo_geral() {
                     // .som salto
                     som_salto.play();
                 }
-                // se o valor � -40 o que significa , detec��o de mola
+                // se o valor  -40 o que significa , deteco de mola
                 else if (valor_cima === -54) {
                     // .som salto
                     som_caixa_vermelha.play();
@@ -557,7 +556,7 @@ function fps_jogo_geral() {
             }
             // aumenta o valor de subida
             valor_cima++;
-            // p�ra subida
+            // pra subida
             if (valor_cima === 0 || det_bloco === true) {
                 // repor valores de origem
                 valor_cima = -27;
@@ -571,11 +570,11 @@ function fps_jogo_geral() {
         }
         // queda
         else if (baixo_i != -1 || (baixo_i != -1 && det_bloco === false) || (baixo_i != -1 && det_bloco === "ajustado")) {
-            // est� em cima de um bloco
+            // est em cima de um bloco
             // acabou de tocar num bloco
-            // chegou ao ch�o
+            // chegou ao cho
             if (T1 + 6 > 435 || det_bloco === true || det_bloco === "ajustado") {
-                // se chegou ao ch�o
+                // se chegou ao cho
                 if (T1 + 6 > 435) {
                     // repor valores de origem
                     personagem.style.top = 435 + "px";
@@ -600,7 +599,7 @@ function fps_jogo_geral() {
             if (per_back_dir_s === -1) {
                 personagem.style.background = per_back_dir;
             }
-            // se o left PER � menor que width do Jogo
+            // se o left PER  menor que width do Jogo
             if (L1 < (W_back_jogo - W_per)) {
                 // move PER para direita
                 personagem.style.left = (L1 + 5) + "px";
@@ -621,7 +620,7 @@ function fps_jogo_geral() {
             if (per_back_esq_s === -1) {
                 personagem.style.background = per_back_esq;
             }
-            // se o left PER � menor que width do Jogo
+            // se o left PER  menor que width do Jogo
             if (L1 > 0) {
                 // move PER para esquerda
                 personagem.style.left = (L1 - 5) + "px";
@@ -639,14 +638,14 @@ function fps_jogo_geral() {
         if (e_length != 0) {
             // .pedras
             for (d = 0; d < e_length; d++) {
-                // .dimens�es pedra
+                // .dimenses pedra
                 E3 = pedras[d][0]; //elemento pedra
                 T3 = pedras[d][1]; //top pedra
                 R3 = pedras[d][2]; //direita pedra
                 L3 = pedras[d][4]; //esquerda pedra
                 // toca no cimo da pedra
                 if (T1 - T3 > -36 && T1 - T3 < -28 && R1 - R3 < 30 && L1 - L3 > -30) {
-                    // se o top nao estiver ajustado f�-lo-�
+                    // se o top nao estiver ajustado f-lo-
                     // primeiro toque no pedra
                     if (T1 != (T3 - 35)) {
                         personagem.style.top = (T3 - 35) + "px";
@@ -657,11 +656,11 @@ function fps_jogo_geral() {
                             E3.setAttribute("class", E3.getAttribute("class").replace("dinamite", ""));
                             // .aviso
                             e_num_f("DANGER", "perigo");
-                            // .fun��o
+                            // .function
                             cenario_bomba(0, estado_som, E3);
                         }
                     }
-                    // se estiver no mesmo bloco simplesmente continua a circular sem detec��es
+                    // se estiver no mesmo bloco simplesmente continua a circular sem deteces
                     else {
                         det_bloco = "ajustado";
                     }
@@ -677,14 +676,14 @@ function fps_jogo_geral() {
                         det_bloco = true;
                         d_pedras = 1;
                     }
-                    // segundo toque ou detec��o
+                    // segundo toque ou deteco
                     else {
                         det_bloco = false;
                         d_pedras = 0;
                     }
                     break;
                 }
-                // se depois de todas as verifica��es nao detectar pedra determina false e inicia descida
+                // se depois de todas as verificaes nao detectar pedra determina false e inicia descida
                 else {
                     d_pedras = 0;
                 }
@@ -706,28 +705,28 @@ function fps_jogo_geral() {
                     }
                     break;
                 }
-                // se depois de todas as verifica��es nao detectar pedra determina false e inicia descida
+                // se depois de todas as verificaes nao detectar pedra determina false e inicia descida
                 else if (d === e_length - 1) {
                     d_pedras = 0;
                     colisao = 0;
                 }
             }
         }
-        // se n�o existirem pedras envia sinal
+        // se no existirem pedras envia sinal
         else {
             d_pedras = 0;
             colisao = 0;
         }
-        /* Verifica��o de auxiliares
+        /* Verificao de auxiliares
         for(f=0 ; f < f_length; f++){
-        	// .dimens�es auxiliar
+        	// .dimenses auxiliar
         	E4 = auxiliares[f][0]; //elemento auxiliar
         	T4 = auxiliares[f][1]; //top auxiliar
         	R4 = auxiliares[f][2]; //direita auxiliar
         	L4 = auxiliares[f][4]; //esquerda auxiliar
         	// . se pousar em cima do auxiliar
         	if(T1-T4 > -36 && T1-T4 < -28 && R1-R4 < 30 && L1-L4 > -30 ){
-        		// se o top nao estiver ajustado f�-lo-�
+        		// se o top nao estiver ajustado f-lo-
         		// primeiro toque no auxiliar
         		if(T1 != (T4 - 35)){
         			personagem.style.top = (T1 - 35) + "px";
@@ -753,28 +752,28 @@ function fps_jogo_geral() {
         			}
         		}
         	}
-        	// se depois de todas as verifica��es nao detectar bloco determina false e inicia descida
+        	// se depois de todas as verificaes nao detectar bloco determina false e inicia descida
         	else{
         		det_bloco = false;
         	}
         }*/
-        // Verifica��o de blocos
+        // Verificao de blocos
         for (b = 0; b < b_length; b++) {
-            // .dimens�es blocos
+            // .dimenses blocos
             E2 = blocos[b][0]; //top bloco
             T2 = blocos[b][1]; //top bloco
             R2 = blocos[b][2]; //direita bloco
             L2 = blocos[b][4]; //esquerda bloco
-            // . se encontrar bloco pousar� em cima do mesmo
+            // . se encontrar bloco pousar em cima do mesmo
             if (T1 - T2 > -36 && T1 - T2 < -28 && R1 - R2 < 30 && L1 - L2 > -30) {
-                // se o top nao estiver ajustado f�-lo-�
+                // se o top nao estiver ajustado f-lo-
                 // basicamente se for a primeira vez que toca depois de um salto ou queda
                 if (T1 != (T2 - 35)) {
                     personagem.style.top = (T2 - 35) + "px";
                     det_bloco = true;
                     // Super-Importante
-                    // estes codigos est�o aqui para que sejam lidos, apenas se houver um primeiro contacto com o objecto em quest�o
-                    // verifica��o de sequencia
+                    // estes codigos esto aqui para que sejam lidos, apenas se houver um primeiro contacto com o objecto em questo
+                    // verificao de sequencia
                     caixa_azul = E2.style.background.search("src/images/inactivo.png");
                     caixa_dourada = E2.getAttribute("class").search("dourado");
                     caixa_laranja_3 = E2.getAttribute("class").search("laranja_3");
@@ -787,12 +786,12 @@ function fps_jogo_geral() {
                     id_bloco = parseInt(E2.getAttribute("class").split(" ")[1].split("_")[1], 10);
                     b_activo = E2.getAttribute("class").search("b_activo");
                     // ligar_bloco sera true ou false
-                    // se n�o for primeiro bloco
+                    // se no for primeiro bloco
                     if (b > 0) {
                         id_bloco_ant = blocos[b - 1][0].getAttribute("class").search("b_activo");
                     }
                     // se for o primeiro bloco
-                    // . n�o procurara anterior activo
+                    // . no procurara anterior activo
                     if (b === 0 && b_activo === -1) {
                         // activa-lo, com classe
                         ligar_bloco = true;
@@ -801,11 +800,11 @@ function fps_jogo_geral() {
                         // iniciar efeito
                         e_num_f(id_bloco);
                     }
-                    // se n�o � o primeiro e o anterior N�O esta activo
+                    // se no  o primeiro e o anterior NO esta activo
                     else if (b > 0 && id_bloco_ant === -1) {
                         ligar_bloco = false;
                     }
-                    // se n�o � o primeiro e o anterior esta activo
+                    // se no  o primeiro e o anterior esta activo
                     else if (b > 0 && id_bloco_ant != -1 && b_activo === -1) {
                         // agrupamento de 3 blocos
                         if (caixa_laranja_3 === -1 && caixa_laranja_2 === -1 && caixa_laranja_1 === -1) {
@@ -865,7 +864,7 @@ function fps_jogo_geral() {
                                 // .border
                                 E2.style.border = "1px dashed #ffffff";
                             }
-                            // se n�o estiver em "cima_i" , f�-lo-�
+                            // se no estiver em "cima_i" , f-lo-
                             // repor valores de origem
                             valor_cima = -54;
                             personagem.setAttribute("class", personagem.getAttribute("class").replace("cima_p", "cima_i"));
@@ -892,17 +891,17 @@ function fps_jogo_geral() {
                             espetaculo_pontos();
                         }
                     }
-                    // se metade dos blocos estiverem concluidos d� sinal
+                    // se metade dos blocos estiverem concluidos d sinal
                     if (blocos[id_metade_blocos][0].getAttribute("class").search("b_activo") != -1 && document.getElementById("aux_vermelho").style.display === "none") {
                         // variaveis aparecer aux_vermelho
                         var bloco_auxiliar = document.getElementById("aux_vermelho"),
                             bloco_auxiliar_css = bloco_auxiliar.style.cssText,
                             bloco_auxiliar_class = bloco_auxiliar.getAttribute("class");
-                        // fun��o aparecer aux_vermelho
+                        // function aparecer aux_vermelho
                         e_blocos(bloco_auxiliar, bloco_auxiliar_css, bloco_auxiliar_class);
                     }
                 }
-                // se estiver no mesmo bloco simplesmente continua a circular sem detec��es
+                // se estiver no mesmo bloco simplesmente continua a circular sem deteces
                 else {
                     det_bloco = "ajustado";
                 }
@@ -914,7 +913,7 @@ function fps_jogo_geral() {
             }
         }
         if (d_pedras === 0 && d_blocos === 0) {
-            // se depois de todas as verifica��es nao detectar bloco determina false e inicia descida
+            // se depois de todas as verificaes nao detectar bloco determina false e inicia descida
             det_bloco = false;
         }
     }
@@ -963,7 +962,7 @@ function nivel(nivel_n) {
                 blocos_jogaveis[a].style.cssText = "position:absolute;left:" + bloco_left[a] + "px;bottom:" + bloco_bottom[a] + "px;z-index:10;width:50px;height:50px;background:url(\"src/images/inactivo.png\");border:solid 1px #2f0000;";
                 // .adicionar blocos ao jogo
                 document.getElementById("background_jogo").appendChild(blocos_jogaveis[a]);
-                // .se for o ultimo elemento � o DOURADO
+                // .se for o ultimo elemento  o DOURADO
                 if (a === (bloco_left.length - 1)) {
                     blocos_jogaveis[a].setAttribute("class", blocos_jogaveis[a].getAttribute("class") + "bloco dourado");
                 }
@@ -1032,7 +1031,7 @@ function nivel(nivel_n) {
                 blocos_jogaveis[a].style.cssText = "position:absolute;left:" + bloco_left[a] + "px;bottom:" + bloco_bottom[a] + "px;z-index:10;width:50px;height:50px;background:url(\"src/images/inactivo.png\");border:solid 1px #2f0000;";
                 // .adicionar blocos ao jogo
                 document.getElementById("background_jogo").appendChild(blocos_jogaveis[a]);
-                // .se for o ultimo elemento � o DOURADO
+                // .se for o ultimo elemento  o DOURADO
                 if (a === (bloco_left.length - 1)) {
                     blocos_jogaveis[a].setAttribute("class", blocos_jogaveis[a].getAttribute("class") + "bloco dourado");
                 }
@@ -1103,7 +1102,7 @@ function nivel(nivel_n) {
                 blocos_jogaveis[a].style.cssText = "position:absolute;left:" + bloco_left[a] + "px;bottom:" + bloco_bottom[a] + "px;z-index:10;width:50px;height:50px;background:url(\"src/images/inactivo.png\");border:solid 1px #2f0000;";
                 // .adicionar blocos ao jogo
                 document.getElementById("background_jogo").appendChild(blocos_jogaveis[a]);
-                // .se for o ultimo elemento � o DOURADO
+                // .se for o ultimo elemento  o DOURADO
                 if (a === (bloco_left.length - 1)) {
                     blocos_jogaveis[a].setAttribute("class", blocos_jogaveis[a].getAttribute("class") + "bloco dourado");
                 }
@@ -1211,7 +1210,7 @@ function nivel(nivel_n) {
                 blocos_jogaveis[a].style.cssText = "position:absolute;left:" + bloco_left[a] + "px;bottom:" + bloco_bottom[a] + "px;z-index:10;width:50px;height:50px;background:url(\"src/images/inactivo.png\");border:solid 1px #2f0000;";
                 // .adicionar blocos ao jogo
                 document.getElementById("background_jogo").appendChild(blocos_jogaveis[a]);
-                // .se for o ultimo elemento � o DOURADO
+                // .se for o ultimo elemento  o DOURADO
                 if (a === (bloco_left.length - 1)) {
                     blocos_jogaveis[a].setAttribute("class", blocos_jogaveis[a].getAttribute("class") + "bloco dourado");
                 }
@@ -1304,7 +1303,7 @@ function nivel(nivel_n) {
                 blocos_jogaveis[a].style.cssText = "position:absolute;left:" + bloco_left[a] + "px;bottom:" + bloco_bottom[a] + "px;z-index:10;width:50px;height:50px;background:url(\"src/images/inactivo.png\");border:solid 1px #333333;";
                 // .adicionar blocos ao jogo
                 document.getElementById("background_jogo").appendChild(blocos_jogaveis[a]);
-                // .se for o ultimo elemento � o DOURADO
+                // .se for o ultimo elemento  o DOURADO
                 if (a === (bloco_left.length - 1)) {
                     blocos_jogaveis[a].setAttribute("class", blocos_jogaveis[a].getAttribute("class") + "bloco dourado");
                 }
@@ -1638,7 +1637,7 @@ function espetaculo_nivel(eliminar_janela_nivel) {
         janela_jogo.removeChild(janela_nivel);
     }
 }
-//############### PONTUA��O ###############
+//############### PONTUAO ###############
 function espetaculo_pontos() {
     // n do proximo nivel
     var n_nivel_n = parseInt(document.getElementById("nivel").innerHTML.split("|")[1], 10) + 1;
@@ -1665,7 +1664,7 @@ function espetaculo_pontos() {
     }, false);
     var botao_pontos = document.getElementById("botao_pontos"),
         c_pontos = 1;
-    // correr pontua��o
+    // correr pontuao
     function correr_pontos() {
         if (0 <= c_pontos && parseInt(pontos * 0.1) >= c_pontos) {
             c_pontos = c_pontos + 2;
@@ -1735,7 +1734,7 @@ function cenario_bomba(bomba_bips, estado_som, pedra_tnt) {
             e_num_f("BOOOOOMMM", "perigo");
             pedra_tnt.style.display = "none";
             clearInterval(i_bomba);
-            // se a personagem estiver pro�xima
+            // se a personagem estiver proxima
             var v_proximidade = parseInt(personagem.style.left, 10) - parseInt(pedra_tnt.style.left, 10);
             // se ...
             if (v_proximidade > -100 && v_proximidade < 100) {
@@ -1752,7 +1751,7 @@ function e_bomba(v_proximidade) {
     // salto para esquerda
     if (v_proximidade < 0) {
         det_obj_pers(38, -23);
-        //fun��o afastar
+        //function afastar
         function afastar_bomba_e() {
             // redefinir class
             personagem.setAttribute("class", personagem.getAttribute("class").replace("dir_i", "dir_p"));
@@ -1770,7 +1769,7 @@ function e_bomba(v_proximidade) {
     else if (v_proximidade > 0) {
         // fazer saltar
         det_obj_pers(38, -23);
-        //fun��o afastar
+        //function afastar
         function afastar_bomba() {
             if (personagem.getAttribute("class").search("esq_i") != -1) {
                 // redefinir class
