@@ -1734,7 +1734,7 @@ function e_bomba(v_proximidade) {
     if (v_proximidade < 0) {
         det_obj_pers(38, -23);
         //function afastar
-        function afastar_bomba_e() {
+        var afastar_bomba_e = function() {
             // redefinir class
             personagem.setAttribute("class", personagem.getAttribute("class").replace("dir_i", "dir_p"));
             det_obj_pers(37, "nada");
@@ -1752,7 +1752,7 @@ function e_bomba(v_proximidade) {
         // fazer saltar
         det_obj_pers(38, -23);
         //function afastar
-        function afastar_bomba() {
+        var afastar_bomba = function() {
             if (personagem.getAttribute("class").search("esq_i") != -1) {
                 // redefinir class
                 personagem.setAttribute("class", personagem.getAttribute("class").replace("esq_i", "esq_p"));
@@ -1825,7 +1825,7 @@ function e_bloco_verde(bloco_verde) {
     if (e_b_aux === -1) {
         // actualizar estado do bloco
         bloco_auxiliar.setAttribute("class", bloco_auxiliar_class + " activo");
-        function e_b_verde() {
+        var e_b_verde = function() {
             // se tiver 0 de height desaparece
             if (bloco_auxiliar.offsetHeight < 3) {
                 // actualizar estado do bloco
