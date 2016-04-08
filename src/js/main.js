@@ -210,6 +210,7 @@ function criacao_jogo(body, nivel_n) {
             }, false);
             //# EVENTO TECLA PRESA
             document.addEventListener('keydown', function teclaPresa(event) {
+							if(personagem.getAttribute("class") !== null) {
                 switch (event.keyCode) {
                     // esquerda
                     case 37:
@@ -252,6 +253,7 @@ function criacao_jogo(body, nivel_n) {
                         }
                         break;
                 }
+							}
             }, false);
             if (segundos > 0 && i_f_jogo === -1) {
                 // se jogo acabar
