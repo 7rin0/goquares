@@ -1,6 +1,6 @@
 //####################// INICIO //####################
 // Encoding: UTF-8
-// declaração de variaveis
+// declaraï¿½ï¿½o de variaveis
 var conteudos,
 	nivel_n;
 	
@@ -27,21 +27,21 @@ else{
 
 // funcao carregar conteudos
 function loading_conteudos(){
-	// Preload imagens
-	var load_imagens = [],
+	// Preload src/images
+	var load_src/images = [],
 		load_sons = [],
 		loading_imagem,
 		loading_som,
 		a,
 		b;
 
-	// Array de Imagens
-	load_imagens = ["personagem_inicio", "fundo","fundo_2","fundo_3","fundo_4","inactivo", "activo", "vermelho", "dourado","personagem_0_esq","personagem_0_dir"];
+	// Array de src/images
+	load_src/images = ["personagem_inicio", "fundo","fundo_2","fundo_3","fundo_4","inactivo", "activo", "vermelho", "dourado","personagem_0_esq","personagem_0_dir"];
 
-	// Loop de imagens
-	for(a=0; a < load_imagens.length; a++){
+	// Loop de src/images
+	for(a=0; a < load_src/images.length; a++){
 		loading_imagem = new Image();
-		loading_imagem.src = "/imagens/"+load_imagens[a]+".png";
+		loading_imagem.src = "/src/images/"+load_src/images[a]+".png";
 	}
 	
 	
@@ -58,13 +58,13 @@ function loading_conteudos(){
 // carregar conteudos
 loading_conteudos();
 
-// funções
+// funï¿½ï¿½es
 function conteudos(nivel_n){
 	"use strict";
 	
 	var body = document.getElementsByTagName("body")[0];
 
-	// 1 - Adicionar Função On Rezise Centrar Jogo
+	// 1 - Adicionar Funï¿½ï¿½o On Rezise Centrar Jogo
 	body.setAttribute("onresize", "centrar_janela_jogo()");
 	body.style.cssText = "background:#000000;font-family:arial;";
 	body.innerHTML = "";
@@ -91,7 +91,7 @@ function conteudos(nivel_n){
 	
 	var personagem = document.getElementById("personagem");
 
-	// 9 Apresentação do Nivel
+	// 9 Apresentaï¿½ï¿½o do Nivel
 	espetaculo_nivel();
 }
 //#################### CRIAR JANELA DE JOGO ####################
@@ -110,31 +110,31 @@ function criacao_jogo(body,nivel_n) {
 		
 	switch(nivel_n){
 	case 1:
-		imagem_background = "url(\"/imagens/fundo_1.png\")";
+		imagem_background = "url(\"/src/images/fundo_1.png\")";
 	break;
 	
 	case 2:
-		imagem_background = "url(\"/imagens/fundo_1.png\")";
+		imagem_background = "url(\"/src/images/fundo_1.png\")";
 	break;
 	
 	case 3:
-		imagem_background = "url(\"/imagens/fundo_1.png\")";
+		imagem_background = "url(\"/src/images/fundo_1.png\")";
 	break;
 	
 	case 4:
-		imagem_background = "url(\"/imagens/fundo_2.png\")";
+		imagem_background = "url(\"/src/images/fundo_2.png\")";
 	break;
 	
 	case 5:
-		imagem_background = "url(\"/imagens/fundo_2.png\")";
+		imagem_background = "url(\"/src/images/fundo_2.png\")";
 	break;
 	
 	case 6:
-		imagem_background = "url(\"/imagens/fundo_2.png\")";
+		imagem_background = "url(\"/src/images/fundo_2.png\")";
 	break;
 	
 	case 7:
-		imagem_background = "url(\"/imagens/fundo_3.png\")";
+		imagem_background = "url(\"/src/images/fundo_3.png\")";
 	break;
 	
 	}
@@ -172,7 +172,7 @@ function criacao_jogo(body,nivel_n) {
 		nivel.innerHTML = "LEVEL | 0";
 		janela_jogo.appendChild(nivel);
 
-	// .adicionar pontuação
+	// .adicionar pontuaï¿½ï¿½o
 		pontos.setAttribute("id","pontos");
 		pontos.style.cssText = "position:absolute;top:70px;left:10px;font-size:14px;color:#333333;line-height:20px;height:20px;font-weight:bold;font-family:arial";
 		pontos.innerHTML = "POINTS | 0";
@@ -202,7 +202,7 @@ function criacao_jogo(body,nivel_n) {
 		tempo.innerHTML = "TIME | 00 : 00";
 		janela_jogo.appendChild(tempo);
 
-		// Temporizador, função que repetirá
+		// Temporizador, funï¿½ï¿½o que repetirï¿½
 		function temporizador(){
 		"use strict";
 			if(typeof(janela_jogo.getAttribute("class")) === "string" ){
@@ -259,7 +259,7 @@ function centrar_janela_jogo() {
 		eixo_x = (janela_global_largura - parseInt(janela_jogo.style.width, 10)) / 2,
 		eixo_y = (janela_global_altura - parseInt(janela_jogo.style.height, 10)) / 2;
 
-	//Definir Margens em função do calculo
+	//Definir Margens em funï¿½ï¿½o do calculo
 	janela_jogo.style.top = eixo_y + "px";
 	janela_jogo.style.left = eixo_x + "px";
 }
@@ -292,7 +292,7 @@ function criar_q(nivel_n) {
 	var personagem = document.createElement("div");
 	//Definir Atributos
 	personagem.setAttribute("id", "personagem");
-	personagem.style.cssText = "width:" + dimencoes_aleatorias + "px;height:" + dimencoes_aleatorias + "px;position:absolute;top:0px;left:"+queda+";text-align:center;line-height:" + dimencoes_aleatorias + "px;z-index:1;font-weight:bold;background:url(/imagens/personagem_inicio.png) #ff6600;z-index:10000000000000000" ;
+	personagem.style.cssText = "width:" + dimencoes_aleatorias + "px;height:" + dimencoes_aleatorias + "px;position:absolute;top:0px;left:"+queda+";text-align:center;line-height:" + dimencoes_aleatorias + "px;z-index:1;font-weight:bold;background:url(/src/images/personagem_inicio.png) #ff6600;z-index:10000000000000000" ;
 	background_jogo.appendChild(personagem);
 }
 
@@ -308,7 +308,7 @@ function gravidade(personagem) {
 
 		espetaculo(1);
 
-	// Função que os atirará para a terra
+	// Funï¿½ï¿½o que os atirarï¿½ para a terra
 	function gravidade_accao() {
 	"use strict";
 		aumentador++;
@@ -321,13 +321,13 @@ function gravidade(personagem) {
 			personagem.style.webkitTransform="";
 			document.getElementById("janela_jogo").setAttribute("class", "inicio");
 
-			// .mover personagem (função)
+			// .mover personagem (funï¿½ï¿½o)
 			mover_personagem(personagem);
 
 		}
 	}
 
-	// Variavel que correrá a gravidade sobre o boneco
+	// Variavel que correrï¿½ a gravidade sobre o boneco
 	var correr_gravidade = setInterval(gravidade_accao,20);
 }
 
@@ -388,10 +388,10 @@ function mover_personagem(personagem) {
 			//# 1 - SALTO
 			case 38:
 			
-				// se estiver no chão inicia salto
+				// se estiver no chï¿½o inicia salto
 				if(personagem.getAttribute("class").search("cima_i") === -1){
 
-						//. função do salto
+						//. funï¿½ï¿½o do salto
 						det_obj_pers( 38 , -23);
 
 				}// FIM de SALTO
@@ -417,7 +417,7 @@ function mover_personagem(personagem) {
 			break;
 		}
 	},false);
-} // final da função
+} // final da funï¿½ï¿½o
 
 
 
@@ -526,7 +526,7 @@ function det_obj_pers(tecla,valor,objecto){
 	// RECEBER VALORES
 	// .blocos
 	for (a=0 ; a < a_length; a++){
-		// Variaveis com dimensoes e posições do bloco
+		// Variaveis com dimensoes e posiï¿½ï¿½es do bloco
 			quad_wh = parseInt(array_blocos[a].offsetWidth),
 			quad_top = parseInt(array_blocos[a].offsetTop),
 			quad_left = parseInt(array_blocos[a].style.left),
@@ -534,13 +534,13 @@ function det_obj_pers(tecla,valor,objecto){
 			quad_rigth = quad_left + quad_wh;
 			bloco = array_blocos[a];
 
-		// Cada Bloco terá as suas propriedades
+		// Cada Bloco terï¿½ as suas propriedades
 			blocos[a] = [bloco,quad_top,quad_rigth,quad_bottom,quad_left];
 	}
 	
 	// .pedras
 	for (e=0 ; e < e_length; e++){
-		// Variaveis com dimensoes e posições do bloco
+		// Variaveis com dimensoes e posiï¿½ï¿½es do bloco
 			pedra_wh = parseInt(array_pedras[e].offsetWidth),
 			pedra_top = parseInt(array_pedras[e].offsetTop),
 			pedra_left = parseInt(array_pedras[e].style.left),
@@ -548,14 +548,14 @@ function det_obj_pers(tecla,valor,objecto){
 			pedra_rigth = pedra_left + pedra_wh;
 			pedra = array_pedras[e];
 
-		// Cada Bloco terá as suas propriedades
+		// Cada Bloco terï¿½ as suas propriedades
 			pedras[e] = [pedra,pedra_top,pedra_rigth,pedra_bottom,pedra_left];
 	}
 
 	
 		// .auxiliares
 	for (f=0 ; f < f_length; f++){
-		// Variaveis com dimensoes e posições do bloco
+		// Variaveis com dimensoes e posiï¿½ï¿½es do bloco
 			auxiliar_wh = parseInt(array_auxiliares[f].offsetWidth),
 			auxiliar_top = parseInt(array_auxiliares[f].offsetTop),
 			auxiliar_left = parseInt(array_auxiliares[f].style.left),
@@ -563,7 +563,7 @@ function det_obj_pers(tecla,valor,objecto){
 			auxiliar_rigth = auxiliar_left + auxiliar_wh;
 			auxiliar = array_auxiliares[f];
 
-		// Cada Bloco terá as suas propriedades
+		// Cada Bloco terï¿½ as suas propriedades
 			auxiliares[f] = [auxiliar,auxiliar_top,auxiliar_rigth,auxiliar_bottom,auxiliar_left];
 	}
 	
@@ -584,10 +584,10 @@ function det_obj_pers(tecla,valor,objecto){
 		
 		// se back existe nao muda
 		if(personagem.style.background.search("personagem_0_esq.png") === -1){
-			personagem.style.background = "url(/imagens/personagem_0_esq.png)";
+			personagem.style.background = "url(/src/images/personagem_0_esq.png)";
 		}
 
-		// função repeat avançar esquerda
+		// funï¿½ï¿½o repeat avanï¿½ar esquerda
 		function i_esquerda(){
 			T1 = parseInt(personagem.style.top,10);  
 			L1 = parseInt(personagem.style.left,10); 
@@ -598,7 +598,7 @@ function det_obj_pers(tecla,valor,objecto){
 				//	DETECTAR BLOCOS
 				// .pedras
 				for(d=0 ; d < e_length; d++){
-					// .dimensões pedra
+					// .dimensï¿½es pedra
 					E3 = pedras[d][0]; //elemento pedra
 					T3 = pedras[d][1]; //top pedra
 					R3 = pedras[d][2]; //direita pedra
@@ -626,7 +626,7 @@ function det_obj_pers(tecla,valor,objecto){
 							// .aviso
 							e_num_f("DANGER","perigo");
 								
-							// .função
+							// .funï¿½ï¿½o
 							cenario_bomba(0,estado_som,E3);
 						}
 						
@@ -662,7 +662,7 @@ function det_obj_pers(tecla,valor,objecto){
 					// .mover personagem
 					personagem.style.left = L1-6+"px";
 					
-					//	.se estiver acima do chão detecta solo
+					//	.se estiver acima do chï¿½o detecta solo
 					/*
 					if(T1<Tbase && personagem.getAttribute("class").search("cima_i") === -1 && personagem.getAttribute("class").search("baixo_i") === -1 && personagem.getAttribute("class").search("dir_i") === -1){
 						//	detectar blocos (saltar,tecla)
@@ -696,10 +696,10 @@ function det_obj_pers(tecla,valor,objecto){
 		
 		// se back existe nao muda
 		if(personagem.style.background.search("personagem_0_dir.png") === -1){
-			personagem.style.background = "url(/imagens/personagem_0_dir.png)";
+			personagem.style.background = "url(/src/images/personagem_0_dir.png)";
 		}
 
-		// função repeat avançar direita
+		// funï¿½ï¿½o repeat avanï¿½ar direita
 		function i_direita(){
 			T1 = parseInt(personagem.style.top,10);
 			R1 = parseInt(personagem.style.left,10)+parseInt(personagem.style.width,10);
@@ -711,7 +711,7 @@ function det_obj_pers(tecla,valor,objecto){
 				//	DETECTAR BLOCOS
 				// .pedras
 				for(d=0 ; d < e_length; d++){
-					// .dimensões pedra
+					// .dimensï¿½es pedra
 					E3 = pedras[d][0]; //elemento pedra
 					T3 = pedras[d][1]; //top pedra
 					R3 = pedras[d][2]; //direita pedra
@@ -730,7 +730,7 @@ function det_obj_pers(tecla,valor,objecto){
 							// .aviso
 							e_num_f("DANGER","perigo");
 								
-							// .função
+							// .funï¿½ï¿½o
 							cenario_bomba(0,estado_som,E3);
 						}
 						
@@ -764,7 +764,7 @@ function det_obj_pers(tecla,valor,objecto){
 					// .mover personagem
 					personagem.style.left = L1+6+"px";
 					
-					//	.se estiver acima do chão detecta solo
+					//	.se estiver acima do chï¿½o detecta solo
 					/*
 					if(T1 < Tbase && personagem.getAttribute("class").search("cima_i") === -1 && personagem.getAttribute("class").search("baixo_i") === -1 && personagem.getAttribute("class").search("esq_i") === -1){
 						//	detectar blocos (saltar,tecla)
@@ -806,7 +806,7 @@ function det_obj_pers(tecla,valor,objecto){
 			
 
 			
-			// .dimensões personagem
+			// .dimensï¿½es personagem
 			T1 = parseInt(personagem.style.top,10);
 			R1 = parseInt(personagem.style.left,10)+parseInt(personagem.style.height,10);
 			L1 = parseInt(personagem.style.left,10);
@@ -833,7 +833,7 @@ function det_obj_pers(tecla,valor,objecto){
 				//	DETECTAR BLOCOS
 				// .pedras
 				for(d=0 ; d < e_length; d++){
-					// .dimensões pedra
+					// .dimensï¿½es pedra
 					E3 = pedras[d][0]; //elemento pedra
 					T3 = pedras[d][1]; //top pedra
 					R3 = pedras[d][2]; //direita pedra
@@ -854,7 +854,7 @@ function det_obj_pers(tecla,valor,objecto){
 							// .aviso
 							e_num_f("DANGER","perigo");
 								
-							// .função
+							// .funï¿½ï¿½o
 							cenario_bomba(0,estado_som,E3);
 						}					
 						
@@ -890,7 +890,7 @@ function det_obj_pers(tecla,valor,objecto){
 				//	DETECTAR BLOCOS
 				// .pedras
 				for(d=0 ; d < e_length; d++){
-					// .dimensões pedra
+					// .dimensï¿½es pedra
 					E3 = pedras[d][0]; //elemento pedra
 					T3 = pedras[d][1]; //top pedra
 					R3 = pedras[d][2]; //direita pedra
@@ -908,7 +908,7 @@ function det_obj_pers(tecla,valor,objecto){
 							// .aviso
 							e_num_f("DANGER","perigo");
 								
-							// .função
+							// .funï¿½ï¿½o
 							cenario_bomba(0,estado_som,E3);
 						}
 						
@@ -929,7 +929,7 @@ function det_obj_pers(tecla,valor,objecto){
 
 				// .auxiliares
 				for(f=0 ; f < f_length; f++){
-					// .dimensões auxiliar
+					// .dimensï¿½es auxiliar
 					E4 = auxiliares[f][0]; //elemento auxiliar
 					T4 = auxiliares[f][1]; //top auxiliar
 					R4 = auxiliares[f][2]; //direita auxiliar
@@ -948,7 +948,7 @@ function det_obj_pers(tecla,valor,objecto){
 						if(bloco_auxiliar_id === "aux_verde"){
 							// ao activar muda de back							
 							if(bloco_auxiliar.style.background.search("verde") === -1){
-								bloco_auxiliar.style.background = "url(\"/imagens/verde.png\")";
+								bloco_auxiliar.style.background = "url(\"/src/images/verde.png\")";
 								bloco_auxiliar.style.border = "solid 1px #ffffff";
 							}
 							
@@ -983,7 +983,7 @@ function det_obj_pers(tecla,valor,objecto){
 				// .blocos
 				for(b=0 ; b < b_length; b++){
 
-					// .dimensões blocos
+					// .dimensï¿½es blocos
 					T2 = blocos[b][1]; //top bloco
 					R2 = blocos[b][2]; //direita bloco
 					L2 = blocos[b][4]; //esquerda bloco
@@ -996,21 +996,21 @@ function det_obj_pers(tecla,valor,objecto){
 							bloco_auxiliar_css = bloco_auxiliar.style.cssText,
 							bloco_auxiliar_class = bloco_auxiliar.getAttribute("class");
 							
-							// função aparecer aux_vermelho
+							// funï¿½ï¿½o aparecer aux_vermelho
 							e_blocos(bloco_auxiliar,bloco_auxiliar_css,bloco_auxiliar_class);
 					}
 						
 					
 					
-					// . se encontrar bloco pousará em cima do mesmo
+					// . se encontrar bloco pousarï¿½ em cima do mesmo
 					if(T1-T2 < -30 && T1-T2 > -36 && R1-R2 < 35 && L1-L2 > -35 ){
 
-						var caixa_azul = blocos[b][0].style.background.search("/imagens/inactivo.png"),
+						var caixa_azul = blocos[b][0].style.background.search("/src/images/inactivo.png"),
 							caixa_dourada = blocos[b][0].getAttribute("class").search("dourado"),
 							caixa_laranja_3 = blocos[b][0].getAttribute("class").search("laranja_3"),
 							caixa_laranja_2 = blocos[b][0].getAttribute("class").search("laranja_2"),
 							caixa_laranja_1 = blocos[b][0].getAttribute("class").search("laranja_1"),
-							caixa_laranja = blocos[b][0].style.background.search("/imagens/activo.png"),
+							caixa_laranja = blocos[b][0].style.background.search("/src/images/activo.png"),
 														
 							caixa_vermelha = blocos[b][0].getAttribute("class").search("vermelho"),
 							pontuacao = parseInt(document.getElementById("pontos").innerHTML.split("|")[1], 10);
@@ -1022,7 +1022,7 @@ function det_obj_pers(tecla,valor,objecto){
 							var id_bloco = parseInt(blocos[b][0].getAttribute("class").split(" ")[1].split("_")[1], 10),
 							b_activo = blocos[b][0].getAttribute("class").search("b_activo");
 							
-							// se é o primeiro bloco
+							// se ï¿½ o primeiro bloco
 							if(b===0 && b_activo === -1){
 								blocos[b][0].setAttribute("class",blocos[b][0].getAttribute("class")+" b_activo");
 								var ligar_bloco = true;
@@ -1030,12 +1030,12 @@ function det_obj_pers(tecla,valor,objecto){
 								e_num_f(id_bloco);
 							}
 							
-							// se ja está activo
+							// se ja estï¿½ activo
 							else if(b_activo != -1){
 								var ligar_bloco = true;
 							}
 
-							// se é o segundo ou outro que não esteja activo
+							// se ï¿½ o segundo ou outro que nï¿½o esteja activo
 							else if(b > 0 && b_activo === -1){
 								var id_bloco_ant = blocos[b-1][0].getAttribute("class").search("b_activo");
 
@@ -1106,7 +1106,7 @@ function det_obj_pers(tecla,valor,objecto){
 							//detectado bloco
 								detectar_bloco = true;
 							// .background
-								blocos[b][0].style.background = "url(\"/imagens/laranja_3.png\") #ffffff";
+								blocos[b][0].style.background = "url(\"/src/images/laranja_3.png\") #ffffff";
 							// .border
 								blocos[b][0].style.border = "1px dashed #ffffff";
 							// .pontos
@@ -1123,7 +1123,7 @@ function det_obj_pers(tecla,valor,objecto){
 							//detectado bloco
 								detectar_bloco = true;
 							// .background
-								blocos[b][0].style.background = "url(\"/imagens/laranja_2.png\") #ffffff";
+								blocos[b][0].style.background = "url(\"/src/images/laranja_2.png\") #ffffff";
 							// .border
 								blocos[b][0].style.border = "1px dashed #ffffff";
 							// .pontos
@@ -1140,7 +1140,7 @@ function det_obj_pers(tecla,valor,objecto){
 							//detectado bloco
 								detectar_bloco = true;
 							// .background
-								blocos[b][0].style.background = "url(\"/imagens/activo.png\") #ffffff";
+								blocos[b][0].style.background = "url(\"/src/images/activo.png\") #ffffff";
 							// .border
 								blocos[b][0].style.border = "1px dashed #ffffff";
 							// .pontos
@@ -1152,12 +1152,12 @@ function det_obj_pers(tecla,valor,objecto){
 								}
 							}
 							
-						// se:AZUIS , se os quadradinhos são azuis padrao
+						// se:AZUIS , se os quadradinhos sï¿½o azuis padrao
 							if(caixa_azul != -1 && caixa_dourada === -1 && caixa_vermelha === -1 && caixa_laranja_3 === -1 && ligar_bloco === true){
 							//detectado bloco
 								detectar_bloco = true;
 							// .background
-								blocos[b][0].style.background = "url(\"/imagens/activo.png\") #ffffff";
+								blocos[b][0].style.background = "url(\"/src/images/activo.png\") #ffffff";
 							// .border
 								blocos[b][0].style.border = "1px dashed #ffffff";
 							// .pontos
@@ -1175,11 +1175,11 @@ function det_obj_pers(tecla,valor,objecto){
 								detectar_bloco = true;
 							}
 
-						// se:VERMELHO , se o quadradinho é vermelho
+						// se:VERMELHO , se o quadradinho ï¿½ vermelho
 							else if(caixa_vermelha != -1 && ligar_bloco === true){
-								if(blocos[b][0].style.background.search("/imagens/vermelho.png") === -1){
+								if(blocos[b][0].style.background.search("/src/images/vermelho.png") === -1){
 							// .background
-									blocos[b][0].style.background = "url(\"/imagens/vermelho.png\") #ffffff";
+									blocos[b][0].style.background = "url(\"/src/images/vermelho.png\") #ffffff";
 							// .border
 									blocos[b][0].style.border = "1px dashed #ffffff";
 								}
@@ -1192,12 +1192,12 @@ function det_obj_pers(tecla,valor,objecto){
 								}
 							}
 							
-							// se:DOURADO , se o quadradinho é dourado
+							// se:DOURADO , se o quadradinho ï¿½ dourado
 							else if(caixa_laranja === -1 && caixa_dourada != -1 && ligar_bloco === true){
 								//detectado bloco
 								detectar_bloco = true;
 								// .background
-								blocos[b][0].style.background = "url(\"/imagens/dourado.png\") #ffffff";
+								blocos[b][0].style.background = "url(\"/src/images/dourado.png\") #ffffff";
 								// .border
 								blocos[b][0].style.border = "1px dashed #ffffff";
 								//.som
@@ -1235,11 +1235,11 @@ function det_obj_pers(tecla,valor,objecto){
 						
 						// Ajustar personagem aos blocos
 						personagem.style.top = (T2 - 35)+"px";
-					} // fim da condição de blocos
+					} // fim da condiï¿½ï¿½o de blocos
 				} // fim do for loops
 
 			
-			} // fim da condição " saltar > 0 && T1 < Tbase "
+			} // fim da condiï¿½ï¿½o " saltar > 0 && T1 < Tbase "
 
 			
 			// chegou ao solo
@@ -1254,7 +1254,7 @@ function det_obj_pers(tecla,valor,objecto){
 				// parar intervalo
 				clearInterval(iniciar_vermelho);
 				
-				if(blocos[0][0].style.background.search("/imagens/activo.png") != -1 && personagem.getAttribute("class").search("baixo_i") != -1){
+				if(blocos[0][0].style.background.search("/src/images/activo.png") != -1 && personagem.getAttribute("class").search("baixo_i") != -1){
 					// .quedas
 					quedas.innerHTML = "FALLS | "+(n_quedas+1);
 				}
@@ -1314,11 +1314,11 @@ if(nivel_n === 1){
 			// .adicionar attributos
 			blocos_jogaveis[a].setAttribute("class","bloco b_"+(a+1));
 			// .definir CSS
-			blocos_jogaveis[a].style.cssText = "position:absolute;left:"+bloco_left[a]+"px;bottom:"+bloco_bottom[a]+"px;z-index:10;width:50px;height:50px;background:url(\"/imagens/inactivo.png\");border:solid 1px #2f0000;";
+			blocos_jogaveis[a].style.cssText = "position:absolute;left:"+bloco_left[a]+"px;bottom:"+bloco_bottom[a]+"px;z-index:10;width:50px;height:50px;background:url(\"/src/images/inactivo.png\");border:solid 1px #2f0000;";
 			// .adicionar blocos ao jogo
 			document.getElementById("background_jogo").appendChild(blocos_jogaveis[a]);
 				
-			// .se for o ultimo elemento é o DOURADO
+			// .se for o ultimo elemento ï¿½ o DOURADO
 			if(a===(bloco_left.length-1)){
 				blocos_jogaveis[a].setAttribute("class",blocos_jogaveis[a].getAttribute("class")+"bloco dourado");
 			}
@@ -1351,7 +1351,7 @@ if(nivel_n === 1){
 			}
 			
 			// .definir CSS
-			auxiliares_jogaveis[c].style.cssText = "position:absolute;left:"+auxiliar_left[c]+"px;bottom:"+auxiliar_bottom[c]+"px;z-index:10;width:50px;height:50px;background:url(\"/imagens/"+cor+".png\");"+display+"border:"+border;
+			auxiliares_jogaveis[c].style.cssText = "position:absolute;left:"+auxiliar_left[c]+"px;bottom:"+auxiliar_bottom[c]+"px;z-index:10;width:50px;height:50px;background:url(\"/src/images/"+cor+".png\");"+display+"border:"+border;
 			// .adicionar blocos ao jogo
 			document.getElementById("background_jogo").appendChild(auxiliares_jogaveis[c]);
 		}
@@ -1400,11 +1400,11 @@ else if(nivel_n === 2){
 		// .adicionar attributos
 		blocos_jogaveis[a].setAttribute("class","bloco b_"+(a+1));
 		// .definir CSS
-		blocos_jogaveis[a].style.cssText = "position:absolute;left:"+bloco_left[a]+"px;bottom:"+bloco_bottom[a]+"px;z-index:10;width:50px;height:50px;background:url(\"/imagens/inactivo.png\");border:solid 1px #2f0000;";
+		blocos_jogaveis[a].style.cssText = "position:absolute;left:"+bloco_left[a]+"px;bottom:"+bloco_bottom[a]+"px;z-index:10;width:50px;height:50px;background:url(\"/src/images/inactivo.png\");border:solid 1px #2f0000;";
 		// .adicionar blocos ao jogo
 		document.getElementById("background_jogo").appendChild(blocos_jogaveis[a]);
 				
-		// .se for o ultimo elemento é o DOURADO
+		// .se for o ultimo elemento ï¿½ o DOURADO
 		if(a===(bloco_left.length-1)){
 			blocos_jogaveis[a].setAttribute("class",blocos_jogaveis[a].getAttribute("class")+"bloco dourado");
 		}
@@ -1437,7 +1437,7 @@ else if(nivel_n === 2){
 			}
 			
 			// .definir CSS
-			auxiliares_jogaveis[c].style.cssText = "position:absolute;left:"+auxiliar_left[c]+"px;bottom:"+auxiliar_bottom[c]+"px;z-index:10;width:50px;height:50px;background:url(\"/imagens/"+cor+".png\");"+display+"border:"+border;
+			auxiliares_jogaveis[c].style.cssText = "position:absolute;left:"+auxiliar_left[c]+"px;bottom:"+auxiliar_bottom[c]+"px;z-index:10;width:50px;height:50px;background:url(\"/src/images/"+cor+".png\");"+display+"border:"+border;
 			// .adicionar blocos ao jogo
 			document.getElementById("background_jogo").appendChild(auxiliares_jogaveis[c]);
 		}	
@@ -1488,11 +1488,11 @@ else if(nivel_n === 3){
 		// .adicionar attributos
 		blocos_jogaveis[a].setAttribute("class","bloco b_"+(a+1));
 		// .definir CSS
-		blocos_jogaveis[a].style.cssText = "position:absolute;left:"+bloco_left[a]+"px;bottom:"+bloco_bottom[a]+"px;z-index:10;width:50px;height:50px;background:url(\"/imagens/inactivo.png\");border:solid 1px #2f0000;";
+		blocos_jogaveis[a].style.cssText = "position:absolute;left:"+bloco_left[a]+"px;bottom:"+bloco_bottom[a]+"px;z-index:10;width:50px;height:50px;background:url(\"/src/images/inactivo.png\");border:solid 1px #2f0000;";
 		// .adicionar blocos ao jogo
 		document.getElementById("background_jogo").appendChild(blocos_jogaveis[a]);
 				
-		// .se for o ultimo elemento é o DOURADO
+		// .se for o ultimo elemento ï¿½ o DOURADO
 		if(a===(bloco_left.length-1)){
 			blocos_jogaveis[a].setAttribute("class",blocos_jogaveis[a].getAttribute("class")+"bloco dourado");
 		}
@@ -1530,7 +1530,7 @@ else if(nivel_n === 3){
 			}
 			
 			// .definir CSS
-			auxiliares_jogaveis[c].style.cssText = "position:absolute;left:"+auxiliar_left[c]+"px;bottom:"+auxiliar_bottom[c]+"px;z-index:10;width:50px;height:50px;background:url(\"/imagens/"+cor+".png\");"+display+"border:"+border;
+			auxiliares_jogaveis[c].style.cssText = "position:absolute;left:"+auxiliar_left[c]+"px;bottom:"+auxiliar_bottom[c]+"px;z-index:10;width:50px;height:50px;background:url(\"/src/images/"+cor+".png\");"+display+"border:"+border;
 			// .adicionar blocos ao jogo
 			document.getElementById("background_jogo").appendChild(auxiliares_jogaveis[c]);
 		}		
@@ -1611,7 +1611,7 @@ else if(nivel_n === 4){
 			}
 			
 			// .definir CSS
-			auxiliares_jogaveis[c].style.cssText = "position:absolute;left:"+auxiliar_left[c]+"px;bottom:"+auxiliar_bottom[c]+"px;z-index:10;width:50px;height:50px;background:url(\"/imagens/"+cor+".png\");"+display+"border:"+border;
+			auxiliares_jogaveis[c].style.cssText = "position:absolute;left:"+auxiliar_left[c]+"px;bottom:"+auxiliar_bottom[c]+"px;z-index:10;width:50px;height:50px;background:url(\"/src/images/"+cor+".png\");"+display+"border:"+border;
 			// .adicionar blocos ao jogo
 			document.getElementById("background_jogo").appendChild(auxiliares_jogaveis[c]);
 		}
@@ -1625,11 +1625,11 @@ else if(nivel_n === 4){
 		// .adicionar attributos
 		blocos_jogaveis[a].setAttribute("class","bloco b_"+(a+1));
 		// .definir CSS
-		blocos_jogaveis[a].style.cssText = "position:absolute;left:"+bloco_left[a]+"px;bottom:"+bloco_bottom[a]+"px;z-index:10;width:50px;height:50px;background:url(\"/imagens/inactivo.png\");border:solid 1px #2f0000;";
+		blocos_jogaveis[a].style.cssText = "position:absolute;left:"+bloco_left[a]+"px;bottom:"+bloco_bottom[a]+"px;z-index:10;width:50px;height:50px;background:url(\"/src/images/inactivo.png\");border:solid 1px #2f0000;";
 		// .adicionar blocos ao jogo
 		document.getElementById("background_jogo").appendChild(blocos_jogaveis[a]);
 				
-		// .se for o ultimo elemento é o DOURADO
+		// .se for o ultimo elemento ï¿½ o DOURADO
 		if(a===(bloco_left.length-1)){
 			blocos_jogaveis[a].setAttribute("class",blocos_jogaveis[a].getAttribute("class")+"bloco dourado");
 		}
@@ -1649,7 +1649,7 @@ else if(nivel_n === 4){
 		// .adicionar attributos
 		pedras_jogaveis[b].setAttribute("class","pedra");
 		// .definir CSS
-		pedras_jogaveis[b].style.cssText = "position:absolute;left:"+pedra_left[b]+"px;bottom:"+pedra_bottom[b]+"px;z-index:10;width:50px;height:50px;background:url(\"/imagens/cinzento.png\");border:solid 1px #2f0000;";
+		pedras_jogaveis[b].style.cssText = "position:absolute;left:"+pedra_left[b]+"px;bottom:"+pedra_bottom[b]+"px;z-index:10;width:50px;height:50px;background:url(\"/src/images/cinzento.png\");border:solid 1px #2f0000;";
 		// .adicionar blocos ao jogo
 		document.getElementById("background_jogo").appendChild(pedras_jogaveis[b]);
 	}		
@@ -1728,7 +1728,7 @@ else if(nivel_n === 5){
 			}
 			
 			// .definir CSS
-			auxiliares_jogaveis[c].style.cssText = "position:absolute;left:"+auxiliar_left[c]+"px;bottom:"+auxiliar_bottom[c]+"px;z-index:10;width:50px;height:50px;background:url(\"/imagens/"+cor+".png\");"+display+"border:"+border;
+			auxiliares_jogaveis[c].style.cssText = "position:absolute;left:"+auxiliar_left[c]+"px;bottom:"+auxiliar_bottom[c]+"px;z-index:10;width:50px;height:50px;background:url(\"/src/images/"+cor+".png\");"+display+"border:"+border;
 			// .adicionar blocos ao jogo
 			document.getElementById("background_jogo").appendChild(auxiliares_jogaveis[c]);
 		}
@@ -1743,11 +1743,11 @@ else if(nivel_n === 5){
 		// .adicionar attributos
 		blocos_jogaveis[a].setAttribute("class","bloco b_"+(numero_a));
 		// .definir CSS
-		blocos_jogaveis[a].style.cssText = "position:absolute;left:"+bloco_left[a]+"px;bottom:"+bloco_bottom[a]+"px;z-index:10;width:50px;height:50px;background:url(\"/imagens/inactivo.png\");border:solid 1px #333333;";
+		blocos_jogaveis[a].style.cssText = "position:absolute;left:"+bloco_left[a]+"px;bottom:"+bloco_bottom[a]+"px;z-index:10;width:50px;height:50px;background:url(\"/src/images/inactivo.png\");border:solid 1px #333333;";
 		// .adicionar blocos ao jogo
 		document.getElementById("background_jogo").appendChild(blocos_jogaveis[a]);
 				
-		// .se for o ultimo elemento é o DOURADO
+		// .se for o ultimo elemento ï¿½ o DOURADO
 		if(a===(bloco_left.length-1)){
 			blocos_jogaveis[a].setAttribute("class",blocos_jogaveis[a].getAttribute("class")+"bloco dourado");
 		}
@@ -1776,7 +1776,7 @@ else if(nivel_n === 5){
 		// .adicionar attributos
 		pedras_jogaveis[b].setAttribute("class","pedra");
 		// .definir CSS
-		pedras_jogaveis[b].style.cssText = "position:absolute;left:"+pedra_left[b]+"px;bottom:"+pedra_bottom[b]+"px;z-index:10;width:50px;height:50px;background:url(\"/imagens/cinzento.png\");border:solid 1px #000000;";
+		pedras_jogaveis[b].style.cssText = "position:absolute;left:"+pedra_left[b]+"px;bottom:"+pedra_bottom[b]+"px;z-index:10;width:50px;height:50px;background:url(\"/src/images/cinzento.png\");border:solid 1px #000000;";
 		// .adicionar blocos ao jogo
 		document.getElementById("background_jogo").appendChild(pedras_jogaveis[b]);
 	}
@@ -1859,7 +1859,7 @@ else if(nivel_n === 6){
 		}
 		
 		// .definir CSS
-		auxiliares_jogaveis[c].style.cssText = "position:absolute;left:"+auxiliar_left[c]+"px;bottom:"+auxiliar_bottom[c]+"px;z-index:10;width:50px;height:50px;background:url(\"/imagens/"+cor+".png\");"+display+"border:"+border;
+		auxiliares_jogaveis[c].style.cssText = "position:absolute;left:"+auxiliar_left[c]+"px;bottom:"+auxiliar_bottom[c]+"px;z-index:10;width:50px;height:50px;background:url(\"/src/images/"+cor+".png\");"+display+"border:"+border;
 		// .adicionar blocos ao jogo
 		document.getElementById("background_jogo").appendChild(auxiliares_jogaveis[c]);
 	}
@@ -1875,7 +1875,7 @@ else if(nivel_n === 6){
 		// .adicionar attributos
 		blocos_jogaveis[a].setAttribute("class","bloco b_"+(numero_a));
 		// .definir CSS
-		blocos_jogaveis[a].style.cssText = "position:absolute;left:"+bloco_left[a]+"px;bottom:"+bloco_bottom[a]+"px;z-index:10;width:50px;height:50px;background:url(\"/imagens/inactivo.png\");border:solid 1px #333333;";
+		blocos_jogaveis[a].style.cssText = "position:absolute;left:"+bloco_left[a]+"px;bottom:"+bloco_bottom[a]+"px;z-index:10;width:50px;height:50px;background:url(\"/src/images/inactivo.png\");border:solid 1px #333333;";
 		// .adicionar blocos ao jogo
 		document.getElementById("background_jogo").appendChild(blocos_jogaveis[a]);
 		
@@ -1908,7 +1908,7 @@ else if(nivel_n === 6){
 		// .adicionar attributos
 		pedras_jogaveis[b].setAttribute("class","pedra");
 		// .definir CSS
-		pedras_jogaveis[b].style.cssText = "position:absolute;left:"+pedra_left[b]+"px;bottom:"+pedra_bottom[b]+"px;z-index:10;width:50px;height:50px;background:url(\"/imagens/cinzento.png\");border:solid 1px #000000;";
+		pedras_jogaveis[b].style.cssText = "position:absolute;left:"+pedra_left[b]+"px;bottom:"+pedra_bottom[b]+"px;z-index:10;width:50px;height:50px;background:url(\"/src/images/cinzento.png\");border:solid 1px #000000;";
 		// .adicionar blocos ao jogo
 		document.getElementById("background_jogo").appendChild(pedras_jogaveis[b]);
 	}
@@ -2063,7 +2063,7 @@ else if(nivel_n === 7){
 		}
 		
 		// .definir CSS
-		auxiliares_jogaveis[c].style.cssText = "position:absolute;left:"+auxiliar_left[c]+"px;bottom:"+auxiliar_bottom[c]+"px;z-index:10;width:50px;height:50px;background:url(\"/imagens/"+cor+".png\");"+display+"border:"+border;
+		auxiliares_jogaveis[c].style.cssText = "position:absolute;left:"+auxiliar_left[c]+"px;bottom:"+auxiliar_bottom[c]+"px;z-index:10;width:50px;height:50px;background:url(\"/src/images/"+cor+".png\");"+display+"border:"+border;
 		// .adicionar blocos ao jogo
 		document.getElementById("background_jogo").appendChild(auxiliares_jogaveis[c]);
 	}
@@ -2079,7 +2079,7 @@ else if(nivel_n === 7){
 		// .adicionar attributos
 		blocos_jogaveis[a].setAttribute("class","bloco b_"+(numero_a));
 		// .definir CSS
-		blocos_jogaveis[a].style.cssText = "position:absolute;left:"+bloco_left[a]+"px;bottom:"+bloco_bottom[a]+"px;z-index:10;width:50px;height:50px;background:url(\"/imagens/inactivo.png\");border:solid 1px #333333;";
+		blocos_jogaveis[a].style.cssText = "position:absolute;left:"+bloco_left[a]+"px;bottom:"+bloco_bottom[a]+"px;z-index:10;width:50px;height:50px;background:url(\"/src/images/inactivo.png\");border:solid 1px #333333;";
 		// .adicionar blocos ao jogo
 		document.getElementById("background_jogo").appendChild(blocos_jogaveis[a]);
 		
@@ -2112,7 +2112,7 @@ else if(nivel_n === 7){
 		// .adicionar attributos
 		pedras_jogaveis[b].setAttribute("class","pedra");
 		// .definir CSS
-		pedras_jogaveis[b].style.cssText = "position:absolute;left:"+pedra_left[b]+"px;bottom:"+pedra_bottom[b]+"px;z-index:10;width:50px;height:50px;background:url(\"/imagens/cinzento.png\");border:solid 1px #000000;";
+		pedras_jogaveis[b].style.cssText = "position:absolute;left:"+pedra_left[b]+"px;bottom:"+pedra_bottom[b]+"px;z-index:10;width:50px;height:50px;background:url(\"/src/images/cinzento.png\");border:solid 1px #000000;";
 		// .adicionar blocos ao jogo
 		document.getElementById("background_jogo").appendChild(pedras_jogaveis[b]);
 		
@@ -2174,7 +2174,7 @@ var janela_jogo = document.getElementById("janela_jogo");
 		}
 }
 
-//############### PONTUAÇÃO ###############
+//############### PONTUAï¿½ï¿½O ###############
 function espetaculo_pontos(){
 	// n do proximo nivel
 	var n_nivel_n = parseInt(document.getElementById("nivel").innerHTML.split("|")[1], 10)+1;
@@ -2207,7 +2207,7 @@ function espetaculo_pontos(){
 			var botao_pontos = document.getElementById("botao_pontos"),
 				c_pontos = 1;
 
-			// correr pontuação
+			// correr pontuaï¿½ï¿½o
 			function correr_pontos(){
 				if(0<=c_pontos && parseInt(pontos*0.1)>=c_pontos){
 					c_pontos = c_pontos+2;
@@ -2279,16 +2279,16 @@ function cenario_bomba(bomba_bips,estado_som,pedra_tnt){
 		}
 
 		if(bomba_bips === 1){
-			pedra_tnt.style.background = "url(\"/imagens/dinamite.png\")";
+			pedra_tnt.style.background = "url(\"/src/images/dinamite.png\")";
 			e_num_f(3,"perigo");
 		}
 																				if(bomba_bips === 3){
-			pedra_tnt.style.background = "url(\"/imagens/dinamite.png\")";
+			pedra_tnt.style.background = "url(\"/src/images/dinamite.png\")";
 			e_num_f(1,"perigo");
 		}
 								
 		if(bomba_bips === 2){
-			pedra_tnt.style.background = "url(\"/imagens/cinzento.png\")";
+			pedra_tnt.style.background = "url(\"/src/images/cinzento.png\")";
 			e_num_f(2,"perigo");
 		}
 								
@@ -2301,7 +2301,7 @@ function cenario_bomba(bomba_bips,estado_som,pedra_tnt){
 			pedra_tnt.style.display = "none";
 			clearInterval(i_bomba);
 									
-			// se a personagem estiver proóxima
+			// se a personagem estiver proï¿½xima
 			var v_proximidade = parseInt(personagem.style.left,10)-parseInt(pedra_tnt.style.left,10);
 									
 			// se ...
@@ -2320,7 +2320,7 @@ function e_bomba(v_proximidade){
 	// salto para esquerda
 	if(v_proximidade < 0){
 		det_obj_pers( 38 , -23);
-		//função afastar
+		//funï¿½ï¿½o afastar
 		function afastar_bomba_e(){
 			
 			// redefinir class
@@ -2341,7 +2341,7 @@ function e_bomba(v_proximidade){
 	else if(v_proximidade > 0){
 		// fazer saltar
 		det_obj_pers( 38 , -23);
-		//função afastar
+		//funï¿½ï¿½o afastar
 		function afastar_bomba(){
 			if(personagem.getAttribute("class").search("esq_i") != -1){
 					// redefinir class
@@ -2464,12 +2464,12 @@ function e_bloco_verde(bloco_verde){
 
 	classe gravidade e cima_i ainda , raramente, sao activas em pararelo
 	
-	detectar_bloco enviar false e detectar nas outras se é valido ou nao
+	detectar_bloco enviar false e detectar nas outras se ï¿½ valido ou nao
 	
 	- objectos em display none afectam movimentos
 	
 	- actualizar todos os niveis com o novo sistema de auxiliares
 	
-	- SALTAR = 1  impede a troca de variaveis , aumenta performance e detecção do jogo
+	- SALTAR = 1  impede a troca de variaveis , aumenta performance e detecï¿½ï¿½o do jogo
 	
 	LOG DE ERROS */
