@@ -41,7 +41,7 @@ loading_conteudos();
 
 // funtions
 function conteudos(nivel_n) {
-    "use strict";
+
     var body = document.getElementsByTagName("body")[0];
     // 1 - Adicionar function On Rezise Centrar Jogo
     body.setAttribute("onresize", "centrar_janela_jogo()");
@@ -68,7 +68,7 @@ function conteudos(nivel_n) {
 
 //#################### CRIAR JANELA DE JOGO ####################
 function criacao_jogo(body, nivel_n) {
-    "use strict";
+
     // .adicionar janela de jogo
     var janela_global_largura = window.innerWidth,
         janela_global_altura = window.innerHeight,
@@ -170,7 +170,7 @@ function criacao_jogo(body, nivel_n) {
 
     // Temporizador, funo que repetir
     function temporizador() {
-        "use strict";
+
         i_f_jogo = document.getElementById("janela_jogo").getAttribute("class").search("inicio");
         if (i_f_jogo != -1) {
             segundos++;
@@ -268,13 +268,13 @@ function criacao_jogo(body, nivel_n) {
 
 //#################### SEM SOM ####################
 function removerfx() {
-    "use strict";
+
     document.getElementById("som").setAttribute("class", "silencio");
 }
 
 //#################### CENTRAR JANELA DE JOGO ####################
 function centrar_janela_jogo() {
-    "use strict";
+
     //ID janela jogo
     var janela_jogo = document.getElementById("janela_jogo"),
         // LARGURA ECRA e ALTURA
@@ -290,7 +290,7 @@ function centrar_janela_jogo() {
 
 //#################### PERSONAGEM ####################
 function criar_q(nivel_n) {
-    "use strict";
+
     // 1 - Detectar se existe cenario
     var background_jogo = document.getElementById("background_jogo"),
         //Contar e determinar ID de cada quadradinho
@@ -316,7 +316,7 @@ function criar_q(nivel_n) {
 
 //############### GRAVIDADE ###############
 function gravidade(personagem) {
-    "use strict";
+
     // Variavel que engloba o quadradinho
     var personagem = document.getElementById("personagem"),
         personagemClasses = personagem.getAttribute("class"),
@@ -326,7 +326,7 @@ function gravidade(personagem) {
     espetaculo(1);
     // function que os atirar para a terra
     function gravidade_accao() {
-        "use strict";
+
         aumentador++;
         personagem.style.webkitTransform = "rotate(" + graus + "deg)";
         graus = variavel * aumentador;
@@ -502,7 +502,7 @@ function fps_jogo_geral() {
     // 1
     // ACO
     function fps_jogo() {
-        //"use strict";
+        //
         // VARIAVEIS
         // aces de jogo
         cima_i = personagem.getAttribute("class").search("cima_i");
@@ -923,7 +923,7 @@ function fps_jogo_geral() {
 //#################### NIVEIS ####################
 function nivel(nivel_n) {
     if (nivel_n === 1) {
-        "use strict";
+
         function nivel_1() {
             // .adicionar nivel
             var texto_nivel = document.getElementById("nivel");
@@ -996,7 +996,7 @@ function nivel(nivel_n) {
         }
         nivel_1();
     } else if (nivel_n === 2) {
-        "use strict";
+
         function nivel_2() {
             // .adicionar nivel
             var texto_nivel = document.getElementById("nivel");
@@ -1067,7 +1067,7 @@ function nivel(nivel_n) {
     }
     // nivel 3
     else if (nivel_n === 3) {
-        "use strict";
+
         function nivel_3() {
             // .adicionar nivel
             var texto_nivel = document.getElementById("nivel");
@@ -1142,7 +1142,7 @@ function nivel(nivel_n) {
     }
     // nivel 4
     else if (nivel_n === 4) {
-        "use strict";
+
         function nivel_4() {
             // NIVEL
             var texto_nivel = document.getElementById("nivel");
@@ -1236,7 +1236,7 @@ function nivel(nivel_n) {
     }
     // nivel 5
     else if (nivel_n === 5) {
-        "use strict";
+
         function nivel_5() {
             // NIVEL
             var texto_nivel = document.getElementById("nivel");
@@ -1337,7 +1337,7 @@ function nivel(nivel_n) {
     }
     // nivel 6
     else if (nivel_n === 6) {
-        "use strict";
+
         function nivel_6() {
             // NIVEL
             var texto_nivel = document.getElementById("nivel");
@@ -1441,7 +1441,7 @@ function nivel(nivel_n) {
     }
     // nivel 7
     else if (nivel_n === 7) {
-        "use strict";
+
         function nivel_7() {
             // NIVEL
             var texto_nivel = document.getElementById("nivel");
