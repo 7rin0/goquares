@@ -931,16 +931,13 @@ function nivel(nivel_n) {
                 bloco_bottom = [70, 70, 70, 115, 170, 220, 220, 320, 120, 220],
                 numero_b = 0,
                 a,
-                a_length = bloco_left.length,
+                b,
                 c,
                 // array auxiliares
                 auxiliar_left = [(parseInt((bloco_left[0] + bloco_left[bloco_left.length - 1]) / 2))],
                 auxiliar_bottom = [30],
                 numero_a = 0,
                 id_auxiliar = 0,
-                a,
-                b,
-                c,
                 // comprimento das arrays
                 a_length = bloco_left.length,
                 // b_length = pedra_left.length,
@@ -948,6 +945,7 @@ function nivel(nivel_n) {
                 cor,
                 border = "solid 1px #ffffff;",
                 display = "block";
+
             // criar numeros de blocos
             for (a = 0; a < a_length; a++) {
                 numero_b++;
@@ -1149,15 +1147,13 @@ function nivel(nivel_n) {
                 numero_b = 0,
                 a,
                 b,
+                c,
                 a_length = bloco_left.length,
                 b_length = pedra_left.length,
                 // array auxiliares
                 auxiliar_left = [(parseInt((bloco_left[0] + bloco_left[bloco_left.length - 1]) / 2))],
                 auxiliar_bottom = [30],
-                numero_a = 0,
                 id_auxiliar = 0,
-                b,
-                c,
                 // b_length = pedra_left.length,
                 c_length = auxiliar_left.length,
                 cor,
@@ -1240,14 +1236,13 @@ function nivel(nivel_n) {
                 numero_b = 0,
                 a,
                 b,
+                c,
                 a_length = bloco_left.length,
                 b_length = pedra_left.length,
                 // array auxiliares
                 auxiliar_left = [(parseInt((bloco_left[0] + bloco_left[bloco_left.length - 1]) / 2))],
                 auxiliar_bottom = [30],
-                numero_a = 0,
                 id_auxiliar = 0,
-                c,
                 // b_length = pedra_left.length,
                 c_length = auxiliar_left.length,
                 cor,
@@ -1578,24 +1573,27 @@ function nivel(nivel_n) {
 
 //############### ESPETACULO ###############
 function espetaculo(eliminar_janela_nivel) {
-    var janela_jogo = document.getElementById("janela_jogo");
+    var janela_jogo = document.getElementById("janela_jogo"),
+				janela_nivel;
     if (eliminar_janela_nivel != 1) {
-        var janela_nivel = document.createElement("div");
+        janela_nivel = document.createElement("div");
         janela_nivel.setAttribute("id", "janela_nivel");
         janela_nivel.style.cssText = "position:absolute;width:300px;height:300px;left:175px;top:100px;background:#eeeeee;box-shadow:0 0 20px #777777;font-weight:bold";
         janela_nivel.innerHTML = "<p style=\line-height:50px;font-size:30px;text-align:center;color:#555555;font-family:arial;text-transform:lowercase;\">ARe you ready?</p><p style=\line-height:50px;font-size:25px;text-align:center;color:#fe9901;font-family:arial;text-transform:lowercase;\">level " + parseInt(document.getElementById("nivel").innerHTML.split("|")[1]) + "</p><button onclick=\"gravidade()\" style=\"text-align:center;background:#dddddd;color:#555555;margin:0px auto;display:block;clear:both;cursor:pointer;box-shadow:0 0 5px #888888;border:2px solid #dddddd;font-size:40px;padding:10px;\">GO</button>"
         janela_jogo.appendChild(janela_nivel);
-    }
-    if (eliminar_janela_nivel === 1) {
-        var janela_nivel = document.getElementById("janela_nivel");
+
+    } else if (eliminar_janela_nivel === 1) {
+        janela_nivel = document.getElementById("janela_nivel");
         janela_nivel.parentNode.removeChild(janela_nivel);
     }
 }
+
 //############### PROXIMO NIVEL ###############
 function espetaculo_nivel(eliminar_janela_nivel) {
-    var janela_jogo = document.getElementById("janela_jogo");
+		var janela_jogo = document.getElementById("janela_jogo"),
+				janela_nivel;
     if (eliminar_janela_nivel != 1) {
-        var janela_nivel = document.createElement("div");
+        janela_nivel = document.createElement("div");
         janela_nivel.setAttribute("id", "janela_nivel");
         janela_nivel.style.cssText = "position:absolute;width:300px;height:300px;left:175px;top:100px;background:#eeeeee;box-shadow:0 0 20px #777777;font-weight:bold";
         janela_nivel.innerHTML = "<p style=\"line-height:50px;font-size:30px;text-align:center;color:#555555;font-family:arial;text-transform:lowercase;\">ARe you ready?</p><p style=\"line-height:50px;font-size:25px;text-align:center;color:#fe9901;font-family:arial;text-transform:lowercase;\">level " + parseInt(document.getElementById("nivel").innerHTML.split("|")[1]) + "</p><button onclick=\"gravidade()\" style=\"text-align:center;background:#dddddd;color:#555555;margin:0px auto;display:block;clear:both;cursor:pointer;box-shadow:0 0 5px #888888;border:2px solid #dddddd;font-size:40px;padding:10px;\">GO</button>"
@@ -1613,9 +1611,8 @@ function espetaculo_nivel(eliminar_janela_nivel) {
                     break;
             }
         }, false);
-    }
-    if (eliminar_janela_nivel === 1) {
-        var janela_nivel = document.getElementById("janela_nivel");
+    } else if (eliminar_janela_nivel === 1) {
+        janela_nivel = document.getElementById("janela_nivel");
         janela_jogo.removeChild(janela_nivel);
     }
 }
@@ -1771,13 +1768,12 @@ function e_bomba(v_proximidade) {
 //############### Efeito Numerico ###############
 function e_num_f(id_bloco, motivo) {
     var e_numero = document.getElementById("e_numero");
-    if (e_numero != null) {
+    if (e_numero !== null) {
         e_numero.innerHTML = "";
         e_numero.parentNode.removeChild(e_numero);
-    }
-    if (document.getElementById("e_numero") === null) {
+    } else {
         // Criar efeito
-        var e_numero = document.createElement("span");
+        e_numero = document.createElement("span");
         e_numero.setAttribute("id", "e_numero");
         e_numero.style.cssText = "position:absolute;color:#ffffff;font-weight:bold;right:" + (janela_jogo.offsetWidth / 2) + "px;top:" + (janela_jogo.offsetHeight / 2) + "px;z-index:100;opacity:1.0;font-size:60px;";
         e_numero.innerHTML = id_bloco;
@@ -1803,7 +1799,7 @@ function e_num_f(id_bloco, motivo) {
         if (e_numero.style.opacity < 0.05 || document.getElementById("e_numero") === null) {
             clearInterval(i_e_font_pontos);
             e_numero.innerHTML = "";
-						if(document.getElementById("e_numero") != null) {
+						if(document.getElementById("e_numero") !== null) {
             		e_numero.parentNode.removeChild(e_numero);
 						}
         }
