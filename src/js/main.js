@@ -230,6 +230,7 @@ function criacao_jogo(body, nivel_n) {
                             //redefinir classes
                             personagem.setAttribute("class", personagem.getAttribute("class").replace("cima_p", "cima_i"));
                         }
+                        break;
                         // .salto
                     case 32:
                         // se estiver no cho inicia salto
