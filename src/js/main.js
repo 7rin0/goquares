@@ -459,11 +459,11 @@ function fps_jogo_geral() {
     // .blocos
     for (a = 0; a < a_length; a++) {
         // Variaveis com dimensoes e posies do bloco
-        quad_wh = parseInt(array_blocos[a].offsetWidth),
-            quad_top = parseInt(array_blocos[a].offsetTop),
-            quad_left = parseInt(array_blocos[a].style.left),
-            quad_bottom = quad_top + quad_wh,
-            quad_rigth = quad_left + quad_wh;
+        quad_wh = parseInt(array_blocos[a].offsetWidth);
+        quad_top = parseInt(array_blocos[a].offsetTop);
+        quad_left = parseInt(array_blocos[a].style.left);
+        quad_bottom = quad_top + quad_wh;
+        quad_rigth = quad_left + quad_wh;
         bloco = array_blocos[a];
         // Cada Bloco ter as suas propriedades
         blocos[a] = [bloco, quad_top, quad_rigth, quad_bottom, quad_left];
@@ -471,11 +471,11 @@ function fps_jogo_geral() {
     // .pedras
     for (e = 0; e < e_length; e++) {
         // Variaveis com dimensoes e posies do bloco
-        pedra_wh = parseInt(array_pedras[e].offsetWidth),
-            pedra_top = parseInt(array_pedras[e].offsetTop),
-            pedra_left = parseInt(array_pedras[e].style.left),
-            pedra_bottom = pedra_top + pedra_wh,
-            pedra_rigth = pedra_left + pedra_wh;
+        pedra_wh = parseInt(array_pedras[e].offsetWidth);
+        pedra_top = parseInt(array_pedras[e].offsetTop);
+        pedra_left = parseInt(array_pedras[e].style.left);
+        pedra_bottom = pedra_top + pedra_wh;
+        pedra_rigth = pedra_left + pedra_wh;
         pedra = array_pedras[e];
         // Cada Bloco ter as suas propriedades
         pedras[e] = [pedra, pedra_top, pedra_rigth, pedra_bottom, pedra_left];
@@ -483,27 +483,24 @@ function fps_jogo_geral() {
     // .auxiliares
     for (f = 0; f < f_length; f++) {
         // Variaveis com dimensoes e posies do bloco
-        auxiliar_wh = parseInt(array_auxiliares[f].offsetWidth),
-            auxiliar_top = parseInt(array_auxiliares[f].offsetTop),
-            auxiliar_left = parseInt(array_auxiliares[f].style.left),
-            auxiliar_bottom = auxiliar_top + auxiliar_wh,
-            auxiliar_rigth = auxiliar_left + auxiliar_wh;
+        auxiliar_wh = parseInt(array_auxiliares[f].offsetWidth);
+        auxiliar_top = parseInt(array_auxiliares[f].offsetTop);
+        auxiliar_left = parseInt(array_auxiliares[f].style.left);
+        auxiliar_bottom = auxiliar_top + auxiliar_wh;
+        auxiliar_rigth = auxiliar_left + auxiliar_wh;
         auxiliar = array_auxiliares[f];
         // Cada Bloco ter as suas propriedades
         auxiliares[f] = [auxiliar, auxiliar_top, auxiliar_rigth, auxiliar_bottom, auxiliar_left];
     }
+
     // Redefinir valores for in loops
     b_length = blocos.length;
     e_length = pedras.length;
     f_length = auxiliares.length;
     id_metade_blocos = parseInt(b_length / 2, 10);
+
     // function GERAL
-    // 3
-    // 2
-    // 1
-    // ACO
     function fps_jogo() {
-        //
         // VARIAVEIS
         // aces de jogo
         cima_i = personagem.getAttribute("class").search("cima_i");
@@ -636,7 +633,7 @@ function fps_jogo_geral() {
             }
         }
         // se existirem pedras
-        if (e_length != 0) {
+        if (e_length !== 0) {
             // .pedras
             for (d = 0; d < e_length; d++) {
                 // .dimenses pedra
