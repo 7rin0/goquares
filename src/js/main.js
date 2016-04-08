@@ -316,7 +316,7 @@ function criar_q(nivel_n) {
 }
 
 //############### GRAVIDADE ###############
-function gravidade(personagem) {
+function gravidade() {
 
     // Variavel que engloba o quadradinho
     var personagem = document.getElementById("personagem"),
@@ -1822,7 +1822,9 @@ function e_num_f(id_bloco, motivo) {
         if (e_numero.style.opacity < 0.05 || document.getElementById("e_numero") === null) {
             clearInterval(i_e_font_pontos);
             e_numero.innerHTML = "";
-            e_numero.parentNode.removeChild(e_numero);
+						if(document.getElementById("e_numero") != null) {
+            		e_numero.parentNode.removeChild(e_numero);
+						}
         }
     }
     var i_e_font_pontos = setInterval(e_num_i, 10);
