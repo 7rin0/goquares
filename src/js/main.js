@@ -988,7 +988,7 @@ function nivel(nivel_n) {
                 // .adicionar blocos ao jogo
                 document.getElementById("background_jogo").appendChild(auxiliares_jogaveis[c]);
             }
-        }
+        };
         nivel_1();
     } else if (nivel_n === 2) {
         var nivel_2 = function() {
@@ -1056,7 +1056,7 @@ function nivel(nivel_n) {
                 // .adicionar blocos ao jogo
                 document.getElementById("background_jogo").appendChild(auxiliares_jogaveis[c]);
             }
-        }
+        };
         nivel_2();
     } else if (nivel_n === 3) {
         var nivel_3 = function() {
@@ -1128,7 +1128,7 @@ function nivel(nivel_n) {
                 // .adicionar blocos ao jogo
                 document.getElementById("background_jogo").appendChild(auxiliares_jogaveis[c]);
             }
-        }
+        };
         nivel_3();
     } else if (nivel_n === 4) {
         var nivel_4 = function() {
@@ -1217,7 +1217,7 @@ function nivel(nivel_n) {
                 // .adicionar blocos ao jogo
                 document.getElementById("background_jogo").appendChild(pedras_jogaveis[b]);
             }
-        }
+        };
         nivel_4();
     } else if (nivel_n === 5) {
         var nivel_5 = function() {
@@ -1314,7 +1314,7 @@ function nivel(nivel_n) {
                 // .adicionar blocos ao jogo
                 document.getElementById("background_jogo").appendChild(pedras_jogaveis[b]);
             }
-        }
+        };
         nivel_5();
     } else if (nivel_n === 6) {
         var nivel_6 = function() {
@@ -1415,7 +1415,7 @@ function nivel(nivel_n) {
                 // .adicionar blocos ao jogo
                 document.getElementById("background_jogo").appendChild(pedras_jogaveis[b]);
             }
-        }
+        };
         nivel_6();
     } else if (nivel_n === 7) {
         var nivel_7 = function() {
@@ -1566,7 +1566,7 @@ function nivel(nivel_n) {
                     pedras_jogaveis[b].setAttribute("class", pedras_jogaveis[b].getAttribute("class") + " dinamite");
                 }
             }
-        }
+        };
         nivel_7();
     }
 }
@@ -1579,7 +1579,7 @@ function espetaculo(eliminar_janela_nivel) {
         janela_nivel = document.createElement("div");
         janela_nivel.setAttribute("id", "janela_nivel");
         janela_nivel.style.cssText = "position:absolute;width:300px;height:300px;left:175px;top:100px;background:#eeeeee;box-shadow:0 0 20px #777777;font-weight:bold";
-        janela_nivel.innerHTML = "<p style=\line-height:50px;font-size:30px;text-align:center;color:#555555;font-family:arial;text-transform:lowercase;\">ARe you ready?</p><p style=\line-height:50px;font-size:25px;text-align:center;color:#fe9901;font-family:arial;text-transform:lowercase;\">level " + parseInt(document.getElementById("nivel").innerHTML.split("|")[1]) + "</p><button onclick=\"gravidade()\" style=\"text-align:center;background:#dddddd;color:#555555;margin:0px auto;display:block;clear:both;cursor:pointer;box-shadow:0 0 5px #888888;border:2px solid #dddddd;font-size:40px;padding:10px;\">GO</button>"
+        janela_nivel.innerHTML = "<p style=\line-height:50px;font-size:30px;text-align:center;color:#555555;font-family:arial;text-transform:lowercase;\">ARe you ready?</p><p style=\line-height:50px;font-size:25px;text-align:center;color:#fe9901;font-family:arial;text-transform:lowercase;\">level " + parseInt(document.getElementById("nivel").innerHTML.split("|")[1]) + "</p><button onclick=\"gravidade()\" style=\"text-align:center;background:#dddddd;color:#555555;margin:0px auto;display:block;clear:both;cursor:pointer;box-shadow:0 0 5px #888888;border:2px solid #dddddd;font-size:40px;padding:10px;\">GO</button>";
         janela_jogo.appendChild(janela_nivel);
 
     } else if (eliminar_janela_nivel === 1) {
@@ -1596,7 +1596,7 @@ function espetaculo_nivel(eliminar_janela_nivel) {
         janela_nivel = document.createElement("div");
         janela_nivel.setAttribute("id", "janela_nivel");
         janela_nivel.style.cssText = "position:absolute;width:300px;height:300px;left:175px;top:100px;background:#eeeeee;box-shadow:0 0 20px #777777;font-weight:bold";
-        janela_nivel.innerHTML = "<p style=\"line-height:50px;font-size:30px;text-align:center;color:#555555;font-family:arial;text-transform:lowercase;\">ARe you ready?</p><p style=\"line-height:50px;font-size:25px;text-align:center;color:#fe9901;font-family:arial;text-transform:lowercase;\">level " + parseInt(document.getElementById("nivel").innerHTML.split("|")[1]) + "</p><button onclick=\"gravidade()\" style=\"text-align:center;background:#dddddd;color:#555555;margin:0px auto;display:block;clear:both;cursor:pointer;box-shadow:0 0 5px #888888;border:2px solid #dddddd;font-size:40px;padding:10px;\">GO</button>"
+        janela_nivel.innerHTML = "<p style=\"line-height:50px;font-size:30px;text-align:center;color:#555555;font-family:arial;text-transform:lowercase;\">ARe you ready?</p><p style=\"line-height:50px;font-size:25px;text-align:center;color:#fe9901;font-family:arial;text-transform:lowercase;\">level " + parseInt(document.getElementById("nivel").innerHTML.split("|")[1]) + "</p><button onclick=\"gravidade()\" style=\"text-align:center;background:#dddddd;color:#555555;margin:0px auto;display:block;clear:both;cursor:pointer;box-shadow:0 0 5px #888888;border:2px solid #dddddd;font-size:40px;padding:10px;\">GO</button>";
         janela_jogo.appendChild(janela_nivel);
         // adicionar event listener
         document.addEventListener('keyup', function menu_jogo(vars) {
@@ -1626,7 +1626,7 @@ function espetaculo_pontos() {
     janela_pontos = document.createElement("div");
     janela_pontos.setAttribute("id", "janela_pontos");
     janela_pontos.style.cssText = "position:absolute;width:300px;height:300px;left:175px;top:100px;background:#eeeeee;box-shadow:0 0 20px #777777;font-weight:bold";
-    janela_pontos.innerHTML = "<p style=\"line-height:50px;font-size:30px;text-align:center;color:#555555;font-family:arial;text-transform:lowercase;\">succeed</p><p style=\"line-height:50px;font-size:25px;text-align:center;color:#fe9901;font-family:arial;text-transform:lowercase;\">level " + parseInt(document.getElementById("nivel").innerHTML.split("|")[1]) + " cleared!</p><button id=\"botao_pontos\" onclick=\"conteudos(" + n_nivel_n + ")\" style=\"text-align:center;background:#dddddd;color:#555555;margin:0px auto;display:block;clear:both;cursor:pointer;box-shadow:0 0 5px #888888;border:2px solid #dddddd;font-size:40px;line-heigth:20px;\">" + pontos + " points!</button>"
+    janela_pontos.innerHTML = "<p style=\"line-height:50px;font-size:30px;text-align:center;color:#555555;font-family:arial;text-transform:lowercase;\">succeed</p><p style=\"line-height:50px;font-size:25px;text-align:center;color:#fe9901;font-family:arial;text-transform:lowercase;\">level " + parseInt(document.getElementById("nivel").innerHTML.split("|")[1]) + " cleared!</p><button id=\"botao_pontos\" onclick=\"conteudos(" + n_nivel_n + ")\" style=\"text-align:center;background:#dddddd;color:#555555;margin:0px auto;display:block;clear:both;cursor:pointer;box-shadow:0 0 5px #888888;border:2px solid #dddddd;font-size:40px;line-heigth:20px;\">" + pontos + " points!</button>";
     janela_jogo.appendChild(janela_pontos);
     // adicionar event listener
     document.addEventListener('keyup', function menu_jogo(vars) {
@@ -1647,22 +1647,22 @@ function espetaculo_pontos() {
     function correr_pontos() {
         if (0 <= c_pontos && parseInt(pontos * 0.1) >= c_pontos) {
             c_pontos = c_pontos + 2;
-            botao_pontos.innerHTML = c_pontos + " points!"
+            botao_pontos.innerHTML = c_pontos + " points!";
         } else if (parseInt(pontos * 0.1) + 1 <= c_pontos && c_pontos <= parseInt(pontos * 0.3)) {
             c_pontos = c_pontos + 4;
-            botao_pontos.innerHTML = c_pontos + " points!"
+            botao_pontos.innerHTML = c_pontos + " points!";
         } else if (parseInt(pontos * 0.3) + 1 <= c_pontos && c_pontos <= parseInt(pontos * 0.8)) {
             c_pontos = c_pontos + 6;
-            botao_pontos.innerHTML = c_pontos + " points!"
+            botao_pontos.innerHTML = c_pontos + " points!";
         } else if (parseInt(pontos * 0.8) + 1 <= c_pontos && c_pontos <= parseInt(pontos * 0.9)) {
             c_pontos = c_pontos + 4;
-            botao_pontos.innerHTML = c_pontos + " points!"
+            botao_pontos.innerHTML = c_pontos + " points!";
         } else if (c_pontos >= parseInt(pontos * 0.9) + 1 && c_pontos < pontos && (c_pontos + 2) < pontos) {
             c_pontos = c_pontos + 2;
-            botao_pontos.innerHTML = c_pontos + " points!"
+            botao_pontos.innerHTML = c_pontos + " points!";
         } else {
             clearInterval(int_correr_pontos);
-            botao_pontos.innerHTML = pontos + " points!"
+            botao_pontos.innerHTML = pontos + " points!";
         }
     }
     var int_correr_pontos = setInterval(correr_pontos, 1);
@@ -1741,7 +1741,7 @@ function e_bomba(v_proximidade) {
                 // redefinir class
                 personagem.setAttribute("class", personagem.getAttribute("class").replace("esq_i", "esq_p"));
             }
-        }
+        };
         var i_afastar_bomba_e = setInterval(afastar_bomba_e, 30);
     }
     // salto para direita
@@ -1761,7 +1761,7 @@ function e_bomba(v_proximidade) {
                 // redefinir class
                 personagem.setAttribute("class", personagem.getAttribute("class").replace("dir_i", "dir_p"));
             }
-        }
+        };
         var i_afastar_bomba = setInterval(afastar_bomba, 30);
     }
 }
@@ -1839,7 +1839,7 @@ function e_bloco_verde(bloco_verde) {
             // actualizar estado do bloco
             bloco_auxiliar.style.height = (parseFloat(bloco_auxiliar.style.height) - 1) + "px";
             bloco_auxiliar.style.bottom = (parseFloat(bloco_auxiliar.style.bottom) + 1) + "px";
-        }
+        };
         var i_e_b_verde = setInterval(e_b_verde, 20);
     }
 }
