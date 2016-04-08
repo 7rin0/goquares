@@ -1,5 +1,5 @@
 # GoSquares
-SImple game entirely written in JavaScript
+A simple game entirely written in JavaScript
 
 Mostly broken and to be updated ASAP! :)
 
