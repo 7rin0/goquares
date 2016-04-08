@@ -17,13 +17,13 @@ make run
 ```
 #### Procedural way
 ```
-- npm install
-- ./node_modules/http-server/bin/http-server -o
+npm install
+./node_modules/http-server/bin/http-server -o
 ```
 
 > If you have already http-server package installed globally you can simply run ```http-server -o``` of the gosquares directory root. This is the simplest way to test gosquares.
 
-## TODO:
+### TODO:
 - Debug ...
 - Test coverage
 - Sanity checking
