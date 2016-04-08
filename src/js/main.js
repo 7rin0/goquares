@@ -921,8 +921,7 @@ function fps_jogo_geral() {
 //#################### NIVEIS ####################
 function nivel(nivel_n) {
     if (nivel_n === 1) {
-
-        function nivel_1() {
+        var nivel_1 = function() {
             // .adicionar nivel
             var texto_nivel = document.getElementById("nivel");
             texto_nivel.innerHTML = "LEVEL | 1";
@@ -994,8 +993,7 @@ function nivel(nivel_n) {
         }
         nivel_1();
     } else if (nivel_n === 2) {
-
-        function nivel_2() {
+        var nivel_2 = function() {
             // .adicionar nivel
             var texto_nivel = document.getElementById("nivel");
             texto_nivel.innerHTML = "LEVEL | 2";
@@ -1062,11 +1060,8 @@ function nivel(nivel_n) {
             }
         }
         nivel_2();
-    }
-    // nivel 3
-    else if (nivel_n === 3) {
-
-        function nivel_3() {
+    } else if (nivel_n === 3) {
+        var nivel_3 = function() {
             // .adicionar nivel
             var texto_nivel = document.getElementById("nivel");
             texto_nivel.innerHTML = "LEVEL | 3";
@@ -1137,11 +1132,8 @@ function nivel(nivel_n) {
             }
         }
         nivel_3();
-    }
-    // nivel 4
-    else if (nivel_n === 4) {
-
-        function nivel_4() {
+    } else if (nivel_n === 4) {
+        var nivel_4 = function() {
             // NIVEL
             var texto_nivel = document.getElementById("nivel");
             texto_nivel.innerHTML = "LEVEL | 4";
@@ -1231,11 +1223,8 @@ function nivel(nivel_n) {
             }
         }
         nivel_4();
-    }
-    // nivel 5
-    else if (nivel_n === 5) {
-
-        function nivel_5() {
+    } else if (nivel_n === 5) {
+        var nivel_5 = function() {
             // NIVEL
             var texto_nivel = document.getElementById("nivel");
             texto_nivel.innerHTML = "LEVEL | 5";
@@ -1332,11 +1321,8 @@ function nivel(nivel_n) {
             }
         }
         nivel_5();
-    }
-    // nivel 6
-    else if (nivel_n === 6) {
-
-        function nivel_6() {
+    } else if (nivel_n === 6) {
+        var nivel_6 = function() {
             // NIVEL
             var texto_nivel = document.getElementById("nivel");
             texto_nivel.innerHTML = "LEVEL | 6";
@@ -1436,11 +1422,8 @@ function nivel(nivel_n) {
             }
         }
         nivel_6();
-    }
-    // nivel 7
-    else if (nivel_n === 7) {
-
-        function nivel_7() {
+    } else if (nivel_n === 7) {
+        var nivel_7 = function() {
             // NIVEL
             var texto_nivel = document.getElementById("nivel");
             texto_nivel.innerHTML = "LEVEL | 7";
@@ -1592,6 +1575,7 @@ function nivel(nivel_n) {
         nivel_7();
     }
 }
+
 //############### ESPETACULO ###############
 function espetaculo(eliminar_janela_nivel) {
     var janela_jogo = document.getElementById("janela_jogo");
