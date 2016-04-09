@@ -24,7 +24,7 @@ function loading_conteudos() {
     // Loop de src/images
     for (a = 0; a < load_images.length; a++) {
         loading_imagem = new Image();
-        loading_imagem.src = "src/images/" + load_images[a] + ".png";
+        loading_imagem.src = "src/min/images/" + load_images[a] + ".png";
     }
     // Array de fx
     load_fx = ["salto", "fundo", "caixa_azul", "caixa_dourada", "caixa_vermelha", "caixa_laranja"];
@@ -84,25 +84,25 @@ function criacao_jogo(body, nivel_n) {
     body.appendChild(janela_jogo);
     switch (nivel_n) {
         case 1:
-            imagem_background = "url(\"src/images/fundo_1.png\")";
+            imagem_background = "url(\"src/min/images/fundo_1.png\")";
             break;
         case 2:
-            imagem_background = "url(\"src/images/fundo_1.png\")";
+            imagem_background = "url(\"src/min/images/fundo_1.png\")";
             break;
         case 3:
-            imagem_background = "url(\"src/images/fundo_1.png\")";
+            imagem_background = "url(\"src/min/images/fundo_1.png\")";
             break;
         case 4:
-            imagem_background = "url(\"src/images/fundo_2.png\")";
+            imagem_background = "url(\"src/min/images/fundo_2.png\")";
             break;
         case 5:
-            imagem_background = "url(\"src/images/fundo_2.png\")";
+            imagem_background = "url(\"src/min/images/fundo_2.png\")";
             break;
         case 6:
-            imagem_background = "url(\"src/images/fundo_2.png\")";
+            imagem_background = "url(\"src/min/images/fundo_2.png\")";
             break;
         case 7:
-            imagem_background = "url(\"src/images/fundo_3.png\")";
+            imagem_background = "url(\"src/min/images/fundo_3.png\")";
             break;
     }
 
@@ -312,7 +312,7 @@ function criar_q(nivel_n) {
     var personagem = document.createElement("div");
     //Definir Atributos
     personagem.setAttribute("id", "personagem");
-    personagem.style.cssText = "width:" + dimencoes_aleatorias + "px;height:" + dimencoes_aleatorias + "px;position:absolute;top:0px;left:" + queda + ";text-align:center;line-height:" + dimencoes_aleatorias + "px;z-index:1;font-weight:bold;background:url(src/images/personagem_inicio.png) #ff6600;z-index:10000000000000000";
+    personagem.style.cssText = "width:" + dimencoes_aleatorias + "px;height:" + dimencoes_aleatorias + "px;position:absolute;top:0px;left:" + queda + ";text-align:center;line-height:" + dimencoes_aleatorias + "px;z-index:1;font-weight:bold;background:url(src/min/images/personagem_inicio.png) #ff6600;z-index:10000000000000000";
     background_jogo.appendChild(personagem);
 }
 
@@ -520,8 +520,8 @@ function fps_jogo_geral() {
         // estilo
         per_back_esq_s = personagem.style.background.search("personagem_0_esq.png");
         per_back_dir_s = personagem.style.background.search("personagem_0_dir.png");
-        per_back_esq = "url(src/images/personagem_0_esq.png)";
-        per_back_dir = "url(src/images/personagem_0_dir.png)";
+        per_back_esq = "url(src/min/images/personagem_0_esq.png)";
+        per_back_dir = "url(src/min/images/personagem_0_dir.png)";
         // background
         L_back_jogo = back_jogo.offsetLeft;
         W_back_jogo = back_jogo.offsetWidth;
@@ -738,7 +738,7 @@ function fps_jogo_geral() {
         			if(bloco_auxiliar_id === "aux_verde"){
         				// ao activar muda de back
         				if(E4.style.background.search("verde") === -1){
-        					E4.style.background = "url(\"src/images/verde.png\")";
+        					E4.style.background = "url(\"src/min/images/verde.png\")";
         					E4.style.border = "solid 1px #ffffff";
         				}
         				// iniciar efeito
@@ -773,12 +773,12 @@ function fps_jogo_geral() {
                     // Super-Importante
                     // estes codigos esto aqui para que sejam lidos, apenas se houver um primeiro contacto com o objecto em questo
                     // verificao de sequencia
-                    caixa_azul = E2.style.background.search("src/images/inactivo.png");
+                    caixa_azul = E2.style.background.search("src/min/images/inactivo.png");
                     caixa_dourada = E2.getAttribute("class").search("dourado");
                     caixa_laranja_3 = E2.getAttribute("class").search("laranja_3");
                     caixa_laranja_2 = E2.getAttribute("class").search("laranja_2");
                     caixa_laranja_1 = E2.getAttribute("class").search("laranja_1");
-                    caixa_laranja = E2.style.background.search("src/images/activo.png");
+                    caixa_laranja = E2.style.background.search("src/min/images/activo.png");
                     caixa_vermelha = E2.getAttribute("class").search("vermelho");
                     pontuacao = parseInt(document.getElementById("pontos").innerHTML.split("|")[1], 10);
                     n_interrogacoes = parseInt(interrogacoes.innerHTML.split("|")[1], 10);
@@ -844,7 +844,7 @@ function fps_jogo_geral() {
                         // bloco azul
                         if (caixa_azul != -1 && caixa_dourada === -1 && caixa_vermelha === -1 && caixa_laranja_3 === -1) {
                             // .background
-                            E2.style.background = "url(\"src/images/activo.png\") #ffffff";
+                            E2.style.background = "url(\"src/min/images/activo.png\") #ffffff";
                             // .border
                             E2.style.border = "1px dashed #ffffff";
                             // .pontos
@@ -857,9 +857,9 @@ function fps_jogo_geral() {
                         }
                         // bloco vermelho
                         else if (caixa_vermelha != -1) {
-                            if (E2.style.background.search("src/images/vermelho.png") === -1) {
+                            if (E2.style.background.search("src/min/images/vermelho.png") === -1) {
                                 // .background
-                                E2.style.background = "url(\"src/images/vermelho.png\") #ffffff";
+                                E2.style.background = "url(\"src/min/images/vermelho.png\") #ffffff";
                                 // .border
                                 E2.style.border = "1px dashed #ffffff";
                             }
@@ -875,7 +875,7 @@ function fps_jogo_geral() {
                             // parar jogo
                             ultimo_bloco = 1;
                             // .background
-                            E2.style.background = "url(\"src/images/dourado.png\") #ffffff";
+                            E2.style.background = "url(\"src/min/images/dourado.png\") #ffffff";
                             // .border
                             E2.style.border = "1px dashed #ffffff";
                             //.som
@@ -955,7 +955,7 @@ function nivel(nivel_n) {
                 // .adicionar attributos
                 blocos_jogaveis[a].setAttribute("class", "bloco b_" + (a + 1));
                 // .definir CSS
-                blocos_jogaveis[a].style.cssText = "position:absolute;left:" + bloco_left[a] + "px;bottom:" + bloco_bottom[a] + "px;z-index:10;width:50px;height:50px;background:url(\"src/images/inactivo.png\");border:solid 1px #2f0000;";
+                blocos_jogaveis[a].style.cssText = "position:absolute;left:" + bloco_left[a] + "px;bottom:" + bloco_bottom[a] + "px;z-index:10;width:50px;height:50px;background:url(\"src/min/images/inactivo.png\");border:solid 1px #2f0000;";
                 // .adicionar blocos ao jogo
                 document.getElementById("background_jogo").appendChild(blocos_jogaveis[a]);
                 // .se for o ultimo elemento  o DOURADO
@@ -985,7 +985,7 @@ function nivel(nivel_n) {
                     display = "display:block;";
                 }
                 // .definir CSS
-                auxiliares_jogaveis[c].style.cssText = "position:absolute;left:" + auxiliar_left[c] + "px;bottom:" + auxiliar_bottom[c] + "px;z-index:10;width:50px;height:50px;background:url(\"src/images/" + cor + ".png\");" + display + "border:" + border;
+                auxiliares_jogaveis[c].style.cssText = "position:absolute;left:" + auxiliar_left[c] + "px;bottom:" + auxiliar_bottom[c] + "px;z-index:10;width:50px;height:50px;background:url(\"src/min/images/" + cor + ".png\");" + display + "border:" + border;
                 // .adicionar blocos ao jogo
                 document.getElementById("background_jogo").appendChild(auxiliares_jogaveis[c]);
             }
@@ -1023,7 +1023,7 @@ function nivel(nivel_n) {
                 // .adicionar attributos
                 blocos_jogaveis[a].setAttribute("class", "bloco b_" + (a + 1));
                 // .definir CSS
-                blocos_jogaveis[a].style.cssText = "position:absolute;left:" + bloco_left[a] + "px;bottom:" + bloco_bottom[a] + "px;z-index:10;width:50px;height:50px;background:url(\"src/images/inactivo.png\");border:solid 1px #2f0000;";
+                blocos_jogaveis[a].style.cssText = "position:absolute;left:" + bloco_left[a] + "px;bottom:" + bloco_bottom[a] + "px;z-index:10;width:50px;height:50px;background:url(\"src/min/images/inactivo.png\");border:solid 1px #2f0000;";
                 // .adicionar blocos ao jogo
                 document.getElementById("background_jogo").appendChild(blocos_jogaveis[a]);
                 // .se for o ultimo elemento  o DOURADO
@@ -1053,7 +1053,7 @@ function nivel(nivel_n) {
                     display = "display:block;";
                 }
                 // .definir CSS
-                auxiliares_jogaveis[c].style.cssText = "position:absolute;left:" + auxiliar_left[c] + "px;bottom:" + auxiliar_bottom[c] + "px;z-index:10;width:50px;height:50px;background:url(\"src/images/" + cor + ".png\");" + display + "border:" + border;
+                auxiliares_jogaveis[c].style.cssText = "position:absolute;left:" + auxiliar_left[c] + "px;bottom:" + auxiliar_bottom[c] + "px;z-index:10;width:50px;height:50px;background:url(\"src/min/images/" + cor + ".png\");" + display + "border:" + border;
                 // .adicionar blocos ao jogo
                 document.getElementById("background_jogo").appendChild(auxiliares_jogaveis[c]);
             }
@@ -1091,7 +1091,7 @@ function nivel(nivel_n) {
                 // .adicionar attributos
                 blocos_jogaveis[a].setAttribute("class", "bloco b_" + (a + 1));
                 // .definir CSS
-                blocos_jogaveis[a].style.cssText = "position:absolute;left:" + bloco_left[a] + "px;bottom:" + bloco_bottom[a] + "px;z-index:10;width:50px;height:50px;background:url(\"src/images/inactivo.png\");border:solid 1px #2f0000;";
+                blocos_jogaveis[a].style.cssText = "position:absolute;left:" + bloco_left[a] + "px;bottom:" + bloco_bottom[a] + "px;z-index:10;width:50px;height:50px;background:url(\"src/min/images/inactivo.png\");border:solid 1px #2f0000;";
                 // .adicionar blocos ao jogo
                 document.getElementById("background_jogo").appendChild(blocos_jogaveis[a]);
                 // .se for o ultimo elemento  o DOURADO
@@ -1125,7 +1125,7 @@ function nivel(nivel_n) {
                     display = "display:block;";
                 }
                 // .definir CSS
-                auxiliares_jogaveis[c].style.cssText = "position:absolute;left:" + auxiliar_left[c] + "px;bottom:" + auxiliar_bottom[c] + "px;z-index:10;width:50px;height:50px;background:url(\"src/images/" + cor + ".png\");" + display + "border:" + border;
+                auxiliares_jogaveis[c].style.cssText = "position:absolute;left:" + auxiliar_left[c] + "px;bottom:" + auxiliar_bottom[c] + "px;z-index:10;width:50px;height:50px;background:url(\"src/min/images/" + cor + ".png\");" + display + "border:" + border;
                 // .adicionar blocos ao jogo
                 document.getElementById("background_jogo").appendChild(auxiliares_jogaveis[c]);
             }
@@ -1182,7 +1182,7 @@ function nivel(nivel_n) {
                     display = "display:block;";
                 }
                 // .definir CSS
-                auxiliares_jogaveis[c].style.cssText = "position:absolute;left:" + auxiliar_left[c] + "px;bottom:" + auxiliar_bottom[c] + "px;z-index:10;width:50px;height:50px;background:url(\"src/images/" + cor + ".png\");" + display + "border:" + border;
+                auxiliares_jogaveis[c].style.cssText = "position:absolute;left:" + auxiliar_left[c] + "px;bottom:" + auxiliar_bottom[c] + "px;z-index:10;width:50px;height:50px;background:url(\"src/min/images/" + cor + ".png\");" + display + "border:" + border;
                 // .adicionar blocos ao jogo
                 document.getElementById("background_jogo").appendChild(auxiliares_jogaveis[c]);
             }
@@ -1194,7 +1194,7 @@ function nivel(nivel_n) {
                 // .adicionar attributos
                 blocos_jogaveis[a].setAttribute("class", "bloco b_" + (a + 1));
                 // .definir CSS
-                blocos_jogaveis[a].style.cssText = "position:absolute;left:" + bloco_left[a] + "px;bottom:" + bloco_bottom[a] + "px;z-index:10;width:50px;height:50px;background:url(\"src/images/inactivo.png\");border:solid 1px #2f0000;";
+                blocos_jogaveis[a].style.cssText = "position:absolute;left:" + bloco_left[a] + "px;bottom:" + bloco_bottom[a] + "px;z-index:10;width:50px;height:50px;background:url(\"src/min/images/inactivo.png\");border:solid 1px #2f0000;";
                 // .adicionar blocos ao jogo
                 document.getElementById("background_jogo").appendChild(blocos_jogaveis[a]);
                 // .se for o ultimo elemento  o DOURADO
@@ -1214,7 +1214,7 @@ function nivel(nivel_n) {
                 // .adicionar attributos
                 pedras_jogaveis[b].setAttribute("class", "pedra");
                 // .definir CSS
-                pedras_jogaveis[b].style.cssText = "position:absolute;left:" + pedra_left[b] + "px;bottom:" + pedra_bottom[b] + "px;z-index:10;width:50px;height:50px;background:url(\"src/images/cinzento.png\");border:solid 1px #2f0000;";
+                pedras_jogaveis[b].style.cssText = "position:absolute;left:" + pedra_left[b] + "px;bottom:" + pedra_bottom[b] + "px;z-index:10;width:50px;height:50px;background:url(\"src/min/images/cinzento.png\");border:solid 1px #2f0000;";
                 // .adicionar blocos ao jogo
                 document.getElementById("background_jogo").appendChild(pedras_jogaveis[b]);
             }
@@ -1271,7 +1271,7 @@ function nivel(nivel_n) {
                     display = "display:block;";
                 }
                 // .definir CSS
-                auxiliares_jogaveis[c].style.cssText = "position:absolute;left:" + auxiliar_left[c] + "px;bottom:" + auxiliar_bottom[c] + "px;z-index:10;width:50px;height:50px;background:url(\"src/images/" + cor + ".png\");" + display + "border:" + border;
+                auxiliares_jogaveis[c].style.cssText = "position:absolute;left:" + auxiliar_left[c] + "px;bottom:" + auxiliar_bottom[c] + "px;z-index:10;width:50px;height:50px;background:url(\"src/min/images/" + cor + ".png\");" + display + "border:" + border;
                 // .adicionar blocos ao jogo
                 document.getElementById("background_jogo").appendChild(auxiliares_jogaveis[c]);
             }
@@ -1283,7 +1283,7 @@ function nivel(nivel_n) {
                 // .adicionar attributos
                 blocos_jogaveis[a].setAttribute("class", "bloco b_" + (numero_a));
                 // .definir CSS
-                blocos_jogaveis[a].style.cssText = "position:absolute;left:" + bloco_left[a] + "px;bottom:" + bloco_bottom[a] + "px;z-index:10;width:50px;height:50px;background:url(\"src/images/inactivo.png\");border:solid 1px #333333;";
+                blocos_jogaveis[a].style.cssText = "position:absolute;left:" + bloco_left[a] + "px;bottom:" + bloco_bottom[a] + "px;z-index:10;width:50px;height:50px;background:url(\"src/min/images/inactivo.png\");border:solid 1px #333333;";
                 // .adicionar blocos ao jogo
                 document.getElementById("background_jogo").appendChild(blocos_jogaveis[a]);
                 // .se for o ultimo elemento  o DOURADO
@@ -1311,7 +1311,7 @@ function nivel(nivel_n) {
                 // .adicionar attributos
                 pedras_jogaveis[b].setAttribute("class", "pedra");
                 // .definir CSS
-                pedras_jogaveis[b].style.cssText = "position:absolute;left:" + pedra_left[b] + "px;bottom:" + pedra_bottom[b] + "px;z-index:10;width:50px;height:50px;background:url(\"src/images/cinzento.png\");border:solid 1px #000000;";
+                pedras_jogaveis[b].style.cssText = "position:absolute;left:" + pedra_left[b] + "px;bottom:" + pedra_bottom[b] + "px;z-index:10;width:50px;height:50px;background:url(\"src/min/images/cinzento.png\");border:solid 1px #000000;";
                 // .adicionar blocos ao jogo
                 document.getElementById("background_jogo").appendChild(pedras_jogaveis[b]);
             }
@@ -1372,7 +1372,7 @@ function nivel(nivel_n) {
                     border = "solid 1px #333333;";
                 }
                 // .definir CSS
-                auxiliares_jogaveis[c].style.cssText = "position:absolute;left:" + auxiliar_left[c] + "px;bottom:" + auxiliar_bottom[c] + "px;z-index:10;width:50px;height:50px;background:url(\"src/images/" + cor + ".png\");" + display + "border:" + border;
+                auxiliares_jogaveis[c].style.cssText = "position:absolute;left:" + auxiliar_left[c] + "px;bottom:" + auxiliar_bottom[c] + "px;z-index:10;width:50px;height:50px;background:url(\"src/min/images/" + cor + ".png\");" + display + "border:" + border;
                 // .adicionar blocos ao jogo
                 document.getElementById("background_jogo").appendChild(auxiliares_jogaveis[c]);
             }
@@ -1384,7 +1384,7 @@ function nivel(nivel_n) {
                 // .adicionar attributos
                 blocos_jogaveis[a].setAttribute("class", "bloco b_" + (numero_a));
                 // .definir CSS
-                blocos_jogaveis[a].style.cssText = "position:absolute;left:" + bloco_left[a] + "px;bottom:" + bloco_bottom[a] + "px;z-index:10;width:50px;height:50px;background:url(\"src/images/inactivo.png\");border:solid 1px #333333;";
+                blocos_jogaveis[a].style.cssText = "position:absolute;left:" + bloco_left[a] + "px;bottom:" + bloco_bottom[a] + "px;z-index:10;width:50px;height:50px;background:url(\"src/min/images/inactivo.png\");border:solid 1px #333333;";
                 // .adicionar blocos ao jogo
                 document.getElementById("background_jogo").appendChild(blocos_jogaveis[a]);
                 // TIPOS DE BLOCOS
@@ -1412,7 +1412,7 @@ function nivel(nivel_n) {
                 // .adicionar attributos
                 pedras_jogaveis[b].setAttribute("class", "pedra");
                 // .definir CSS
-                pedras_jogaveis[b].style.cssText = "position:absolute;left:" + pedra_left[b] + "px;bottom:" + pedra_bottom[b] + "px;z-index:10;width:50px;height:50px;background:url(\"src/images/cinzento.png\");border:solid 1px #000000;";
+                pedras_jogaveis[b].style.cssText = "position:absolute;left:" + pedra_left[b] + "px;bottom:" + pedra_bottom[b] + "px;z-index:10;width:50px;height:50px;background:url(\"src/min/images/cinzento.png\");border:solid 1px #000000;";
                 // .adicionar blocos ao jogo
                 document.getElementById("background_jogo").appendChild(pedras_jogaveis[b]);
             }
@@ -1519,7 +1519,7 @@ function nivel(nivel_n) {
                     display = "display:block;";
                 }
                 // .definir CSS
-                auxiliares_jogaveis[c].style.cssText = "position:absolute;left:" + auxiliar_left[c] + "px;bottom:" + auxiliar_bottom[c] + "px;z-index:10;width:50px;height:50px;background:url(\"src/images/" + cor + ".png\");" + display + "border:" + border;
+                auxiliares_jogaveis[c].style.cssText = "position:absolute;left:" + auxiliar_left[c] + "px;bottom:" + auxiliar_bottom[c] + "px;z-index:10;width:50px;height:50px;background:url(\"src/min/images/" + cor + ".png\");" + display + "border:" + border;
                 // .adicionar blocos ao jogo
                 document.getElementById("background_jogo").appendChild(auxiliares_jogaveis[c]);
             }
@@ -1531,7 +1531,7 @@ function nivel(nivel_n) {
                 // .adicionar attributos
                 blocos_jogaveis[a].setAttribute("class", "bloco b_" + (numero_a));
                 // .definir CSS
-                blocos_jogaveis[a].style.cssText = "position:absolute;left:" + bloco_left[a] + "px;bottom:" + bloco_bottom[a] + "px;z-index:10;width:50px;height:50px;background:url(\"src/images/inactivo.png\");border:solid 1px #333333;";
+                blocos_jogaveis[a].style.cssText = "position:absolute;left:" + bloco_left[a] + "px;bottom:" + bloco_bottom[a] + "px;z-index:10;width:50px;height:50px;background:url(\"src/min/images/inactivo.png\");border:solid 1px #333333;";
                 // .adicionar blocos ao jogo
                 document.getElementById("background_jogo").appendChild(blocos_jogaveis[a]);
                 // TIPOS DE BLOCOS
@@ -1559,7 +1559,7 @@ function nivel(nivel_n) {
                 // .adicionar attributos
                 pedras_jogaveis[b].setAttribute("class", "pedra");
                 // .definir CSS
-                pedras_jogaveis[b].style.cssText = "position:absolute;left:" + pedra_left[b] + "px;bottom:" + pedra_bottom[b] + "px;z-index:10;width:50px;height:50px;background:url(\"src/images/cinzento.png\");border:solid 1px #000000;";
+                pedras_jogaveis[b].style.cssText = "position:absolute;left:" + pedra_left[b] + "px;bottom:" + pedra_bottom[b] + "px;z-index:10;width:50px;height:50px;background:url(\"src/min/images/cinzento.png\");border:solid 1px #000000;";
                 // .adicionar blocos ao jogo
                 document.getElementById("background_jogo").appendChild(pedras_jogaveis[b]);
                 // .bombas
@@ -1696,15 +1696,15 @@ function cenario_bomba(bomba_bips, estado_som, pedra_tnt) {
             som_tic_tac_bomba.play();
         }
         if (bomba_bips === 1) {
-            pedra_tnt.style.background = "url(\"src/images/dinamite.png\")";
+            pedra_tnt.style.background = "url(\"src/min/images/dinamite.png\")";
             e_num_f(3, "perigo");
         }
         if (bomba_bips === 3) {
-            pedra_tnt.style.background = "url(\"src/images/dinamite.png\")";
+            pedra_tnt.style.background = "url(\"src/min/images/dinamite.png\")";
             e_num_f(1, "perigo");
         }
         if (bomba_bips === 2) {
-            pedra_tnt.style.background = "url(\"src/images/cinzento.png\")";
+            pedra_tnt.style.background = "url(\"src/min/images/cinzento.png\")";
             e_num_f(2, "perigo");
         }
         if (bomba_bips === 4) {
