@@ -10,7 +10,6 @@ var conteudos,
     som_tic_tac_bomba = new Audio("src/fx/mp3/tic_tac_bomba.mp3"),
     som_tic_tac_verde = new Audio("src/fx/mp3/tic_tac_verde.mp3"),
     som_bomba_rebenta = new Audio("src/fx/mp3/bomba_rebenta.mp3");
-
 // funcao carregar conteudos
 function loading_conteudos() {
     // Preload src/images
@@ -1845,12 +1844,3 @@ function e_bloco_verde(bloco_verde) {
         var i_e_b_verde = setInterval(e_b_verde, 20);
     }
 }
-/* LOG DE ERROS
-	- adicionar o bloco vermelho aos 50% de blocos concluidos
-	- terceiro nicel bug?
-	- ou ao terceiro nivel bug?
-	- eventos a mais? remover o event teclas presas e soltas
-	- objectos em display none afectam movimentos
-	- actualizar todos os niveis com o novo sistema de auxiliares
-	LOG DE ERROS
-*/
