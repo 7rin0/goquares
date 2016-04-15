@@ -32,4 +32,4 @@ npm install
 
 
 Feel free to contribute :)
-![alt tag](https://raw.githubusercontent.com/7rin0/gosquares/master/images/screenshot.png)
+![alt tag](https://raw.githubusercontent.com/7rin0/gosquares/master/src/images/screenshot.png)
