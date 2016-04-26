@@ -3,6 +3,7 @@
 // Globals
 var body = document.getElementsByTagName('body')[0],
     janela_jogo = document.getElementById('janela_jogo'),
+    janela_nivel = document.getElementById('janela_nivel'),
     background_jogo = document.getElementById('background_jogo'),
     personagem = document.getElementById('personagem'),
     tempo_value = document.getElementById('tempo_value'),
@@ -127,7 +128,7 @@ var body = document.getElementsByTagName('body')[0],
         },
 
         removerfx: function () {
-            document.getElementById('som').setAttribute('class', 'silencio');
+            som.setAttribute('class', 'silencio');
         },
 
         centrar_janela_jogo: function () {
@@ -268,9 +269,7 @@ var body = document.getElementsByTagName('body')[0],
 
         gravidade: function () {
             // Variavel que engloba o quadradinho
-            var personagem = document.getElementById('personagem'),
-                janela_nivel = document.getElementById('janela_nivel'),
-                aumentador = 0,
+            var aumentador = 0,
                 graus = 0,
                 variavel = 3.12;
 
@@ -301,8 +300,7 @@ var body = document.getElementsByTagName('body')[0],
 
         fps_jogo_geral: function () {
             // Variaveis movimentos responsaveis
-            var personagem = document.getElementById('personagem'),
-                array_blocos = document.getElementsByClassName('bloco'),
+            var array_blocos = document.getElementsByClassName('bloco'),
                 array_pedras = document.getElementsByClassName('pedra'),
                 array_aux_s = document.getElementsByClassName('aux'),
                 a,
@@ -492,7 +490,7 @@ var body = document.getElementsByTagName('body')[0],
                     personagem.setAttribute('class', '');
                 }
                 //	.volume do som
-                if (typeof document.getElementById('som').getAttribute('class') === 'string' && document.getElementById('som').getAttribute('class').search('silencio') !== -1) {
+                if (typeof som.getAttribute('class') === 'string' && som.getAttribute('class').search('silencio') !== -1) {
                     estado_som = 2;
                 } else {
                     estado_som = -1;
@@ -2308,7 +2306,6 @@ var body = document.getElementsByTagName('body')[0],
         },
 
         espetaculo_nivel: function (nivel) {
-            var janela_nivel = document.getElementById('janela_nivel');
 
             // adicionar event listener
             document.addEventListener('keyup', function menu_jogo(vars) {
@@ -2346,7 +2343,9 @@ var body = document.getElementsByTagName('body')[0],
                         break;
                 }
             }, false);
-            var botao_pontos = document.getElementById('botao_pontos'), c_pontos = 1;
+            var botao_pontos = document.getElementById('botao_pontos'),
+                c_pontos = 1;
+
             // correr pontuao
             function correr_pontos() {
                 if (0 <= c_pontos && parseInt(pvi * 0.1) >= c_pontos) {
