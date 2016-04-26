@@ -1,28 +1,32 @@
+
+
 // ####################// INICIO //####################
-var conteudos,
-    loading_conteudos,
-    body = document.getElementsByTagName('body')[0],
+var body = document.getElementsByTagName('body')[0],
     janela_jogo = document.getElementById('janela_jogo'),
     background_jogo = document.getElementById('background_jogo'),
+    tempo_value = document.getElementById('tempo_value'),
+    pontos_value = document.getElementById('pontos_value'),
+    quedas_value = document.getElementById('quedas_value'),
+    fails_value = document.getElementById('fails_value'),
+    nivel_value = document.getElementById('nivel_value'),
+    pvi = parseInt(pontos_value.innerHTML),
+    qvi = parseInt(quedas_value.innerHTML),
+    fvi = parseInt(fails_value.innerHTML),
+    nvi = parseInt(nivel_value.innerHTML),
     criacao_jogo,
     removerfx,
+    conteudos,
+    loading_conteudos,
     centrar_janela_jogo,
     criar_q,
     gravidade,
     fps_jogo_geral,
     espetaculo_nivel,
     cenario_bomba,
-    tempo_value = document.getElementById('tempo_value'),
-    pontos_value = document.getElementById('pontos_value'),
-    pvi = parseInt(pontos_value.innerHTML),
-    quedas_value = document.getElementById('quedas_value'),
-    interrogacoes = document.getElementById('interrogacoes_value'),
     e_bomba,
     e_bloco_verde,
     e_num_f,
     nivel,
-    nivel_value = document.getElementById('nivel_value'),
-    nvi = parseInt(nivel_value.innerHTML),
     espetaculo_pontos,
     e_blocos,
     som_salto = new Audio('src/fx/mp3/salto.mp3'),
@@ -392,10 +396,6 @@ fps_jogo_geral = function () {
         L_background_jogo,
         W_background_jogo,
         W_per,
-        quedas = document.getElementById('quedas'),
-        interrogacoes = document.getElementById('interrogacoes'),
-        n_quedas = parseInt(quedas.innerHTML.split('|')[1], 10),
-        n_interrogacoes = parseInt(interrogacoes.innerHTML.split('|')[1], 10),
         i_jogo_p, valor_cima = -27,
         det_bloco,
         caixa_azul,
@@ -506,8 +506,6 @@ fps_jogo_geral = function () {
         L_background_jogo = background_jogo.offsetLeft;
         W_background_jogo = background_jogo.offsetWidth;
         W_per = personagem.offsetWidth;
-        // quedas
-        n_quedas = parseInt(quedas.innerHTML.split('|')[1], 10);
         // se o dourado "disparou" remove os eventos
         if (ultimo_bloco === 1) {
             clearInterval(i_fps_jogo);
@@ -558,7 +556,7 @@ fps_jogo_geral = function () {
                     // primeiro bloco concluido
                     // quedas
                     if (primeiro_bloco === 1) {
-                        quedas.innerHTML = 'FALLS | ' + (n_quedas + 1);
+                        quedas_value.innerHTML = qvi = qvi + 1;
                     }
                 }
                 personagem.setAttribute('class', personagem.getAttribute('class').replace('baixo_i', 'baixo_p'));
@@ -758,7 +756,6 @@ fps_jogo_geral = function () {
                     caixa_laranja_1 = E2.getAttribute('class').search('laranja_1');
                     caixa_laranja = E2.style.background.search('src/min/images/activo.png');
                     caixa_vermelha = E2.getAttribute('class').search('vermelho');
-                    n_interrogacoes = parseInt(interrogacoes.innerHTML.split('|')[1], 10);
                     id_bloco = parseInt(E2.getAttribute('class').split(' ')[1].split('_')[1], 10);
                     b_activo = E2.getAttribute('class').search('b_activo');
                     // ligar_bloco sera true ou false
@@ -812,7 +809,7 @@ fps_jogo_geral = function () {
                         }
                         // iniciar efeito
                         e_num_f('?');
-                        interrogacoes.innerHTML = 'QUESTION MARK | ' + (n_interrogacoes + 1);
+                        fails_value.innerHTML = fvi = fvi + 1;
                     }  // sequencia correcta
                     else if (ligar_bloco === true && (b_activo === -1 || caixa_vermelha !== -1)) {
                         // bloco azul
