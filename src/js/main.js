@@ -22,7 +22,7 @@ var conteudos,
     e_num_f,
     nivel,
     nivel_value = document.getElementById('nivel_value'),
-    nvi,
+    nvi = parseInt(nivel_value.innerHTML),
     espetaculo_pontos,
     e_blocos,
     som_salto = new Audio('src/fx/mp3/salto.mp3'),
@@ -84,10 +84,6 @@ loading_conteudos = function () {
 // funtions
 // nivel value int
 conteudos = function () {
-
-    // 1 - Adicionar function On Rezise Centrar Jogo
-    body.setAttribute('onresize', 'centrar_janela_jogo()');
-
     // 3 - Criar Janela de Jogo
     criacao_jogo(body, nvi);
 
@@ -109,44 +105,43 @@ criacao_jogo = function (body, nvi) {
     // adicionar janela de jogo
     var janela_global_largura = window.innerWidth,
         janela_global_altura = window.innerHeight,
-        imagem_background,
+        imagem_background = '',
         movimentos = 0,
         i_f_jogo,
         teclaSolta,
-        teclaPresa;
-
-    switch (nvi) {
-        case 1:
-            imagem_background = 'url("src/min/images/fundo_1.png")';
-            break;
-        case 2:
-            imagem_background = 'url("src/min/images/fundo_1.png")';
-            break;
-        case 3:
-            imagem_background = 'url("src/min/images/fundo_1.png")';
-            break;
-        case 4:
-            imagem_background = 'url("src/min/images/fundo_2.png")';
-            break;
-        case 5:
-            imagem_background = 'url("src/min/images/fundo_2.png")';
-            break;
-        case 6:
-            imagem_background = 'url("src/min/images/fundo_2.png")';
-            break;
-        case 7:
-            imagem_background = 'url("src/min/images/fundo_3.png")';
-            break;
-    }
-
-    // Variaveis
-    var som = document.getElementById('som'),
+        teclaPresa,
+        som = document.getElementById('som'),
         segundos = 0,
         minutos = 0,
         restantes = 0;
+    console.log(nvi);
+
+    switch (nvi) {
+        case 1:
+            imagem_background = "url('src/min/images/fundo_1.png')";
+            break;
+        case 2:
+            imagem_background = "url('src/min/images/fundo_1.png')";
+            break;
+        case 3:
+            imagem_background = "url('src/min/images/fundo_1.png')";
+            break;
+        case 4:
+            imagem_background = "url('src/min/images/fundo_2.png')";
+            break;
+        case 5:
+            imagem_background = "url('src/min/images/fundo_2.png')";
+            break;
+        case 6:
+            imagem_background = "url('src/min/images/fundo_2.png')";
+            break;
+        case 7:
+            imagem_background = "url('src/min/images/fundo_3.png')";
+            break;
+    }
 
     // adicionar background do nivel
-    background_jogo.style.background = imagem_background + ' left bottom;';
+    background_jogo.style.cssText += 'background: ' + imagem_background + ' left bottom;';
 
     // Temporizador, funo que repetir
     function temporizador() {
