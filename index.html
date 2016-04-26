@@ -14,11 +14,22 @@
         <link rel="apple-touch-icon" href="src/min/images/gosquares.ico">
         <link rel="stylesheet" href="src/min/css/main.min.css">
     </head>
-    <body onload="conteudos()">
+    <body onload="conteudos()" style="background:#000000;font-family:arial;">
         <!--[if lt IE 8]>
             <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
-        <script src="src/min/js/main.min.js"></script>
+        <div id="janela_jogo" class="nada" style="background:#f0f0f0;color:#333333;width:650px;height:500px;position:absolute;display:block;overflow:hidden">
+            <div id="nivel" style="position: absolute; top: 10px; left: 10px; font-size: 14px; color: rgb(51, 51, 51); line-height: 20px; height: 20px; font-weight: bold; font-family: arial;">LEVEL | <span id="nivel_value">1</span></div>
+            <div id="pontos" style="position: absolute; top: 70px; left: 10px; font-size: 14px; color: rgb(51, 51, 51); line-height: 20px; height: 20px; font-weight: bold; font-family: arial;">POINTS | <span id="pontos_value">0</span></div>
+            <div id="quedas" style="position: absolute; top: 100px; left: 10px; font-size: 14px; color: rgb(51, 51, 51); line-height: 20px; height: 20px; font-weight: bold; font-family: arial;">FALLS | <span id="falls_value">0</span></div>
+            <div id="interrogacoes" style="position: absolute; top: 130px; left: 10px; font-size: 14px; color: rgb(51, 51, 51); line-height: 20px; height: 20px; font-weight: bold; font-family: arial;">QUESTION MARK | <span id="questions_value">0</span></div>
+            <div id="som" style="position: absolute; top: 10px; right: 10px; font-size: 14px; color: rgb(51, 51, 51); line-height: 20px; height: 20px; font-weight: bold; font-family: arial;"><button onclick="removerfx()"> remover som </button></div>
+            <div id="tempo" style="position: absolute; top: 40px; left: 10px; font-size: 14px; color: rgb(51, 51, 51); line-height: 20px; height: 20px; font-weight: bold; font-family: arial;">TIME | <span id="tempo_value">00 : 00</span></div>
+            <div id="janela_nivel" style="position: absolute; width: 300px; height: 300px; left: 175px; top: 100px; z-index: 50; box-shadow: rgb(119, 119, 119) 0px 0px 20px; font-weight: bold; background: rgb(238, 238, 238);"><p style="line-height:50px;font-size:30px;text-align:center;color:#555555;font-family:arial;text-transform:lowercase;">ARe you ready?</p><p style="line-height:50px;font-size:25px;text-align:center;color:#fe9901;font-family:arial;text-transform:lowercase;">level 1</p><button onclick="gravidade()" style="text-align:center;background:#dddddd;color:#555555;margin:0px auto;display:block;clear:both;cursor:pointer;box-shadow:0 0 5px #888888;border:2px solid #dddddd;font-size:40px;padding:10px;">GO</button></div>
+            <div id="background_jogo" style="position: absolute; top: 0px; left: 0px; height: 500px; width: 2000px; cursor: pointer; z-index: 0;"></div>
+        </div>
+        <!--<script src="src/min/js/main.min.js"></script>-->
+        <script src="src/js/main.js"></script>
         <script>
             (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
             function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
