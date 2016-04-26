@@ -20,6 +20,7 @@ body {
     height: 500px;
     position: absolute;
     display: block;
+    opacity: 0;
     overflow: hidden;
 }
 

@@ -240,12 +240,15 @@ var body = document.getElementsByTagName('body')[0],
             // ID janela jogo
             var janela_global_largura = window.innerWidth,
                 janela_global_altura = window.innerHeight,
-                eixo_x = (janela_global_largura - parseInt(janela_jogo.offsetWidth, 10)) / 2,
-                eixo_y = (janela_global_altura - parseInt(janela_jogo.offsetHeight, 10)) / 2;
+                eixo_x = (janela_global_largura - janela_jogo.offsetWidth) / 2,
+                eixo_y = (janela_global_altura - janela_jogo.offsetHeight) / 2;
 
             // Definir Margens em function do calculo
             janela_jogo.style.top = eixo_y + 'px';
             janela_jogo.style.left = eixo_x + 'px';
+
+            // Display window
+            janela_jogo.style.opacity = '1';
         },
 
         criar_q: function (nvi) {
@@ -287,7 +290,7 @@ var body = document.getElementsByTagName('body')[0],
                 graus = variavel * aumentador;
                 personagem.style.top = (personagem.offsetTop + 4) + 'px';
 
-                if (parseInt(janela_jogo.offsetHeight) - parseInt(personagem.offsetHeight) - 30 <= parseInt(personagem.offsetTop)) {
+                if (janela_jogo.offsetHeight - personagem.offsetHeight - 30 <= personagem.offsetTop) {
                     clearInterval(correr_gravidade);
                     personagem.setAttribute('class', ' esq_p dir_p cima_p baixo_p');
                     personagem.style.webkitTransform = '';
@@ -319,7 +322,7 @@ var body = document.getElementsByTagName('body')[0],
                 f,
                 f_length = array_aux_s.length,
                 tecla,
-                T1 = parseInt(personagem.offsetTop, 10),
+                T1 = personagem.offsetTop,
                 B1,
                 T2,
                 T3,
@@ -336,7 +339,7 @@ var body = document.getElementsByTagName('body')[0],
                 E2,
                 E3,
                 E4,
-                Tbase = parseInt(janela_jogo.offsetHeight) - parseInt(personagem.offsetHeight) - 30,
+                Tbase = janela_jogo.offsetHeight - personagem.offsetHeight - 30,
                 estado_som,
                 estado_class_jj,
                 estado_class_personagem = personagem.getAttribute('class'),
@@ -406,9 +409,9 @@ var body = document.getElementsByTagName('body')[0],
             // blocos
             for (a = 0; a < a_length; a++) {
                 // Variaveis com dimensoes e posies do bloco
-                quad_wh = parseInt(array_blocos[a].offsetWidth);
-                quad_top = parseInt(array_blocos[a].offsetTop);
-                quad_left = parseInt(array_blocos[a].offsetLeft);
+                quad_wh = array_blocos[a].offsetWidth;
+                quad_top = array_blocos[a].offsetTop;
+                quad_left = array_blocos[a].offsetLeft;
                 quad_bottom = quad_top + quad_wh;
                 quad_rigth = quad_left + quad_wh;
                 bloco = array_blocos[a];
@@ -424,9 +427,9 @@ var body = document.getElementsByTagName('body')[0],
             // pedras
             for (e = 0; e < e_length; e++) {
                 // Variaveis com dimensoes e posies do bloco
-                pedra_wh = parseInt(array_pedras[e].offsetWidth);
-                pedra_top = parseInt(array_pedras[e].offsetTop);
-                pedra_left = parseInt(array_pedras[e].offsetLeft);
+                pedra_wh = array_pedras[e].offsetWidth;
+                pedra_top = array_pedras[e].offsetTop;
+                pedra_left = array_pedras[e].offsetLeft;
                 pedra_bottom = pedra_top + pedra_wh;
                 pedra_rigth = pedra_left + pedra_wh;
                 pedra = array_pedras[e];
@@ -442,9 +445,9 @@ var body = document.getElementsByTagName('body')[0],
             // aux_s
             for (f = 0; f < f_length; f++) {
                 // Variaveis com dimensoes e posies do bloco
-                aux_wh = parseInt(array_aux_s[f].offsetWidth);
-                aux_top = parseInt(array_aux_s[f].offsetTop);
-                aux_left = parseInt(array_aux_s[f].offsetLeft);
+                aux_wh = array_aux_s[f].offsetWidth;
+                aux_top = array_aux_s[f].offsetTop;
+                aux_left = array_aux_s[f].offsetLeft;
                 aux_bottom = aux_top + aux_wh;
                 aux_rigth = aux_left + aux_wh;
                 aux = array_aux_s[f];
@@ -476,10 +479,10 @@ var body = document.getElementsByTagName('body')[0],
                 baixo_p = personagem.getAttribute('class').search('baixo_p');
                 esq_p = personagem.getAttribute('class').search('esq_p');
                 // dimenses personagem
-                T1 = parseInt(personagem.offsetTop, 10);
-                R1 = parseInt(personagem.offsetLeft, 10) + parseInt(personagem.offsetHeight, 10);
-                B1 = parseInt(personagem.offsetLeft, 10) + parseInt(personagem.offsetHeight, 10);
-                L1 = parseInt(personagem.offsetLeft, 10);
+                T1 = personagem.offsetTop;
+                R1 = personagem.offsetLeft + personagem.offsetHeight;
+                B1 = personagem.offsetLeft + personagem.offsetHeight;
+                L1 = personagem.offsetLeft;
                 // estilo
                 per_back_esq_s = personagem.style.background.search('personagem_0_esq.png');
                 per_back_dir_s = personagem.style.background.search('personagem_0_dir.png');
@@ -524,7 +527,7 @@ var body = document.getElementsByTagName('body')[0],
                         // iniciar baixo
                         personagem.setAttribute('class', personagem.getAttribute('class').replace('baixo_p', 'baixo_i'));
                     } else {
-                        personagem.offsetTop = T1 - 4 + 'px';
+                        personagem.offsetTop = (T1 - 4) + 'px';
                     }
                 }  // queda
                 else if (baixo_i !== -1 || baixo_i !== -1 && det_bloco === false || baixo_i !== -1 && det_bloco === 'ajustado') {
@@ -535,7 +538,7 @@ var body = document.getElementsByTagName('body')[0],
                         // se chegou ao cho
                         if (T1 + 6 > 435) {
                             // repor valores de origem
-                            personagem.offsetTop = 435 + 'px';
+                            personagem.style.top = '435px';
                             // primeiro bloco concluido
                             // quedas
                             if (primeiro_bloco === 1) {
@@ -546,7 +549,7 @@ var body = document.getElementsByTagName('body')[0],
                         det_bloco = false;
                     } else {
                         if (T1 + 6 < 436 && det_bloco === false) {
-                            personagem.offsetTop = T1 + 6 + 'px';
+                            personagem.style.top = (T1 + 6) + 'px';
                         }
                     }
                 }
@@ -560,10 +563,10 @@ var body = document.getElementsByTagName('body')[0],
                     // se o left PER  menor que width do Jogo
                     if (L1 < W_background_jogo - W_per) {
                         // move PER para direita
-                        personagem.offsetLeft = L1 + 5 + 'px';
+                        personagem.style.left = (L1 + 5) + 'px';
                         // mover fundo
                         if (L1 > 250 && -L_background_jogo < W_background_jogo - 650 && L1 + L_background_jogo < 300 && L1 + L_background_jogo > 250) {
-                            background_jogo.offsetLeft = L_background_jogo - 5 + 'px';
+                            background_jogo.style.left = (L_background_jogo - 5) + 'px';
                         }
                     }
                     // se bloco for falso iniciar queda
@@ -580,10 +583,10 @@ var body = document.getElementsByTagName('body')[0],
                     // se o left PER  menor que width do Jogo
                     if (L1 > 0) {
                         // move PER para esquerda
-                        personagem.offsetLeft = L1 - 5 + 'px';
+                        personagem.style.left = (L1 - 5) + 'px';
                         // mover fundo
                         if (L1 > 250 && L_background_jogo < 0 && L1 + 250 < W_background_jogo) {
-                            background_jogo.offsetLeft = L_background_jogo + 5 + 'px';
+                            background_jogo.style.left = (L_background_jogo + 5) + 'px';
                         }
                     }
                     // se bloco for falso iniciar queda
@@ -609,7 +612,7 @@ var body = document.getElementsByTagName('body')[0],
                             // se o top nao estiver ajustado f-lo-
                             // primeiro toque no pedra
                             if (T1 !== T3 - 35) {
-                                personagem.offsetTop = T3 - 35 + 'px';
+                                personagem.style.top = (T3 - 35) + 'px';
                                 det_bloco = true;
                                 // se for dinamite
                                 if (E3.getAttribute('class').search('dinamite') !== -1) {
@@ -631,7 +634,7 @@ var body = document.getElementsByTagName('body')[0],
                         else if (T1 - T3 > 46 && T1 - T3 < 54 && R1 - R3 < 30 && L1 - L3 > -30) {
                             // primeiro toque na pedra
                             if (T1 !== T3 + 50 && det_bloco === false) {
-                                personagem.offsetTop = T3 + 50 + 'px';
+                                personagem.style.top = (T3 + 50) + 'px';
                                 det_bloco = true;
                                 d_pedras = 1;
                             }  // segundo toque ou deteco
@@ -648,7 +651,7 @@ var body = document.getElementsByTagName('body')[0],
                         if (T1 - T3 > -35 && T1 - T3 < 50 && L1 - R3 > -6 && L1 - R3 < 1) {
                             // primeiro toque na pedra
                             if (L1 !== R3) {
-                                personagem.offsetLeft = R3 + 'px';
+                                personagem.style.left = R3 + 'px';
                                 colisao = 'esquerda';
                             }
                             break;
@@ -656,7 +659,7 @@ var body = document.getElementsByTagName('body')[0],
                         else if (T1 - T3 > -35 && T1 - T3 < 50 && R1 - L3 > -1 && R1 - L3 < 16) {
                             // primeiro toque na pedra
                             if (L1 !== L3 - 35) {
-                                personagem.offsetLeft = L3 - 35 + 'px';
+                                personagem.style.left = L3 - 35 + 'px';
                                 colisao = 'direita';
                             }
                             break;
@@ -683,7 +686,7 @@ var body = document.getElementsByTagName('body')[0],
                  // se o top nao estiver ajustado f-lo-
                  // primeiro toque no aux
                  if(T1 !== (T4 - 35)){
-                 personagem.offsetTop = (T1 - 35) + "px"
+                 personagem.style.top = (T1 - 35) + "px"
                  det_bloco = true
                  // variaveis
                  bloco_aux_id = E4.getAttribute("id")
@@ -727,7 +730,7 @@ var body = document.getElementsByTagName('body')[0],
                         // se o top nao estiver ajustado f-lo-
                         // basicamente se for a primeira vez que toca depois de um salto ou queda
                         if (T1 !== T2 - 35) {
-                            personagem.offsetTop = T2 - 35 + 'px';
+                            personagem.style.top = (T2 - 35) + 'px';
                             det_bloco = true;
                             // Super-Importante
                             // estes codigos esto aqui para que sejam lidos, apenas se houver um primeiro contacto com o objecto em questo
@@ -2313,8 +2316,6 @@ var body = document.getElementsByTagName('body')[0],
         espetaculo_nivel: function (nivel) {
             var janela_nivel = document.getElementById('janela_nivel');
 
-            //janela_nivel_value.innerHTML = 'level ' + parseInt(janela_nivel_value);
-
             // adicionar event listener
             document.addEventListener('keyup', function menu_jogo(vars) {
                 switch (vars.keyCode) {
@@ -2425,7 +2426,7 @@ var body = document.getElementsByTagName('body')[0],
                     pedra_tnt.style.display = 'none';
                     clearInterval(i_bomba);
                     // se a personagem estiver proxima
-                    var v_proximidade = parseInt(personagem.offsetLeft, 10) - parseInt(pedra_tnt.offsetLeft, 10);
+                    var v_proximidade = personagem.offsetLeft - pedra_tnt.offsetLeft;
                     // se ...
                     if (v_proximidade > -100 && v_proximidade < 100) {
                         // efeito bomba
@@ -2490,18 +2491,18 @@ var body = document.getElementsByTagName('body')[0],
                 e_numero.innerHTML = id_bloco;
                 janela_jogo.appendChild(e_numero);
                 e_numero = document.getElementById('e_numero');
-                e_numero.offsetLeft = janela_jogo.offsetWidth / 2 - e_numero.offsetWidth / 2 + 'px';
-                e_numero.offsetTop = janela_jogo.offsetHeight / 2 - e_numero.offsetHeight / 2 + 'px';
+                e_numero.style.left = janela_jogo.offsetWidth / 2 - e_numero.offsetWidth / 2 + 'px';
+                e_numero.style.top = janela_jogo.offsetHeight / 2 - e_numero.offsetHeight / 2 + 'px';
             }
             if (id_bloco === '?' || motivo === 'perigo') {
                 e_numero.style.color = 'red';
             }
             var e_num_i = function () {
                 // novo width efeito
-                e_numero.offsetWidth = e_numero.innerHTML.length * parseInt(e_numero.style.fontSize) / 2 + 'px';
+                e_numero.style.width = e_numero.innerHTML.length * parseInt(e_numero.style.fontSize) / 2 + 'px';
                 // novo left e novo top
-                e_numero.offsetLeft = janela_jogo.offsetWidth / 2 - e_numero.offsetWidth / 2 + 'px';
-                e_numero.offsetTop = janela_jogo.offsetHeight / 2 - e_numero.offsetHeight / 2 + 'px';
+                e_numero.style.left = janela_jogo.offsetWidth / 2 - e_numero.offsetWidth / 2 + 'px';
+                e_numero.style.top = janela_jogo.offsetHeight / 2 - e_numero.offsetHeight / 2 + 'px';
                 // novo font-size
                 e_numero.style.fontSize = parseInt(e_numero.style.fontSize, 10) + 8 + 'px';
                 // diminuir a opacidade 3*0.01
@@ -2547,8 +2548,8 @@ var body = document.getElementsByTagName('body')[0],
                         }, 5000);
                     }
                     // actualizar estado do bloco
-                    bloco_aux.offsetHeight = parseFloat(bloco_aux.offsetHeight) - 1 + 'px';
-                    bloco_aux.offsetBottom = parseFloat(bloco_aux.offsetBottom) + 1 + 'px';
+                    bloco_aux.style.height = (bloco_aux.offsetHeight - 1) + 'px';
+                    bloco_aux.style.bottom = (bloco_aux.offsetBottom + 1) + 'px';
                 };
                 var i_e_b_verde = setInterval(e_b_verde, 20);
             }
