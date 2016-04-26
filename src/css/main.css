@@ -36,6 +36,19 @@ body {
     background: rgb(238, 238, 238);
 }
 
+#personagem {
+    width: 35px;
+    height: 35px;
+    position: absolute;
+    top: 0;
+    left: 150px;
+    text-align: center;
+    line-height: 35px;
+    font-weight: bold;
+    z-index: 2147483647;
+    background: url("../../src/min/images/personagem_0_dir.png");
+}
+
 #game_status {
     position: absolute;
     width: 100%;

@@ -4,11 +4,13 @@
 var body = document.getElementsByTagName('body')[0],
     janela_jogo = document.getElementById('janela_jogo'),
     background_jogo = document.getElementById('background_jogo'),
+    personagem = document.getElementById('personagem'),
     tempo_value = document.getElementById('tempo_value'),
     pontos_value = document.getElementById('pontos_value'),
     quedas_value = document.getElementById('quedas_value'),
     fails_value = document.getElementById('fails_value'),
     nivel_value = document.getElementById('nivel_value'),
+    som = document.getElementById('som'),
     pvi = parseInt(pontos_value.innerHTML),
     qvi = parseInt(quedas_value.innerHTML),
     fvi = parseInt(fails_value.innerHTML),
@@ -21,7 +23,7 @@ var body = document.getElementsByTagName('body')[0],
     som_tic_tac_bomba = new Audio('src/fx/mp3/tic_tac_bomba.mp3'),
     som_bomba_rebenta = new Audio('src/fx/mp3/bomba_rebenta.mp3'),
 
-    // Application
+// Application
     gosquares = {
 
         conteudos: function () {
@@ -35,7 +37,7 @@ var body = document.getElementsByTagName('body')[0],
             this.nivel(nvi);
 
             // 7 - criar quadradinhos
-            this.criar_q(nvi);
+            this.hero(nvi);
 
             // 9 Apresentao do Nivel
             this.espetaculo_nivel(nvi);
@@ -92,15 +94,7 @@ var body = document.getElementsByTagName('body')[0],
 
         criacao_jogo: function (body, nvi) {
             // adicionar janela de jogo
-            var imagem_background = '',
-                movimentos = 0,
-                i_f_jogo,
-                teclaSolta,
-                teclaPresa,
-                som = document.getElementById('som'),
-                segundos = 0,
-                minutos = 0,
-                restantes = 0;
+            var imagem_background = '';
 
             switch (nvi) {
                 case 1:
@@ -129,107 +123,7 @@ var body = document.getElementsByTagName('body')[0],
             // adicionar background do nivel
             background_jogo.style.cssText += 'background: ' + imagem_background + ' left bottom;';
 
-            // Temporizador, funo que repetir
-            function temporizador() {
-                i_f_jogo = janela_jogo.getAttribute('class').search('inicio');
-                if (i_f_jogo !== -1) {
-                    segundos++;
-                    minutos = parseInt(segundos / 60);
-                    restantes = segundos - minutos * 60;
-                    if (minutos < 10) {
-                        if (restantes < 10) {
-                            tempo_value.innerHTML = '0' + minutos + ' : 0' + restantes;
-                        } else if (restantes > 9) {
-                            tempo_value.innerHTML = '0' + minutos + ' : ' + restantes;
-                        }
-                    } else if (minutos > 9) {
-                        if (restantes < 10) {
-                            tempo_value.innerHTML = minutos + ' : 0' + restantes;
-                        } else if (restantes > 9) {
-                            tempo_value.innerHTML = minutos + ' : ' + restantes;
-                        }
-                    }
-                }
-
-                // se a classe inicio for declarada
-                if (movimentos === 0 && i_f_jogo !== -1 || segundos > 0 && i_f_jogo === -1) {
-                    movimentos = -1;
-                    // Mover Personagem com teclado
-                    document.addEventListener('keyup', function teclaSolta(vars) {
-                        switch (vars.keyCode) {
-                            case 37:
-                                // redefinir class
-                                personagem.setAttribute('class', personagem.getAttribute('class').replace('esq_i', 'esq_p'));
-                                break;
-                            case 38:
-                                break;
-                            case 39:
-                                // redefinir class
-                                personagem.setAttribute('class', personagem.getAttribute('class').replace('dir_i', 'dir_p'));
-                                break;
-                        }
-                    }, false);
-                    // # EVENTO TECLA PRESA
-                    document.addEventListener('keydown', function teclaPresa(event) {
-                        if (personagem.getAttribute('class') !== null) {
-                            switch (event.keyCode) {
-                                // esquerda
-                                case 37:
-                                    // se estiver parado, inicia esquerda
-                                    if (personagem.getAttribute('class').search('esq_i') === -1) {
-                                        if (personagem.getAttribute('class').search('dir_i') !== -1) {
-                                            // redefinir class
-                                            personagem.setAttribute('class', personagem.getAttribute('class').replace('dir_i', 'dir_p'));
-                                        }
-                                        // redefinir class
-                                        personagem.setAttribute('class', personagem.getAttribute('class').replace('esq_p', 'esq_i'));
-                                    }
-                                    break;
-                                // salto
-                                case 38:
-                                    // se estiver no cho inicia salto
-                                    if (personagem.getAttribute('class').search('cima_i') === -1 && personagem.getAttribute('class').search('baixo_i') === -1) {
-                                        // redefinir classes
-                                        personagem.setAttribute('class', personagem.getAttribute('class').replace('cima_p', 'cima_i'));
-                                    }
-                                    break;
-                                // salto
-                                case 32:
-                                    // se estiver no cho inicia salto
-                                    if (personagem.getAttribute('class').search('cima_i') === -1 && personagem.getAttribute('class').search('baixo_i') === -1) {
-                                        // redefinir classes
-                                        personagem.setAttribute('class', personagem.getAttribute('class').replace('cima_p', 'cima_i'));
-                                    }
-                                    break;
-                                // direita
-                                case 39:
-                                    // se estiver parado, inicia direita
-                                    if (personagem.getAttribute('class').search('dir_i') === -1) {
-                                        if (personagem.getAttribute('class').search('esq_i') !== -1) {
-                                            // redefinir class
-                                            personagem.setAttribute('class', personagem.getAttribute('class').replace('esq_i', 'esq_p'));
-                                        }
-                                        // redefinir class
-                                        personagem.setAttribute('class', personagem.getAttribute('class').replace('dir_p', 'dir_i'));
-                                    }
-                                    break;
-                            }
-                        }
-                    }, false);
-                    if (segundos > 0 && i_f_jogo === -1) {
-                        // se jogo acabar
-                        document.removeEventListener('keyup', teclaSolta, false);
-                        document.removeEventListener('keydown', teclaPresa, false);
-                    }
-                }
-
-                // Se janela jogo detectar classe parar o tempo para!
-                if (i_f_jogo === -1 && segundos > 0) {
-                    clearInterval(temporizador_inicio);
-                }
-            }
-
-            var temporizador_inicio = setInterval(temporizador, 1000);
+            this.temporizador_inicio = setInterval(this.game_events, 1000);
         },
 
         removerfx: function () {
@@ -251,25 +145,125 @@ var body = document.getElementsByTagName('body')[0],
             janela_jogo.style.opacity = '1';
         },
 
-        criar_q: function (nvi) {
-            // 1 - Detectar se existe cenario
-            // Contar e determinar ID de cada quadradinho
-            // Variavel Janela de Jogo Principal
-            // queda
-            var queda = '150px',
-            // DIMENSOES DE ALEATORIAS A 35 PIXEIS #####
-                dimencoes_aleatorias = 35,
-            // Dimensoes Aleatorias quadradinho
-                quadradinho_largura = dimencoes_aleatorias, quadradinho_altura = dimencoes_aleatorias;
-            if (nvi === 5) {
-                queda = '100px';
+        // Temporizador, funo que repetir
+        game_events: function () {
+            var imagem_background = '',
+                movimentos = 0,
+                i_f_jogo,
+                teclaSolta,
+                teclaPresa,
+                segundos = 0,
+                minutos = 0,
+                restantes = 0;
+
+            // Track game started
+            i_f_jogo = janela_jogo.getAttribute('class').search('inicio');
+
+            // Init time counter
+            if (i_f_jogo !== -1) {
+                segundos++;
+                minutos = parseInt(segundos / 60);
+                restantes = segundos - minutos * 60;
+                if (minutos < 10) {
+                    if (restantes < 10) {
+                        tempo_value.innerHTML = '0' + minutos + ' : 0' + restantes;
+                    } else if (restantes > 9) {
+                        tempo_value.innerHTML = '0' + minutos + ' : ' + restantes;
+                    }
+                } else if (minutos > 9) {
+                    if (restantes < 10) {
+                        tempo_value.innerHTML = minutos + ' : 0' + restantes;
+                    } else if (restantes > 9) {
+                        tempo_value.innerHTML = minutos + ' : ' + restantes;
+                    }
+                }
             }
-            // Criar sub quadrados
-            var personagem = document.createElement('div');
-            // Definir Atributos
-            personagem.setAttribute('id', 'personagem');
-            personagem.style.cssText = 'width:' + dimencoes_aleatorias + 'px;height:' + dimencoes_aleatorias + 'px;position:absolute;top:0px;left:' + queda + ';text-align:center;line-height:' + dimencoes_aleatorias + 'px;z-index:1;font-weight:bold;background:url(src/min/images/personagem_inicio.png) #ff6600;z-index:10000000000000000';
-            background_jogo.appendChild(personagem);
+
+            // se a classe inicio for declarada
+            if (movimentos === 0 && i_f_jogo !== -1 || segundos > 0 && i_f_jogo === -1) {
+                movimentos = -1;
+                // Mover Personagem com teclado
+                document.addEventListener('keyup', function teclaSolta(vars) {
+                    switch (vars.keyCode) {
+                        case 37:
+                            // redefinir class
+                            personagem.setAttribute('class', personagem.getAttribute('class').replace('esq_i', 'esq_p'));
+                            break;
+                        case 38:
+                            break;
+                        case 39:
+                            // redefinir class
+                            personagem.setAttribute('class', personagem.getAttribute('class').replace('dir_i', 'dir_p'));
+                            break;
+                    }
+                }, false);
+                // # EVENTO TECLA PRESA
+                document.addEventListener('keydown', function teclaPresa(event) {
+                    if (personagem.getAttribute('class') !== null) {
+                        switch (event.keyCode) {
+                            // esquerda
+                            case 37:
+                                // se estiver parado, inicia esquerda
+                                if (personagem.getAttribute('class').search('esq_i') === -1) {
+                                    if (personagem.getAttribute('class').search('dir_i') !== -1) {
+                                        // redefinir class
+                                        personagem.setAttribute('class', personagem.getAttribute('class').replace('dir_i', 'dir_p'));
+                                    }
+                                    // redefinir class
+                                    personagem.setAttribute('class', personagem.getAttribute('class').replace('esq_p', 'esq_i'));
+                                }
+                                break;
+                            // salto
+                            case 38:
+                                // se estiver no cho inicia salto
+                                if (personagem.getAttribute('class').search('cima_i') === -1 && personagem.getAttribute('class').search('baixo_i') === -1) {
+                                    // redefinir classes
+                                    personagem.setAttribute('class', personagem.getAttribute('class').replace('cima_p', 'cima_i'));
+                                }
+                                break;
+                            // salto
+                            case 32:
+                                // se estiver no cho inicia salto
+                                if (personagem.getAttribute('class').search('cima_i') === -1 && personagem.getAttribute('class').search('baixo_i') === -1) {
+                                    // redefinir classes
+                                    personagem.setAttribute('class', personagem.getAttribute('class').replace('cima_p', 'cima_i'));
+                                }
+                                break;
+                            // direita
+                            case 39:
+                                // se estiver parado, inicia direita
+                                if (personagem.getAttribute('class').search('dir_i') === -1) {
+                                    if (personagem.getAttribute('class').search('esq_i') !== -1) {
+                                        // redefinir class
+                                        personagem.setAttribute('class', personagem.getAttribute('class').replace('esq_i', 'esq_p'));
+                                    }
+                                    // redefinir class
+                                    personagem.setAttribute('class', personagem.getAttribute('class').replace('dir_p', 'dir_i'));
+                                }
+                                break;
+                        }
+                    }
+                }, false);
+                if (segundos > 0 && i_f_jogo === -1) {
+                    // se jogo acabar
+                    document.removeEventListener('keyup', teclaSolta, false);
+                    document.removeEventListener('keydown', teclaPresa, false);
+                }
+            }
+
+            // Se janela jogo detectar classe parar o tempo para!
+            if (i_f_jogo === -1 && segundos > 0) {
+                clearInterval(temporizador_inicio);
+            }
+        },
+
+        hero: function (nvi) {
+
+            if (nvi === 5) {
+                personagem.style.left = '100px';
+            } else {
+                personagem.style.left = '150px';
+            }
         },
 
         gravidade: function () {
