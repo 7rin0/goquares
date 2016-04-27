@@ -1,0 +1,31 @@
+{
+  "name": "gosquares",
+  "version": "0.0.7",
+  "description": "Gosquares is a Game written entirely in pure JavaScript",
+  "author": "Luis SEVERINO",
+  "main": "src/min/main.min.js",
+  "bugs": "https://github.com/7rin0/gosquares/issues",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/7rin0/gosquares.git"
+  },
+  "scripts": {},
+  "files": [
+    "package.json",
+    "src/min/main.min.js",
+    "src/min/main.min.css",
+    "README.md"
+  ],
+  "devDependencies": {
+    "grunt": "~1.0.1",
+    "grunt-contrib-cssmin": "^1.0.1",
+    "grunt-contrib-htmlmin": "^1.4.0",
+    "grunt-contrib-imagemin": "^1.0.0",
+    "grunt-contrib-jshint": "~1.0.0",
+    "grunt-contrib-nodeunit": "~1.0.0",
+    "grunt-contrib-uglify": "~1.0.1",
+    "grunt-contrib-watch": "^1.0.0",
+    "http-server": "^0.9.0"
+  }
+}
