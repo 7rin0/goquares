@@ -3,7 +3,7 @@
   "version": "0.0.7",
   "description": "Gosquares is a Game written entirely in pure JavaScript",
   "author": "Luis SEVERINO",
-  "main": "src/min/main.min.js",
+  "main": "min/main.min.js",
   "bugs": "https://github.com/7rin0/gosquares/issues",
   "license": "MIT",
   "repository": {
@@ -13,8 +13,8 @@
   "scripts": {},
   "files": [
     "package.json",
-    "src/min/main.min.js",
-    "src/min/main.min.css",
+    "min/main.min.js",
+    "min/main.min.css",
     "README.md"
   ],
   "devDependencies": {

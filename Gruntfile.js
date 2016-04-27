@@ -12,14 +12,14 @@ module.exports = function (grunt) {
         uglify: {
             min: {
                 files: {
-                    'src/min/js/main.min.js': ['src/js/main.js']
+                    'min/js/main.min.js': ['src/js/main.js']
                 }
             }
         },
         cssmin: {
             min: {
                 files: {
-                    'src/min/css/main.min.css': ['src/css/main.css']
+                    'min/css/main.min.css': ['src/css/main.css']
                 }
             }
         },
@@ -43,7 +43,7 @@ module.exports = function (grunt) {
                     expand: true,
                     cwd: 'src/images',
                     src: ['**/*.{png,jpg,gif,ico}'],
-                    dest: 'src/min/images'
+                    dest: 'min/images'
                 }]
             }
         },
