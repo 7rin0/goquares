@@ -2,62 +2,61 @@
 
 // Globals
 var body = document.getElementsByTagName('body')[0],
-    janela_jogo = document.getElementById('janela_jogo'),
-    janela_nivel = document.getElementById('janela_nivel'),
-    background_jogo = document.getElementById('background_jogo'),
-    personagem = document.getElementById('personagem'),
-    tempo_value = document.getElementById('tempo_value'),
-    pontos_value = document.getElementById('pontos_value'),
-    quedas_value = document.getElementById('quedas_value'),
+    window_game = document.getElementById('window_game'),
+    window_level = document.getElementById('window_level'),
+    background_game = document.getElementById('background_game'),
+    hero = document.getElementById('hero'),
+    time_value = document.getElementById('time_value'),
+    points_value = document.getElementById('points_value'),
+    falls_value = document.getElementById('falls_value'),
     fails_value = document.getElementById('fails_value'),
-    nivel_value = document.getElementById('nivel_value'),
-    som = document.getElementById('som'),
-    pvi = parseInt(pontos_value.innerHTML),
-    qvi = parseInt(quedas_value.innerHTML),
+    level_value = document.getElementById('level_value'),
+    sound = document.getElementById('sound'),
+    pvi = parseInt(points_value.innerHTML),
+    qvi = parseInt(falls_value.innerHTML),
     fvi = parseInt(fails_value.innerHTML),
-    nvi = parseInt(nivel_value.innerHTML),
-    som_salto = new Audio('src/fx/mp3/salto.mp3'),
-    som_caixa_azul = new Audio('src/fx/mp3/caixa_azul.mp3'),
-    som_caixa_laranja = new Audio('src/fx/mp3/caixa_laranja.mp3'),
-    som_caixa_vermelha = new Audio('src/fx/mp3/caixa_vermelha.mp3'),
-    som_caixa_dourada = new Audio('src/fx/mp3/caixa_dourada.mp3'),
-    som_tic_tac_bomba = new Audio('src/fx/mp3/tic_tac_bomba.mp3'),
-    som_bomba_rebenta = new Audio('src/fx/mp3/bomba_rebenta.mp3'),
+    nvi = parseInt(level_value.innerHTML),
+    sound_salto = new Audio('src/fx/mp3/salto.mp3'),
+    sound_caixa_azul = new Audio('src/fx/mp3/caixa_azul.mp3'),
+    sound_caixa_laranja = new Audio('src/fx/mp3/caixa_laranja.mp3'),
+    sound_caixa_vermelha = new Audio('src/fx/mp3/caixa_vermelha.mp3'),
+    sound_caixa_dourada = new Audio('src/fx/mp3/caixa_dourada.mp3'),
+    sound_tic_tac_bomb = new Audio('src/fx/mp3/tic_tac_bomba.mp3'),
+    sound_bomb_rebenta = new Audio('src/fx/mp3/bomba_rebenta.mp3'),
 
     // Application
     gosquares = {
 
         start: function () {
-            // Criar jogo
-            this.criacao_jogo(body, nvi);
+            // Criar game
+            this.criacao_game(body, nvi);
 
-            // Centrar jogo
-            this.centrar_janela_jogo();
+            // Centrar game
+            this.centrar_window_game();
 
-            // Criar nivel
-            this.nivel(nvi);
+            // Criar level
+            this.level(nvi);
 
             // Criar hero
             this.hero(nvi);
 
-            // Effeitos do nivel
-            this.espetaculo_nivel(nvi);
+            // Effeitos do level
+            this.espetaculo_level(nvi);
         },
 
-        // funcao carregar conteudos
         loading_conteudos: function () {
 
             // Preload src/images
             var load_images = [],
                 load_fx = [],
-                loading_imagem,
-                loading_som,
+                loading_pic,
+                loading_sound,
                 a,
                 b;
 
             // Array de src/images
             load_images = [
-                'personagem_inicio',
+                'hero_inicio',
                 'fundo',
                 'fundo_2',
                 'fundo_3',
@@ -66,14 +65,14 @@ var body = document.getElementsByTagName('body')[0],
                 'activo',
                 'vermelho',
                 'dourado',
-                'personagem_0_esq',
-                'personagem_0_dir'
+                'hero_0_esq',
+                'hero_0_dir'
             ];
 
             // Loop de src/images
             for (a = 0; a < load_images.length; a++) {
-                loading_imagem = new Image();
-                loading_imagem.src = 'src/min/images/' + load_images[a] + '.png';
+                loading_pic = new Image();
+                loading_pic.src = 'src/min/images/' + load_images[a] + '.png';
             }
 
             // Array de fx
@@ -88,65 +87,64 @@ var body = document.getElementsByTagName('body')[0],
 
             // Loop de fx
             for (b = 0; b < load_fx.length; b++) {
-                loading_som = new Audio();
-                loading_som.src = 'src/fx/mp3/' + load_fx[b] + '.mp3';
+                loading_sound = new Audio();
+                loading_sound.src = 'src/fx/mp3/' + load_fx[b] + '.mp3';
             }
         },
 
-        criacao_jogo: function (body, nvi) {
-            // adicionar janela de jogo
-            var imagem_background = '';
+        criacao_game: function (body, nvi) {
+            // adicionar window de game
+            var pic_background = '';
 
             switch (nvi) {
                 case 1:
-                    imagem_background = "url('src/min/images/fundo_1.png')";
+                    pic_background = "url('src/min/images/fundo_1.png')";
                     break;
                 case 2:
-                    imagem_background = "url('src/min/images/fundo_1.png')";
+                    pic_background = "url('src/min/images/fundo_1.png')";
                     break;
                 case 3:
-                    imagem_background = "url('src/min/images/fundo_1.png')";
+                    pic_background = "url('src/min/images/fundo_1.png')";
                     break;
                 case 4:
-                    imagem_background = "url('src/min/images/fundo_2.png')";
+                    pic_background = "url('src/min/images/fundo_2.png')";
                     break;
                 case 5:
-                    imagem_background = "url('src/min/images/fundo_2.png')";
+                    pic_background = "url('src/min/images/fundo_2.png')";
                     break;
                 case 6:
-                    imagem_background = "url('src/min/images/fundo_2.png')";
+                    pic_background = "url('src/min/images/fundo_2.png')";
                     break;
                 case 7:
-                    imagem_background = "url('src/min/images/fundo_3.png')";
+                    pic_background = "url('src/min/images/fundo_3.png')";
                     break;
             }
 
-            // adicionar background do nivel
-            background_jogo.style.cssText += 'background: ' + imagem_background + ' left bottom;';
-            personagem.style.cssText += 'background: url("src/min/images/personagem_0_dir.png"); ';
+            // adicionar background do level
+            background_game.style.cssText += 'background: ' + pic_background + ' left bottom;';
+            hero.style.cssText += 'background: url("src/min/images/personagem_0_dir.png"); ';
         },
 
         removerfx: function () {
-            som.setAttribute('class', 'silencio');
+            sound.setAttribute('class', 'silencio');
         },
 
-        centrar_janela_jogo: function () {
-            // ID janela jogo
-            var eixo_x = (window.innerWidth - janela_jogo.offsetWidth) / 2,
-                eixo_y = (window.innerHeight - janela_jogo.offsetHeight) / 2;
+        centrar_window_game: function () {
+            // ID window game
+            var eixo_x = (window.innerWidth - window_game.offsetWidth) / 2,
+                eixo_y = (window.innerHeight - window_game.offsetHeight) / 2;
 
             // Definir Margens em function do calculo
-            janela_jogo.style.top = eixo_y + 'px';
-            janela_jogo.style.left = eixo_x + 'px';
+            window_game.style.top = eixo_y + 'px';
+            window_game.style.left = eixo_x + 'px';
 
             // Display window
-            janela_jogo.style.opacity = '1';
+            window_game.style.opacity = '1';
         },
 
-        // Temporizador, funo que repetir
         game_events: function () {
             var movimentos = 0,
-                i_f_jogo = janela_jogo.getAttribute('class').search('inicio'),
+                i_f_game = window_game.getAttribute('class').search('inicio'),
                 teclaSolta,
                 teclaPresa,
                 segundos = 0,
@@ -154,27 +152,27 @@ var body = document.getElementsByTagName('body')[0],
                 restantes = 0;
 
             // Init time counter
-            if (i_f_jogo !== -1) {
+            if (i_f_game !== -1) {
                 segundos++;
                 minutos = parseInt(segundos / 60);
                 restantes = segundos - minutos * 60;
                 if (minutos < 10) {
                     if (restantes < 10) {
-                        tempo_value.innerHTML = '0' + minutos + ' : 0' + restantes;
+                        time_value.innerHTML = '0' + minutos + ' : 0' + restantes;
                     } else if (restantes > 9) {
-                        tempo_value.innerHTML = '0' + minutos + ' : ' + restantes;
+                        time_value.innerHTML = '0' + minutos + ' : ' + restantes;
                     }
                 } else if (minutos > 9) {
                     if (restantes < 10) {
-                        tempo_value.innerHTML = minutos + ' : 0' + restantes;
+                        time_value.innerHTML = minutos + ' : 0' + restantes;
                     } else if (restantes > 9) {
-                        tempo_value.innerHTML = minutos + ' : ' + restantes;
+                        time_value.innerHTML = minutos + ' : ' + restantes;
                     }
                 }
             }
 
             // se a classe inicio for declarada
-            if (movimentos === 0 && i_f_jogo !== -1 || segundos > 0 && i_f_jogo === -1) {
+            if (movimentos === 0 && i_f_game !== -1 || segundos > 0 && i_f_game === -1) {
                 movimentos = -1;
 
                 // Listen when stop left or right keys/moves
@@ -182,134 +180,134 @@ var body = document.getElementsByTagName('body')[0],
                     switch (vars.keyCode) {
                         case 37:
                             // redefinir class
-                            personagem.setAttribute('class', personagem.getAttribute('class').replace('esq_i', 'esq_p'));
+                            hero.setAttribute('class', hero.getAttribute('class').replace('right_init', 'right_stop'));
                             break;
                         case 39:
                             // redefinir class
-                            personagem.setAttribute('class', personagem.getAttribute('class').replace('dir_i', 'dir_p'));
+                            hero.setAttribute('class', hero.getAttribute('class').replace('left_init', 'left_stop'));
                             break;
                     }
                 }, false);
 
                 // Listen when start top, right and left keys/moves
                 document.addEventListener('keydown', function teclaPresa(event) {
-                    if (personagem.getAttribute('class') !== null) {
-                        var cima_i = personagem.getAttribute('class').search('cima_i'),
-                            dir_i = personagem.getAttribute('class').search('dir_i'),
-                            baixo_i = personagem.getAttribute('class').search('baixo_i'),
-                            esq_i = personagem.getAttribute('class').search('esq_i'),
-                            cima_p = personagem.getAttribute('class').search('cima_p'),
-                            dir_p = personagem.getAttribute('class').search('dir_p'),
-                            baixo_p = personagem.getAttribute('class').search('baixo_p'),
-                            esq_p = personagem.getAttribute('class').search('esq_p');
+                    if (hero.getAttribute('class') !== null) {
+                        var up_init = hero.getAttribute('class').search('up_init'),
+                            left_init = hero.getAttribute('class').search('left_init'),
+                            down_init = hero.getAttribute('class').search('down_init'),
+                            right_init = hero.getAttribute('class').search('right_init'),
+                            up_stop = hero.getAttribute('class').search('up_stop'),
+                            left_stop = hero.getAttribute('class').search('left_stop'),
+                            down_stop = hero.getAttribute('class').search('down_stop'),
+                            right_stop = hero.getAttribute('class').search('right_stop');
 
                         switch (event.keyCode) {
                             // esquerda
                             case 37:
                                 // se estiver parado, inicia esquerda
-                                if (esq_i === -1) {
-                                    if (dir_i !== -1) {
-                                        personagem.setAttribute('class', personagem.getAttribute('class').replace('dir_i', 'dir_p'));
+                                if (right_init === -1) {
+                                    if (left_init !== -1) {
+                                        hero.setAttribute('class', hero.getAttribute('class').replace('left_init', 'left_stop'));
                                     }
-                                    personagem.setAttribute('class', personagem.getAttribute('class').replace('esq_p', 'esq_i'));
+                                    hero.setAttribute('class', hero.getAttribute('class').replace('right_stop', 'right_init'));
                                 }
                                 break;
                             // salto
                             case 38:
                             case 32:
                                 // se estiver no cho inicia salto
-                                if (cima_i === -1 && baixo_i === -1) {
-                                    personagem.setAttribute('class', personagem.getAttribute('class').replace('cima_p', 'cima_i'));
+                                if (up_init === -1 && down_init === -1) {
+                                    hero.setAttribute('class', hero.getAttribute('class').replace('up_stop', 'up_init'));
                                 }
                                 break;
                             // direita
                             case 39:
                                 // se estiver parado, inicia direita
-                                if (dir_i === -1) {
-                                    if (esq_i !== -1) {
-                                        personagem.setAttribute('class', personagem.getAttribute('class').replace('esq_i', 'esq_p'));
+                                if (left_init === -1) {
+                                    if (right_init !== -1) {
+                                        hero.setAttribute('class', hero.getAttribute('class').replace('right_init', 'right_stop'));
                                     }
                                     // redefinir class
-                                    personagem.setAttribute('class', personagem.getAttribute('class').replace('dir_p', 'dir_i'));
+                                    hero.setAttribute('class', hero.getAttribute('class').replace('left_stop', 'left_init'));
                                 }
                                 break;
                         }
                     }
                 }, false);
-                if (segundos > 0 && i_f_jogo === -1) {
-                    // se jogo acabar
+                if (segundos > 0 && i_f_game === -1) {
+                    // se game acabar
                     document.removeEventListener('keyup', teclaSolta, false);
                     document.removeEventListener('keydown', teclaPresa, false);
                 }
             }
 
-            // Se janela jogo detectar classe parar o tempo para!
-            if (i_f_jogo === -1 && segundos > 0) {
-                clearInterval(gosquares.temporizador_inicio);
+            // Se window game detectar classe parar o time para!
+            if (i_f_game === -1 && segundos > 0) {
+                clearInterval(gosquares.timerizador_inicio);
             }
         },
 
         hero: function (nvi) {
 
             if (nvi === 5) {
-                personagem.style.left = '100px';
+                hero.style.left = '100px';
             } else {
-                personagem.style.left = '150px';
+                hero.style.left = '150px';
             }
         },
 
-        gravidade: function () {
+        gravity: function () {
             // Variavel que engloba o quadradinho
             var aumentador = 0,
                 graus = 0,
                 variavel = 3.12;
 
             // Remove presentation window
-            janela_nivel.parentNode.removeChild(janela_nivel);
+            window_level.parentNode.removeChild(window_level);
 
             // function que os atirar para a terra
-            var gravidade_accao = function () {
+            var gravity_accao = function () {
                 aumentador++;
-                personagem.style.webkitTransform = 'rotate(' + graus + 'deg)';
+                hero.style.webkitTransform = 'rotate(' + graus + 'deg)';
                 graus = variavel * aumentador;
-                personagem.style.top = (personagem.offsetTop + 4) + 'px';
+                hero.style.top = (hero.offsetTop + 4) + 'px';
 
-                if (janela_jogo.offsetHeight - personagem.offsetHeight - 30 <= personagem.offsetTop) {
-                    clearInterval(correr_gravidade);
-                    personagem.setAttribute('class', 'esq_p dir_p cima_p baixo_p');
-                    personagem.style.webkitTransform = '';
-                    janela_jogo.setAttribute('class', 'inicio');
+                if (window_game.offsetHeight - hero.offsetHeight - 30 <= hero.offsetTop) {
+                    clearInterval(correr_gravity);
+                    hero.setAttribute('class', 'right_stop left_stop up_stop down_stop');
+                    hero.style.webkitTransform = '';
+                    window_game.setAttribute('class', 'inicio');
 
                     // Loop to verify user actions
-                    gosquares.temporizador_inicio = setInterval(gosquares.game_events(), 1000);
+                    gosquares.timerizador_inicio = setInterval(gosquares.game_events(), 1000);
 
-                    // mover personagem (function)
+                    // mover hero (function)
                     gosquares.realtime_game_fps();
                 }
             };
 
-            // Variavel que correr a gravidade sobre o boneco
-            var correr_gravidade = setInterval(gravidade_accao, 20);
+            // Variavel que correr a gravity sobre o boneco
+            var correr_gravity = setInterval(gravity_accao, 20);
         },
 
         realtime_game_fps: function () {
 
             // Variaveis movimentos responsaveis
-            var array_blocos = document.getElementsByClassName('bloco'),
-                array_pedras = document.getElementsByClassName('pedra'),
+            var array_blocks = document.getElementsByClassName('block'),
+                array_stones = document.getElementsByClassName('stone'),
                 array_aux_s = document.getElementsByClassName('aux'),
                 a,
-                a_length = array_blocos.length,
+                a_length = array_blocks.length,
                 b,
                 b_length,
                 c,
                 d,
                 e,
-                e_length = array_pedras.length,
+                e_length = array_stones.length,
                 f,
                 f_length = array_aux_s.length,
                 tecla,
-                T1 = personagem.offsetTop,
+                T1 = hero.offsetTop,
                 B1,
                 T2,
                 T3,
@@ -326,24 +324,24 @@ var body = document.getElementsByTagName('body')[0],
                 E2,
                 E3,
                 E4,
-                Tbase = janela_jogo.offsetHeight - personagem.offsetHeight - 30,
-                estado_som,
-                estado_class_jj,
-                estado_class_personagem = personagem.getAttribute('class'),
-                blocos = [],
+                Tbase = window_game.offsetHeight - hero.offsetHeight - 30,
+                state_sound,
+                state_class_jj,
+                state_class_hero = hero.getAttribute('class'),
+                blocks = [],
                 quad_wh,
                 quad_top,
                 quad_left,
                 quad_bottom,
                 quad_rigth,
-                bloco,
-                pedras = [],
-                pedra_wh,
-                pedra_top,
-                pedra_left,
-                pedra_bottom,
-                pedra_rigth,
-                pedra,
+                block,
+                stones = [],
+                stone_wh,
+                stone_top,
+                stone_left,
+                stone_bottom,
+                stone_rigth,
+                stone,
                 aux_s = [],
                 auxe_wh,
                 auxe_top,
@@ -354,23 +352,23 @@ var body = document.getElementsByTagName('body')[0],
                 teclaPresa,
                 teclaSolta,
                 inicio,
-                cima_i,
-                dir_i,
-                baixo_i,
-                esq_i,
-                cima_p,
-                dir_p,
-                baixo_p,
-                esq_p,
+                up_init,
+                left_init,
+                down_init,
+                right_init,
+                up_stop,
+                left_stop,
+                down_stop,
+                right_stop,
                 per_back_esq_s,
                 per_back_dir_s,
                 per_back_esq,
                 per_back_dir,
-                L_background_jogo,
-                W_background_jogo,
+                L_background_game,
+                W_background_game,
                 W_per,
-                i_jogo_p, valor_cima = -27,
-                det_bloco,
+                i_game_p, valor_cima = -27,
+                det_block,
                 caixa_azul,
                 caixa_dourada,
                 caixa_laranja_3,
@@ -378,67 +376,67 @@ var body = document.getElementsByTagName('body')[0],
                 caixa_laranja_1,
                 caixa_laranja,
                 caixa_vermelha,
-                id_bloco,
+                id_block,
                 b_activo,
-                ligar_bloco,
-                id_bloco_ant,
-                primeiro_bloco = 0,
-                ultimo_bloco = 0,
+                ligar_block,
+                id_block_ant,
+                primeiro_block = 0,
+                ultimo_block = 0,
                 tipo_salto,
-                bloco_aux_id,
-                bloco_aux_class,
-                d_pedras,
-                d_blocos,
+                block_aux_id,
+                block_aux_class,
+                d_stones,
+                d_blocks,
                 d_aux_s,
                 colisao;
 
             // RECEBER VALORES
-            // blocos
+            // blocks
             for (a = 0; a < a_length; a++) {
-                // Variaveis com dimensoes e posies do bloco
-                quad_wh = array_blocos[a].offsetWidth;
-                quad_top = array_blocos[a].offsetTop;
-                quad_left = array_blocos[a].offsetLeft;
+                // Variaveis com dimensoes e posies do block
+                quad_wh = array_blocks[a].offsetWidth;
+                quad_top = array_blocks[a].offsetTop;
+                quad_left = array_blocks[a].offsetLeft;
                 quad_bottom = quad_top + quad_wh;
                 quad_rigth = quad_left + quad_wh;
-                bloco = array_blocos[a];
-                // Cada Bloco ter as suas propriedades
-                blocos[a] = [
-                    bloco,
+                block = array_blocks[a];
+                // Cada block ter as suas propriedades
+                blocks[a] = [
+                    block,
                     quad_top,
                     quad_rigth,
                     quad_bottom,
                     quad_left
                 ];
             }
-            // pedras
+            // stones
             for (e = 0; e < e_length; e++) {
-                // Variaveis com dimensoes e posies do bloco
-                pedra_wh = array_pedras[e].offsetWidth;
-                pedra_top = array_pedras[e].offsetTop;
-                pedra_left = array_pedras[e].offsetLeft;
-                pedra_bottom = pedra_top + pedra_wh;
-                pedra_rigth = pedra_left + pedra_wh;
-                pedra = array_pedras[e];
-                // Cada Bloco ter as suas propriedades
-                pedras[e] = [
-                    pedra,
-                    pedra_top,
-                    pedra_rigth,
-                    pedra_bottom,
-                    pedra_left
+                // Variaveis com dimensoes e posies do block
+                stone_wh = array_stones[e].offsetWidth;
+                stone_top = array_stones[e].offsetTop;
+                stone_left = array_stones[e].offsetLeft;
+                stone_bottom = stone_top + stone_wh;
+                stone_rigth = stone_left + stone_wh;
+                stone = array_stones[e];
+                // Cada block ter as suas propriedades
+                stones[e] = [
+                    stone,
+                    stone_top,
+                    stone_rigth,
+                    stone_bottom,
+                    stone_left
                 ];
             }
             // aux_s
             for (f = 0; f < f_length; f++) {
-                // Variaveis com dimensoes e posies do bloco
+                // Variaveis com dimensoes e posies do block
                 aux_wh = array_aux_s[f].offsetWidth;
                 aux_top = array_aux_s[f].offsetTop;
                 aux_left = array_aux_s[f].offsetLeft;
                 aux_bottom = aux_top + aux_wh;
                 aux_rigth = aux_left + aux_wh;
                 aux = array_aux_s[f];
-                // Cada Bloco ter as suas propriedades
+                // Cada block ter as suas propriedades
                 aux_s[f] = [
                     aux,
                     aux_top,
@@ -448,218 +446,218 @@ var body = document.getElementsByTagName('body')[0],
                 ];
             }
             // Redefinir valores for in loops
-            b_length = blocos.length;
-            e_length = pedras.length;
+            b_length = blocks.length;
+            e_length = stones.length;
             f_length = aux_s.length;
-            id_metade_blocos = parseInt(b_length / 2, 10);
+            id_metade_blocks = parseInt(b_length / 2, 10);
 
             // function GERAL
-            var fps_jogo = function () {
+            var fps_game = function () {
                 
                 // VARIAVEIS
-                // aces de jogo
-                cima_i = personagem.getAttribute('class').search('cima_i');
-                dir_i = personagem.getAttribute('class').search('dir_i');
-                baixo_i = personagem.getAttribute('class').search('baixo_i');
-                esq_i = personagem.getAttribute('class').search('esq_i');
-                cima_p = personagem.getAttribute('class').search('cima_p');
-                dir_p = personagem.getAttribute('class').search('dir_p');
-                baixo_p = personagem.getAttribute('class').search('baixo_p');
-                esq_p = personagem.getAttribute('class').search('esq_p');
-                // dimenses personagem
-                T1 = personagem.offsetTop;
-                R1 = personagem.offsetLeft + personagem.offsetHeight;
-                B1 = personagem.offsetLeft + personagem.offsetHeight;
-                L1 = personagem.offsetLeft;
+                // aces de game
+                up_init = hero.getAttribute('class').search('up_init');
+                left_init = hero.getAttribute('class').search('left_init');
+                down_init = hero.getAttribute('class').search('down_init');
+                right_init = hero.getAttribute('class').search('right_init');
+                up_stop = hero.getAttribute('class').search('up_stop');
+                left_stop = hero.getAttribute('class').search('left_stop');
+                down_stop = hero.getAttribute('class').search('down_stop');
+                right_stop = hero.getAttribute('class').search('right_stop');
+                // dimenses hero
+                T1 = hero.offsetTop;
+                R1 = hero.offsetLeft + hero.offsetHeight;
+                B1 = hero.offsetLeft + hero.offsetHeight;
+                L1 = hero.offsetLeft;
                 // estilo
-                per_back_esq_s = personagem.style.background.search('personagem_0_esq.png');
-                per_back_dir_s = personagem.style.background.search('personagem_0_dir.png');
+                per_back_esq_s = hero.style.background.search('hero_0_esq.png');
+                per_back_dir_s = hero.style.background.search('hero_0_dir.png');
                 per_back_esq = 'url(src/min/images/personagem_0_esq.png)';
                 per_back_dir = 'url(src/min/images/personagem_0_dir.png)';
                 // background
-                L_background_jogo = background_jogo.offsetLeft;
-                W_background_jogo = background_jogo.offsetWidth;
-                W_per = personagem.offsetWidth;
+                L_background_game = background_game.offsetLeft;
+                W_background_game = background_game.offsetWidth;
+                W_per = hero.offsetWidth;
                 // se o dourado "disparou" remove os eventos
-                if (ultimo_bloco === 1) {
-                    clearInterval(i_fps_jogo);
-                    personagem.setAttribute('class', '');
+                if (ultimo_block === 1) {
+                    clearInterval(i_fps_game);
+                    hero.setAttribute('class', '');
                 }
-                //	.volume do som
-                if (typeof som.getAttribute('class') === 'string' && som.getAttribute('class').search('silencio') !== -1) {
-                    estado_som = 2;
+                //	.volume do sound
+                if (typeof sound.getAttribute('class') === 'string' && sound.getAttribute('class').search('silencio') !== -1) {
+                    state_sound = 2;
                 } else {
-                    estado_som = -1;
+                    state_sound = -1;
                 }
                 // salto
-                if (cima_i !== -1) {
+                if (up_init !== -1) {
                     // fx saltos
-                    if (estado_som === -1) {
+                    if (state_sound === -1) {
                         if (valor_cima === -27 && tipo_salto === 'normal') {
-                            // som salto
-                            som_salto.play();
+                            // sound salto
+                            sound_salto.play();
                         }  // se o valor  -40 o que significa , deteco de mola
                         else if (valor_cima === -54) {
-                            // som salto
-                            som_caixa_vermelha.play();
+                            // sound salto
+                            sound_caixa_vermelha.play();
                         }
                     }
                     // aumenta o valor de subida
                     valor_cima++;
                     // pra subida
-                    if (valor_cima === 0 || det_bloco === true) {
+                    if (valor_cima === 0 || det_block === true) {
                         // repor valores de origem
                         valor_cima = -27;
                         tipo_salto = 'normal';
-                        personagem.setAttribute('class', personagem.getAttribute('class').replace('cima_i', 'cima_p'));
+                        hero.setAttribute('class', hero.getAttribute('class').replace('up_init', 'up_stop'));
                         // iniciar baixo
-                        personagem.setAttribute('class', personagem.getAttribute('class').replace('baixo_p', 'baixo_i'));
+                        hero.setAttribute('class', hero.getAttribute('class').replace('down_stop', 'down_init'));
                     } else {
-                        personagem.offsetTop = (T1 - 4) + 'px';
+                        hero.style.top = (T1 - 4) + 'px';
                     }
-                }  // queda
-                else if (baixo_i !== -1 || baixo_i !== -1 && det_bloco === false || baixo_i !== -1 && det_bloco === 'ajustado') {
-                    // est em cima de um bloco
-                    // acabou de tocar num bloco
+                }  // fall
+                else if (down_init !== -1 || down_init !== -1 && det_block === false || down_init !== -1 && det_block === 'ajustado') {
+                    // est em cima de um block
+                    // acabou de tocar num block
                     // chegou ao cho
-                    if (T1 + 6 > 435 || det_bloco === true || det_bloco === 'ajustado') {
+                    if (T1 + 6 > 435 || det_block === true || det_block === 'ajustado') {
                         // se chegou ao cho
                         if (T1 + 6 > 435) {
                             // repor valores de origem
-                            personagem.style.top = '435px';
-                            // primeiro bloco concluido
-                            // quedas
-                            if (primeiro_bloco === 1) {
-                                quedas_value.innerHTML = qvi = qvi + 1;
+                            hero.style.top = '435px';
+                            // primeiro block concluido
+                            // falls
+                            if (primeiro_block === 1) {
+                                falls_value.innerHTML = qvi = qvi + 1;
                             }
                         }
-                        personagem.setAttribute('class', personagem.getAttribute('class').replace('baixo_i', 'baixo_p'));
-                        det_bloco = false;
+                        hero.setAttribute('class', hero.getAttribute('class').replace('down_init', 'down_stop'));
+                        det_block = false;
                     } else {
-                        if (T1 + 6 < 436 && det_bloco === false) {
-                            personagem.style.top = (T1 + 6) + 'px';
+                        if (T1 + 6 < 436 && det_block === false) {
+                            hero.style.top = (T1 + 6) + 'px';
                         }
                     }
                 }
                 // direita
-                if (dir_i !== -1 && colisao !== 'direita') {
+                if (left_init !== -1 && colisao !== 'direita') {
                     colisao = 0;
                     // verificar background
                     if (per_back_dir_s === -1) {
-                        personagem.style.background = per_back_dir;
+                        hero.style.background = per_back_dir;
                     }
-                    // se o left PER  menor que width do Jogo
-                    if (L1 < W_background_jogo - W_per) {
+                    // se o left PER  menor que width do game
+                    if (L1 < W_background_game - W_per) {
                         // move PER para direita
-                        personagem.style.left = (L1 + 5) + 'px';
+                        hero.style.left = (L1 + 5) + 'px';
                         // mover fundo
-                        if (L1 > 250 && -L_background_jogo < W_background_jogo - 650 && L1 + L_background_jogo < 300 && L1 + L_background_jogo > 250) {
-                            background_jogo.style.left = (L_background_jogo - 5) + 'px';
+                        if (L1 > 250 && -L_background_game < W_background_game - 650 && L1 + L_background_game < 300 && L1 + L_background_game > 250) {
+                            background_game.style.left = (L_background_game - 5) + 'px';
                         }
                     }
-                    // se bloco for falso iniciar queda
-                    if (det_bloco === false && baixo_i === -1 && cima_i === -1 && T1 !== 435) {
-                        personagem.setAttribute('class', personagem.getAttribute('class').replace('baixo_p', 'baixo_i'));
+                    // se block for falso iniciar fall
+                    if (det_block === false && down_init === -1 && up_init === -1 && T1 !== 435) {
+                        hero.setAttribute('class', hero.getAttribute('class').replace('down_stop', 'down_init'));
                     }
                 }  // esquerda
-                else if (esq_i !== -1 && colisao !== 'esquerda') {
+                else if (right_init !== -1 && colisao !== 'esquerda') {
                     colisao = 0;
                     // verificar background
                     if (per_back_esq_s === -1) {
-                        personagem.style.background = per_back_esq;
+                        hero.style.background = per_back_esq;
                     }
-                    // se o left PER  menor que width do Jogo
+                    // se o left PER  menor que width do game
                     if (L1 > 0) {
                         // move PER para esquerda
-                        personagem.style.left = (L1 - 5) + 'px';
+                        hero.style.left = (L1 - 5) + 'px';
                         // mover fundo
-                        if (L1 > 250 && L_background_jogo < 0 && L1 + 250 < W_background_jogo) {
-                            background_jogo.style.left = (L_background_jogo + 5) + 'px';
+                        if (L1 > 250 && L_background_game < 0 && L1 + 250 < W_background_game) {
+                            background_game.style.left = (L_background_game + 5) + 'px';
                         }
                     }
-                    // se bloco for falso iniciar queda
-                    if (det_bloco === false && baixo_i === -1 && cima_i === -1 && T1 !== 435) {
-                        personagem.setAttribute('class', personagem.getAttribute('class').replace('baixo_p', 'baixo_i'));
+                    // se block for falso iniciar fall
+                    if (det_block === false && down_init === -1 && up_init === -1 && T1 !== 435) {
+                        hero.setAttribute('class', hero.getAttribute('class').replace('down_stop', 'down_init'));
                     }
                 }
-                // se existirem pedras
+                // se existirem stones
                 if (e_length !== 0) {
-                    // pedras
+                    // stones
                     for (d = 0; d < e_length; d++) {
-                        // dimenses pedra
-                        E3 = pedras[d][0];
-                        // elemento pedra
-                        T3 = pedras[d][1];
-                        // top pedra
-                        R3 = pedras[d][2];
-                        // direita pedra
-                        L3 = pedras[d][4];
-                        // esquerda pedra
-                        // toca no cimo da pedra
+                        // dimenses stone
+                        E3 = stones[d][0];
+                        // elemento stone
+                        T3 = stones[d][1];
+                        // top stone
+                        R3 = stones[d][2];
+                        // direita stone
+                        L3 = stones[d][4];
+                        // esquerda stone
+                        // toca no cimo da stone
                         if (T1 - T3 > -36 && T1 - T3 < -28 && R1 - R3 < 30 && L1 - L3 > -30) {
                             // se o top nao estiver ajustado f-lo-
-                            // primeiro toque no pedra
+                            // primeiro toque no stone
                             if (T1 !== T3 - 35) {
-                                personagem.style.top = (T3 - 35) + 'px';
-                                det_bloco = true;
+                                hero.style.top = (T3 - 35) + 'px';
+                                det_block = true;
                                 // se for dinamite
                                 if (E3.getAttribute('class').search('dinamite') !== -1) {
                                     // apagar class dinamite
                                     E3.setAttribute('class', E3.getAttribute('class').replace('dinamite', ''));
                                     // aviso
-                                    e_num_f('DANGER', 'perigo');
+                                    this.e_num_f('DANGER', 'perigo');
                                     // function
-                                    cenario_bomba(0, estado_som, E3);
+                                    cenario_bomb(0, state_sound, E3);
                                 }
-                            }  // se estiver no mesmo bloco simplesmente continua a circular sem deteces
+                            }  // se estiver no mesmo block simplesmente continua a circular sem deteces
                             else {
-                                det_bloco = 'ajustado';
+                                det_block = 'ajustado';
                             }
                             // ultima linha
-                            d_pedras = 1;
+                            d_stones = 1;
                             break;
-                        }  // toca na base da pedra
+                        }  // toca na base da stone
                         else if (T1 - T3 > 46 && T1 - T3 < 54 && R1 - R3 < 30 && L1 - L3 > -30) {
-                            // primeiro toque na pedra
-                            if (T1 !== T3 + 50 && det_bloco === false) {
-                                personagem.style.top = (T3 + 50) + 'px';
-                                det_bloco = true;
-                                d_pedras = 1;
+                            // primeiro toque na stone
+                            if (T1 !== T3 + 50 && det_block === false) {
+                                hero.style.top = (T3 + 50) + 'px';
+                                det_block = true;
+                                d_stones = 1;
                             }  // segundo toque ou deteco
                             else {
-                                det_bloco = false;
-                                d_pedras = 0;
+                                det_block = false;
+                                d_stones = 0;
                             }
                             break;
-                        }  // se depois de todas as verificaes nao detectar pedra determina false e inicia descida
+                        }  // se depois de todas as verificaes nao detectar stone determina false e inicia descida
                         else {
-                            d_pedras = 0;
+                            d_stones = 0;
                         }
-                        // toca de lado direito da pedra
+                        // toca de lado direito da stone
                         if (T1 - T3 > -35 && T1 - T3 < 50 && L1 - R3 > -6 && L1 - R3 < 1) {
-                            // primeiro toque na pedra
+                            // primeiro toque na stone
                             if (L1 !== R3) {
-                                personagem.style.left = R3 + 'px';
+                                hero.style.left = R3 + 'px';
                                 colisao = 'esquerda';
                             }
                             break;
-                        }  // toca de lado esquerdo da pedra
+                        }  // toca de lado esquerdo da stone
                         else if (T1 - T3 > -35 && T1 - T3 < 50 && R1 - L3 > -1 && R1 - L3 < 16) {
-                            // primeiro toque na pedra
+                            // primeiro toque na stone
                             if (L1 !== L3 - 35) {
-                                personagem.style.left = L3 - 35 + 'px';
+                                hero.style.left = L3 - 35 + 'px';
                                 colisao = 'direita';
                             }
                             break;
-                        }  // se depois de todas as verificaes nao detectar pedra determina false e inicia descida
+                        }  // se depois de todas as verificaes nao detectar stone determina false e inicia descida
                         else if (d === e_length - 1) {
-                            d_pedras = 0;
+                            d_stones = 0;
                             colisao = 0;
                         }
                     }
-                }  // se no existirem pedras envia sinal
+                }  // se no existirem stones envia sinal
                 else {
-                    d_pedras = 0;
+                    d_stones = 0;
                     colisao = 0;
                 }
                 /* Verificao de aux_s
@@ -674,52 +672,52 @@ var body = document.getElementsByTagName('body')[0],
                  // se o top nao estiver ajustado f-lo-
                  // primeiro toque no aux
                  if(T1 !== (T4 - 35)){
-                 personagem.style.top = (T1 - 35) + "px"
-                 det_bloco = true
+                 hero.style.top = (T1 - 35) + "px"
+                 det_block = true
                  // variaveis
-                 bloco_aux_id = E4.getAttribute("id")
-                 bloco_aux_class = E4.getAttribute(
+                 block_aux_id = E4.getAttribute("id")
+                 block_aux_class = E4.getAttribute(
                  "class")
                  // aux verde
-                 if(bloco_aux_id === "aux_verde"){
+                 if(block_aux_id === "aux_verde"){
                  // ao activar muda de back
                  if(E4.style.background.search("verde") === -1){
                  E4.style.background = "url(\"src/min/images/verde.png\")"
                  E4.style.border = "solid 1px #ffffff"
                  }
                  // iniciar efeito
-                 e_bloco_verde(E4)
+                 e_block_verde(E4)
                  break
                  }
                  // aux vermelho
-                 else if(bloco_aux_id === "aux_vermelho"){
+                 else if(block_aux_id === "aux_vermelho"){
                  break
                  }
                  }
                  }
-                 // se depois de todas as verificaes nao detectar bloco determina false e inicia descida
+                 // se depois de todas as verificaes nao detectar block determina false e inicia descida
                  else{
-                 det_bloco = false
+                 det_block = false
                  }
                  }*/
-                // Verificao de blocos
+                // Verificao de blocks
                 for (b = 0; b < b_length; b++) {
-                    // dimenses blocos
-                    E2 = blocos[b][0];
-                    // top bloco
-                    T2 = blocos[b][1];
-                    // top bloco
-                    R2 = blocos[b][2];
-                    // direita bloco
-                    L2 = blocos[b][4];
-                    // esquerda bloco
-                    //  se encontrar bloco pousar em cima do mesmo
+                    // dimenses blocks
+                    E2 = blocks[b][0];
+                    // top block
+                    T2 = blocks[b][1];
+                    // top block
+                    R2 = blocks[b][2];
+                    // direita block
+                    L2 = blocks[b][4];
+                    // esquerda block
+                    //  se encontrar block pousar em cima do mesmo
                     if (T1 - T2 > -36 && T1 - T2 < -28 && R1 - R2 < 30 && L1 - L2 > -30) {
                         // se o top nao estiver ajustado f-lo-
-                        // basicamente se for a primeira vez que toca depois de um salto ou queda
+                        // basicamente se for a primeira vez que toca depois de um salto ou fall
                         if (T1 !== T2 - 35) {
-                            personagem.style.top = (T2 - 35) + 'px';
-                            det_bloco = true;
+                            hero.style.top = (T2 - 35) + 'px';
+                            det_block = true;
                             // Super-Importante
                             // estes codigos esto aqui para que sejam lidos, apenas se houver um primeiro contacto com o objecto em questo
                             // verificao de sequencia
@@ -730,76 +728,76 @@ var body = document.getElementsByTagName('body')[0],
                             caixa_laranja_1 = E2.getAttribute('class').search('laranja_1');
                             caixa_laranja = E2.style.background.search('src/min/images/activo.png');
                             caixa_vermelha = E2.getAttribute('class').search('vermelho');
-                            id_bloco = parseInt(E2.getAttribute('class').split(' ')[1].split('_')[1], 10);
+                            id_block = parseInt(E2.getAttribute('class').split(' ')[1].split('_')[1], 10);
                             b_activo = E2.getAttribute('class').search('b_activo');
-                            // ligar_bloco sera true ou false
-                            // se no for primeiro bloco
+                            // ligar_block sera true ou false
+                            // se no for primeiro block
                             if (b > 0) {
-                                id_bloco_ant = blocos[b - 1][0].getAttribute('class').search('b_activo');
+                                id_block_ant = blocks[b - 1][0].getAttribute('class').search('b_activo');
                             }
-                            // se for o primeiro bloco
+                            // se for o primeiro block
                             //  no procurara anterior activo
                             if (b === 0 && b_activo === -1) {
                                 // activa-lo, com classe
-                                ligar_bloco = true;
-                                primeiro_bloco = 1;
+                                ligar_block = true;
+                                primeiro_block = 1;
                                 E2.setAttribute('class', E2.getAttribute('class') + ' b_activo');
                                 // iniciar efeito
-                                e_num_f(id_bloco);
+                                this.e_num_f(id_block);
                             }  // se no  o primeiro e o anterior NO esta activo
-                            else if (b > 0 && id_bloco_ant === -1) {
-                                ligar_bloco = false;
+                            else if (b > 0 && id_block_ant === -1) {
+                                ligar_block = false;
                             }  // se no  o primeiro e o anterior esta activo
-                            else if (b > 0 && id_bloco_ant !== -1 && b_activo === -1) {
-                                // agrupamento de 3 blocos
+                            else if (b > 0 && id_block_ant !== -1 && b_activo === -1) {
+                                // agrupamento de 3 blocks
                                 if (caixa_laranja_3 === -1 && caixa_laranja_2 === -1 && caixa_laranja_1 === -1) {
                                     E2.setAttribute('class', E2.getAttribute('class') + ' b_activo');
-                                    ligar_bloco = true;
+                                    ligar_block = true;
                                     // iniciar efeito
-                                    e_num_f(id_bloco);
+                                    this.e_num_f(id_block);
                                 } else if (caixa_laranja_3 !== -1) {
                                     E2.setAttribute('class', E2.getAttribute('class').replace('laranja_3', 'laranja_2'));
-                                    ligar_bloco = true;
+                                    ligar_block = true;
                                     // iniciar efeito
-                                    e_num_f(id_bloco);
+                                    this.e_num_f(id_block);
                                 } else if (caixa_laranja_2 !== -1) {
                                     E2.setAttribute('class', E2.getAttribute('class').replace('laranja_2', 'laranja_1'));
-                                    ligar_bloco = true;
+                                    ligar_block = true;
                                     // iniciar efeito
-                                    e_num_f(id_bloco + 1);
+                                    this.e_num_f(id_block + 1);
                                 } else if (caixa_laranja_1 !== -1) {
                                     E2.setAttribute('class', E2.getAttribute('class').replace('laranja_1', ''));
                                     E2.setAttribute('class', E2.getAttribute('class') + ' b_activo');
-                                    ligar_bloco = true;
+                                    ligar_block = true;
                                     // iniciar efeito
-                                    e_num_f(id_bloco + 2);
+                                    this.e_num_f(id_block + 2);
                                 }
                             }
                             // sequencia errada
-                            if (ligar_bloco === false && b_activo === -1) {
-                                // som
-                                if (estado_som === -1 || estado_som === null) {
-                                    som_caixa_laranja.play();
+                            if (ligar_block === false && b_activo === -1) {
+                                // sound
+                                if (state_sound === -1 || state_sound === null) {
+                                    sound_caixa_laranja.play();
                                 }
                                 // iniciar efeito
-                                e_num_f('?');
+                                this.e_num_f('?');
                                 fails_value.innerHTML = fvi = fvi + 1;
                             }  // sequencia correcta
-                            else if (ligar_bloco === true && (b_activo === -1 || caixa_vermelha !== -1)) {
-                                // bloco azul
+                            else if (ligar_block === true && (b_activo === -1 || caixa_vermelha !== -1)) {
+                                // block azul
                                 if (caixa_azul !== -1 && caixa_dourada === -1 && caixa_vermelha === -1 && caixa_laranja_3 === -1) {
                                     // background
                                     E2.style.background = 'url("src/min/images/activo.png") #ffffff';
                                     // border
                                     E2.style.border = '1px dashed #ffffff';
-                                    // pontos
-                                    pvi = pontos_value.innerHTML = pvi + 100;
-                                    // som
-                                    if (estado_som === -1 || estado_som === null) {
-                                        // som salto
-                                        som_caixa_azul.play();
+                                    // points
+                                    pvi = points_value.innerHTML = pvi + 100;
+                                    // sound
+                                    if (state_sound === -1 || state_sound === null) {
+                                        // sound salto
+                                        sound_caixa_azul.play();
                                     }
-                                }  // bloco vermelho
+                                }  // block vermelho
                                 else if (caixa_vermelha !== -1) {
                                     if (E2.style.background.search('src/min/images/vermelho.png') === -1) {
                                         // background
@@ -807,69 +805,69 @@ var body = document.getElementsByTagName('body')[0],
                                         // border
                                         E2.style.border = '1px dashed #ffffff';
                                     }
-                                    // se no estiver em "cima_i" , f-lo-
+                                    // se no estiver em "up_init" , f-lo-
                                     // repor valores de origem
                                     valor_cima = -54;
-                                    personagem.setAttribute('class', personagem.getAttribute('class').replace('cima_p', 'cima_i'));
-                                    det_bloco = false;
+                                    hero.setAttribute('class', hero.getAttribute('class').replace('up_stop', 'up_init'));
+                                    det_block = false;
                                     tipo_salto = 'vermelho';
-                                }  // bloco dourado
+                                }  // block dourado
                                 else if (caixa_dourada !== -1) {
-                                    // parar jogo
-                                    ultimo_bloco = 1;
+                                    // parar game
+                                    ultimo_block = 1;
                                     // background
                                     E2.style.background = 'url("src/min/images/dourado.png") #ffffff';
                                     // border
                                     E2.style.border = '1px dashed #ffffff';
-                                    // som
-                                    if (estado_som === -1 || estado_som === null) {
-                                        // som salto
-                                        som_caixa_dourada.play();
+                                    // sound
+                                    if (state_sound === -1 || state_sound === null) {
+                                        // sound salto
+                                        sound_caixa_dourada.play();
                                     }
-                                    // pontos
-                                    pvi = pontos_value.innerHTML = pvi + 100;
-                                    // para tempo e remover eventos
-                                    janela_jogo.setAttribute('class', janela_jogo.getAttribute('class').replace('inicio', 'fim'));
-                                    this.espetaculo_pontos();
+                                    // points
+                                    pvi = points_value.innerHTML = pvi + 100;
+                                    // para time e remover eventos
+                                    window_game.setAttribute('class', window_game.getAttribute('class').replace('inicio', 'fim'));
+                                    this.espetaculo_points();
                                 }
                             }
-                            // se metade dos blocos estiverem concluidos d sinal
-                            if (blocos[id_metade_blocos][0].getAttribute('class').search('b_activo') !== -1 && document.getElementById('aux_vermelho').style.display === 'none') {
+                            // se metade dos blocks estiverem concluidos d sinal
+                            if (blocks[id_metade_blocks][0].getAttribute('class').search('b_activo') !== -1 && document.getElementById('aux_vermelho').style.display === 'none') {
                                 // variaveis aparecer aux_vermelho
-                                var bloco_aux = document.getElementById('aux_vermelho'), bloco_aux_css = bloco_aux.style.cssText, bloco_aux_class = bloco_aux.getAttribute('class');
+                                var block_aux = document.getElementById('aux_vermelho'), block_aux_css = block_aux.style.cssText, block_aux_class = block_aux.getAttribute('class');
                                 // function aparecer aux_vermelho
-                                e_blocos(bloco_aux, bloco_aux_css, bloco_aux_class);
+                                e_blocks(block_aux, block_aux_css, block_aux_class);
                             }
-                        }  // se estiver no mesmo bloco simplesmente continua a circular sem deteces
+                        }  // se estiver no mesmo block simplesmente continua a circular sem deteces
                         else {
-                            det_bloco = 'ajustado';
+                            det_block = 'ajustado';
                         }
                         // ultima linha
-                        d_blocos = 1;
+                        d_blocks = 1;
                         break;
                     } else {
-                        d_blocos = 0;
+                        d_blocks = 0;
                     }
                 }
-                if (d_pedras === 0 && d_blocos === 0) {
-                    // se depois de todas as verificaes nao detectar bloco determina false e inicia descida
-                    det_bloco = false;
+                if (d_stones === 0 && d_blocks === 0) {
+                    // se depois de todas as verificaes nao detectar block determina false e inicia descida
+                    det_block = false;
                 }
             };
 
-            // variavel de intervalo fps_jogo
-            var i_fps_jogo = setInterval(fps_jogo, 20);
+            // variavel de intervalo fps_game
+            var i_fps_game = setInterval(fps_game, 20);
         },
 
-        nivel: function (nvi) {
+        level: function (nvi) {
 
             // Set current level
-            nivel_value.innerHTML = nvi = (nvi !== undefined) ? nvi : 1;
+            level_value.innerHTML = nvi = (nvi !== undefined) ? nvi : 1;
 
             if (nvi === 1) {
-                var nivel_1 = function () {
-                    // adicionar nivel
-                    var blocos_jogaveis = [], aux_s_jogaveis = [], bloco_left = [
+                var level_1 = function () {
+                    // adicionar level
+                    var blocks_jogaveis = [], aux_s_jogaveis = [], block_left = [
                             250,
                             400,
                             550,
@@ -880,7 +878,7 @@ var body = document.getElementsByTagName('body')[0],
                             1000,
                             1000,
                             1000
-                        ], bloco_bottom = [
+                        ], block_bottom = [
                             70,
                             70,
                             70,
@@ -893,32 +891,32 @@ var body = document.getElementsByTagName('body')[0],
                             220
                         ], numero_b = 0, a, b, c,
                     // array aux_s
-                        aux_left = [parseInt((bloco_left[0] + bloco_left[bloco_left.length - 1]) / 2)], aux_bottom = [30], numero_a = 0, id_aux = 0,
+                        aux_left = [parseInt((block_left[0] + block_left[block_left.length - 1]) / 2)], aux_bottom = [30], numero_a = 0, id_aux = 0,
                     // comprimento das arrays
-                        a_length = bloco_left.length,
-                    // b_length = pedra_left.length,
+                        a_length = block_left.length,
+                    // b_length = stone_left.length,
                         c_length = aux_left.length, cor, border = 'solid 1px #ffffff;', display = 'block';
-                    // criar numeros de blocos
+                    // criar numeros de blocks
                     for (a = 0; a < a_length; a++) {
                         numero_b++;
-                        // criar blocos
-                        blocos_jogaveis[a] = document.createElement('div');
+                        // criar blocks
+                        blocks_jogaveis[a] = document.createElement('div');
                         // adicionar attributos
-                        blocos_jogaveis[a].setAttribute('class', 'bloco b_' + (a + 1));
+                        blocks_jogaveis[a].setAttribute('class', 'block b_' + (a + 1));
                         // definir CSS
-                        blocos_jogaveis[a].style.cssText = 'position:absolute;left:' + bloco_left[a] + 'px;bottom:' + bloco_bottom[a] + 'px;z-index:10;width:50px;height:50px;background:url("src/min/images/inactivo.png");border:solid 1px #2f0000;';
-                        // adicionar blocos ao jogo
-                        background_jogo.appendChild(blocos_jogaveis[a]);
+                        blocks_jogaveis[a].style.cssText = 'position:absolute;left:' + block_left[a] + 'px;bottom:' + block_bottom[a] + 'px;z-index:10;width:50px;height:50px;background:url("src/min/images/inactivo.png");border:solid 1px #2f0000;';
+                        // adicionar blocks ao game
+                        background_game.appendChild(blocks_jogaveis[a]);
                         // se for o ultimo elemento  o DOURADO
-                        if (a === bloco_left.length - 1) {
-                            blocos_jogaveis[a].setAttribute('class', blocos_jogaveis[a].getAttribute('class') + 'bloco dourado');
+                        if (a === block_left.length - 1) {
+                            blocks_jogaveis[a].setAttribute('class', blocks_jogaveis[a].getAttribute('class') + 'block dourado');
                         }
                     }
                     // AUXILIARES
                     for (c = 0; c < c_length; c++) {
                         // id_aux
                         id_aux++;
-                        // criar blocos
+                        // criar blocks
                         aux_s_jogaveis[c] = document.createElement('div');
                         // adicionar attributos
                         aux_s_jogaveis[c].setAttribute('class', 'aux aux_' + id_aux);
@@ -937,14 +935,14 @@ var body = document.getElementsByTagName('body')[0],
                         }
                         // definir CSS
                         aux_s_jogaveis[c].style.cssText = 'position:absolute;left:' + aux_left[c] + 'px;bottom:' + aux_bottom[c] + 'px;z-index:10;width:50px;height:50px;background:url("src/min/images/' + cor + '.png");' + display + 'border:' + border;
-                        // adicionar blocos ao jogo
-                        background_jogo.appendChild(aux_s_jogaveis[c]);
+                        // adicionar blocks ao game
+                        background_game.appendChild(aux_s_jogaveis[c]);
                     }
                 };
-                nivel_1();
+                level_1();
             } else if (nvi === 2) {
-                var nivel_2 = function () {
-                    var blocos_jogaveis = [], aux_s_jogaveis = [], bloco_left = [
+                var level_2 = function () {
+                    var blocks_jogaveis = [], aux_s_jogaveis = [], block_left = [
                             250,
                             350,
                             250,
@@ -958,7 +956,7 @@ var body = document.getElementsByTagName('body')[0],
                             1060,
                             1200,
                             1300
-                        ], bloco_bottom = [
+                        ], block_bottom = [
                             70,
                             150,
                             230,
@@ -972,32 +970,32 @@ var body = document.getElementsByTagName('body')[0],
                             180,
                             250,
                             300
-                        ], numero_b = 0, a, a_length = bloco_left.length,
+                        ], numero_b = 0, a, a_length = block_left.length,
                     // array aux_s
-                        aux_left = [parseInt((bloco_left[0] + bloco_left[bloco_left.length - 1]) / 2)], aux_bottom = [30], numero_a = 0, id_aux = 0, b, c,
-                    // b_length = pedra_left.length,
+                        aux_left = [parseInt((block_left[0] + block_left[block_left.length - 1]) / 2)], aux_bottom = [30], numero_a = 0, id_aux = 0, b, c,
+                    // b_length = stone_left.length,
                         c_length = aux_left.length, cor, border = 'solid 1px #ffffff;', display = 'block';
-                    // criar numeros de blocos
+                    // criar numeros de blocks
                     for (a = 0; a < a_length; a++) {
                         numero_b++;
-                        // criar blocos
-                        blocos_jogaveis[a] = document.createElement('div');
+                        // criar blocks
+                        blocks_jogaveis[a] = document.createElement('div');
                         // adicionar attributos
-                        blocos_jogaveis[a].setAttribute('class', 'bloco b_' + (a + 1));
+                        blocks_jogaveis[a].setAttribute('class', 'block b_' + (a + 1));
                         // definir CSS
-                        blocos_jogaveis[a].style.cssText = 'position:absolute;left:' + bloco_left[a] + 'px;bottom:' + bloco_bottom[a] + 'px;z-index:10;width:50px;height:50px;background:url("src/min/images/inactivo.png");border:solid 1px #2f0000;';
-                        // adicionar blocos ao jogo
-                        background_jogo.appendChild(blocos_jogaveis[a]);
+                        blocks_jogaveis[a].style.cssText = 'position:absolute;left:' + block_left[a] + 'px;bottom:' + block_bottom[a] + 'px;z-index:10;width:50px;height:50px;background:url("src/min/images/inactivo.png");border:solid 1px #2f0000;';
+                        // adicionar blocks ao game
+                        background_game.appendChild(blocks_jogaveis[a]);
                         // se for o ultimo elemento  o DOURADO
-                        if (a === bloco_left.length - 1) {
-                            blocos_jogaveis[a].setAttribute('class', blocos_jogaveis[a].getAttribute('class') + 'bloco dourado');
+                        if (a === block_left.length - 1) {
+                            blocks_jogaveis[a].setAttribute('class', blocks_jogaveis[a].getAttribute('class') + 'block dourado');
                         }
                     }
                     // AUXILIARES
                     for (c = 0; c < c_length; c++) {
                         // id_aux
                         id_aux++;
-                        // criar blocos
+                        // criar blocks
                         aux_s_jogaveis[c] = document.createElement('div');
                         // adicionar attributos
                         aux_s_jogaveis[c].setAttribute('class', 'aux aux_' + id_aux);
@@ -1016,14 +1014,14 @@ var body = document.getElementsByTagName('body')[0],
                         }
                         // definir CSS
                         aux_s_jogaveis[c].style.cssText = 'position:absolute;left:' + aux_left[c] + 'px;bottom:' + aux_bottom[c] + 'px;z-index:10;width:50px;height:50px;background:url("src/min/images/' + cor + '.png");' + display + 'border:' + border;
-                        // adicionar blocos ao jogo
-                        background_jogo.appendChild(aux_s_jogaveis[c]);
+                        // adicionar blocks ao game
+                        background_game.appendChild(aux_s_jogaveis[c]);
                     }
                 };
-                nivel_2();
+                level_2();
             } else if (nvi === 3) {
-                var nivel_3 = function () {
-                    var blocos_jogaveis = [], aux_s_jogaveis = [], bloco_left = [
+                var level_3 = function () {
+                    var blocks_jogaveis = [], aux_s_jogaveis = [], block_left = [
                             100,
                             200,
                             300,
@@ -1044,7 +1042,7 @@ var body = document.getElementsByTagName('body')[0],
                             1150,
                             1400,
                             1700
-                        ], bloco_bottom = [
+                        ], block_bottom = [
                             74,
                             74,
                             74,
@@ -1065,36 +1063,36 @@ var body = document.getElementsByTagName('body')[0],
                             200,
                             250,
                             300
-                        ], numero_b = 0, a, a_length = bloco_left.length,
+                        ], numero_b = 0, a, a_length = block_left.length,
                     // array aux_s
-                        aux_left = [parseInt((bloco_left[0] + bloco_left[bloco_left.length - 1]) / 2)], aux_bottom = [30], numero_a = 0, id_aux = 0, b, c,
-                    // b_length = pedra_left.length,
+                        aux_left = [parseInt((block_left[0] + block_left[block_left.length - 1]) / 2)], aux_bottom = [30], numero_a = 0, id_aux = 0, b, c,
+                    // b_length = stone_left.length,
                         c_length = aux_left.length, cor, border = 'solid 1px #ffffff;', display = 'block';
-                    // criar numeros de blocos
+                    // criar numeros de blocks
                     for (a = 0; a < a_length; a++) {
                         numero_b++;
-                        // criar blocos
-                        blocos_jogaveis[a] = document.createElement('div');
+                        // criar blocks
+                        blocks_jogaveis[a] = document.createElement('div');
                         // adicionar attributos
-                        blocos_jogaveis[a].setAttribute('class', 'bloco b_' + (a + 1));
+                        blocks_jogaveis[a].setAttribute('class', 'block b_' + (a + 1));
                         // definir CSS
-                        blocos_jogaveis[a].style.cssText = 'position:absolute;left:' + bloco_left[a] + 'px;bottom:' + bloco_bottom[a] + 'px;z-index:10;width:50px;height:50px;background:url("src/min/images/inactivo.png");border:solid 1px #2f0000;';
-                        // adicionar blocos ao jogo
-                        background_jogo.appendChild(blocos_jogaveis[a]);
+                        blocks_jogaveis[a].style.cssText = 'position:absolute;left:' + block_left[a] + 'px;bottom:' + block_bottom[a] + 'px;z-index:10;width:50px;height:50px;background:url("src/min/images/inactivo.png");border:solid 1px #2f0000;';
+                        // adicionar blocks ao game
+                        background_game.appendChild(blocks_jogaveis[a]);
                         // se for o ultimo elemento  o DOURADO
-                        if (a === bloco_left.length - 1) {
-                            blocos_jogaveis[a].setAttribute('class', blocos_jogaveis[a].getAttribute('class') + 'bloco dourado');
+                        if (a === block_left.length - 1) {
+                            blocks_jogaveis[a].setAttribute('class', blocks_jogaveis[a].getAttribute('class') + 'block dourado');
                         }
                         // se for vermelho
                         if (a === 5 || a === 17 || a === 18) {
-                            blocos_jogaveis[a].setAttribute('class', blocos_jogaveis[a].getAttribute('class') + ' vermelho');
+                            blocks_jogaveis[a].setAttribute('class', blocks_jogaveis[a].getAttribute('class') + ' vermelho');
                         }
                     }
                     // AUXILIARES
                     for (c = 0; c < c_length; c++) {
                         // id_aux
                         id_aux++;
-                        // criar blocos
+                        // criar blocks
                         aux_s_jogaveis[c] = document.createElement('div');
                         // adicionar attributos
                         aux_s_jogaveis[c].setAttribute('class', 'aux aux_' + id_aux);
@@ -1113,15 +1111,15 @@ var body = document.getElementsByTagName('body')[0],
                         }
                         // definir CSS
                         aux_s_jogaveis[c].style.cssText = 'position:absolute;left:' + aux_left[c] + 'px;bottom:' + aux_bottom[c] + 'px;z-index:10;width:50px;height:50px;background:url("src/min/images/' + cor + '.png");' + display + 'border:' + border;
-                        // adicionar blocos ao jogo
-                        background_jogo.appendChild(aux_s_jogaveis[c]);
+                        // adicionar blocks ao game
+                        background_game.appendChild(aux_s_jogaveis[c]);
                     }
                 };
-                nivel_3();
+                level_3();
             } else if (nvi === 4) {
-                var nivel_4 = function () {
+                var level_4 = function () {
                     // VARIAVEIS
-                    var blocos_jogaveis = [], pedras_jogaveis = [], aux_s_jogaveis = [], bloco_left = [
+                    var blocks_jogaveis = [], stones_jogaveis = [], aux_s_jogaveis = [], block_left = [
                             100,
                             150,
                             250,
@@ -1154,7 +1152,7 @@ var body = document.getElementsByTagName('body')[0],
                             1300,
                             1200,
                             1250
-                        ], bloco_bottom = [
+                        ], block_bottom = [
                             210,
                             210,
                             210,
@@ -1187,7 +1185,7 @@ var body = document.getElementsByTagName('body')[0],
                             140,
                             140,
                             190
-                        ], pedra_left = [
+                        ], stone_left = [
                             0,
                             40,
                             90,
@@ -1207,7 +1205,7 @@ var body = document.getElementsByTagName('body')[0],
                             1150,
                             1250,
                             1350
-                        ], pedra_bottom = [
+                        ], stone_bottom = [
                             30,
                             120,
                             120,
@@ -1227,16 +1225,16 @@ var body = document.getElementsByTagName('body')[0],
                             90,
                             90,
                             90
-                        ], numero_a = 0, numero_b = 0, a, b, c, a_length = bloco_left.length, b_length = pedra_left.length,
+                        ], numero_a = 0, numero_b = 0, a, b, c, a_length = block_left.length, b_length = stone_left.length,
                     // array aux_s
-                        aux_left = [parseInt((bloco_left[0] + bloco_left[bloco_left.length - 1]) / 2)], aux_bottom = [30], id_aux = 0,
-                    // b_length = pedra_left.length,
+                        aux_left = [parseInt((block_left[0] + block_left[block_left.length - 1]) / 2)], aux_bottom = [30], id_aux = 0,
+                    // b_length = stone_left.length,
                         c_length = aux_left.length, cor, border = 'solid 1px #ffffff;', display = 'block';
                     // AUXILIARES
                     for (c = 0; c < c_length; c++) {
                         // id_aux
                         id_aux++;
-                        // criar blocos
+                        // criar blocks
                         aux_s_jogaveis[c] = document.createElement('div');
                         // adicionar attributos
                         aux_s_jogaveis[c].setAttribute('class', 'aux aux_' + id_aux);
@@ -1255,47 +1253,47 @@ var body = document.getElementsByTagName('body')[0],
                         }
                         // definir CSS
                         aux_s_jogaveis[c].style.cssText = 'position:absolute;left:' + aux_left[c] + 'px;bottom:' + aux_bottom[c] + 'px;z-index:10;width:50px;height:50px;background:url("src/min/images/' + cor + '.png");' + display + 'border:' + border;
-                        // adicionar blocos ao jogo
-                        background_jogo.appendChild(aux_s_jogaveis[c]);
+                        // adicionar blocks ao game
+                        background_game.appendChild(aux_s_jogaveis[c]);
                     }
-                    // CRIAR BLOCOS PONTOS
+                    // CRIAR blockS pointS
                     for (a = 0; a < a_length; a++) {
                         numero_a++;
-                        // criar blocos
-                        blocos_jogaveis[a] = document.createElement('div');
+                        // criar blocks
+                        blocks_jogaveis[a] = document.createElement('div');
                         // adicionar attributos
-                        blocos_jogaveis[a].setAttribute('class', 'bloco b_' + (a + 1));
+                        blocks_jogaveis[a].setAttribute('class', 'block b_' + (a + 1));
                         // definir CSS
-                        blocos_jogaveis[a].style.cssText = 'position:absolute;left:' + bloco_left[a] + 'px;bottom:' + bloco_bottom[a] + 'px;z-index:10;width:50px;height:50px;background:url("src/min/images/inactivo.png");border:solid 1px #2f0000;';
-                        // adicionar blocos ao jogo
-                        background_jogo.appendChild(blocos_jogaveis[a]);
+                        blocks_jogaveis[a].style.cssText = 'position:absolute;left:' + block_left[a] + 'px;bottom:' + block_bottom[a] + 'px;z-index:10;width:50px;height:50px;background:url("src/min/images/inactivo.png");border:solid 1px #2f0000;';
+                        // adicionar blocks ao game
+                        background_game.appendChild(blocks_jogaveis[a]);
                         // se for o ultimo elemento  o DOURADO
-                        if (a === bloco_left.length - 1) {
-                            blocos_jogaveis[a].setAttribute('class', blocos_jogaveis[a].getAttribute('class') + 'bloco dourado');
+                        if (a === block_left.length - 1) {
+                            blocks_jogaveis[a].setAttribute('class', blocks_jogaveis[a].getAttribute('class') + 'block dourado');
                         }
                         // se for vermelho
                         if (a === 10) {
-                            blocos_jogaveis[a].setAttribute('class', blocos_jogaveis[a].getAttribute('class') + ' vermelho');
+                            blocks_jogaveis[a].setAttribute('class', blocks_jogaveis[a].getAttribute('class') + ' vermelho');
                         }
                     }
-                    // CRIAR PEDRAS
+                    // CRIAR stoneS
                     for (b = 0; b < b_length; b++) {
                         numero_b++;
-                        // criar blocos
-                        pedras_jogaveis[b] = document.createElement('div');
+                        // criar blocks
+                        stones_jogaveis[b] = document.createElement('div');
                         // adicionar attributos
-                        pedras_jogaveis[b].setAttribute('class', 'pedra');
+                        stones_jogaveis[b].setAttribute('class', 'stone');
                         // definir CSS
-                        pedras_jogaveis[b].style.cssText = 'position:absolute;left:' + pedra_left[b] + 'px;bottom:' + pedra_bottom[b] + 'px;z-index:10;width:50px;height:50px;background:url("src/min/images/cinzento.png");border:solid 1px #2f0000;';
-                        // adicionar blocos ao jogo
-                        background_jogo.appendChild(pedras_jogaveis[b]);
+                        stones_jogaveis[b].style.cssText = 'position:absolute;left:' + stone_left[b] + 'px;bottom:' + stone_bottom[b] + 'px;z-index:10;width:50px;height:50px;background:url("src/min/images/cinzento.png");border:solid 1px #2f0000;';
+                        // adicionar blocks ao game
+                        background_game.appendChild(stones_jogaveis[b]);
                     }
                 };
-                nivel_4();
+                level_4();
             } else if (nvi === 5) {
-                var nivel_5 = function () {
+                var level_5 = function () {
                     // VARIAVEIS
-                    var blocos_jogaveis = [], pedras_jogaveis = [], aux_s_jogaveis = [], bloco_left = [
+                    var blocks_jogaveis = [], stones_jogaveis = [], aux_s_jogaveis = [], block_left = [
                             20,
                             30,
                             40,
@@ -1316,7 +1314,7 @@ var body = document.getElementsByTagName('body')[0],
                             200,
                             200,
                             850
-                        ], bloco_bottom = [
+                        ], block_bottom = [
                             30,
                             110,
                             190,
@@ -1337,7 +1335,7 @@ var body = document.getElementsByTagName('body')[0],
                             30,
                             130,
                             190
-                        ], pedra_left = [
+                        ], stone_left = [
                             200,
                             250,
                             300,
@@ -1421,7 +1419,7 @@ var body = document.getElementsByTagName('body')[0],
                             900,
                             850,
                             800
-                        ], pedra_bottom = [
+                        ], stone_bottom = [
                             480,
                             480,
                             480,
@@ -1505,16 +1503,16 @@ var body = document.getElementsByTagName('body')[0],
                             330,
                             330,
                             330
-                        ], numero_a = 0, numero_b = 0, a, b, c, a_length = bloco_left.length, b_length = pedra_left.length,
+                        ], numero_a = 0, numero_b = 0, a, b, c, a_length = block_left.length, b_length = stone_left.length,
                     // array aux_s
-                        aux_left = [parseInt((bloco_left[0] + bloco_left[bloco_left.length - 1]) / 2)], aux_bottom = [30], id_aux = 0,
-                    // b_length = pedra_left.length,
+                        aux_left = [parseInt((block_left[0] + block_left[block_left.length - 1]) / 2)], aux_bottom = [30], id_aux = 0,
+                    // b_length = stone_left.length,
                         c_length = aux_left.length, cor, border = 'solid 1px #ffffff;', display = 'block';
                     // AUXILIARES
                     for (c = 0; c < c_length; c++) {
                         // id_aux
                         id_aux++;
-                        // criar blocos
+                        // criar blocks
                         aux_s_jogaveis[c] = document.createElement('div');
                         // adicionar attributos
                         aux_s_jogaveis[c].setAttribute('class', 'aux aux_' + id_aux);
@@ -1533,57 +1531,57 @@ var body = document.getElementsByTagName('body')[0],
                         }
                         // definir CSS
                         aux_s_jogaveis[c].style.cssText = 'position:absolute;left:' + aux_left[c] + 'px;bottom:' + aux_bottom[c] + 'px;z-index:10;width:50px;height:50px;background:url("src/min/images/' + cor + '.png");' + display + 'border:' + border;
-                        // adicionar blocos ao jogo
-                        background_jogo.appendChild(aux_s_jogaveis[c]);
+                        // adicionar blocks ao game
+                        background_game.appendChild(aux_s_jogaveis[c]);
                     }
-                    // CRIAR BLOCOS PONTOS
+                    // CRIAR blockS pointS
                     for (a = 0; a < a_length; a++) {
                         numero_a++;
-                        // criar blocos
-                        blocos_jogaveis[a] = document.createElement('div');
+                        // criar blocks
+                        blocks_jogaveis[a] = document.createElement('div');
                         // adicionar attributos
-                        blocos_jogaveis[a].setAttribute('class', 'bloco b_' + numero_a);
+                        blocks_jogaveis[a].setAttribute('class', 'block b_' + numero_a);
                         // definir CSS
-                        blocos_jogaveis[a].style.cssText = 'position:absolute;left:' + bloco_left[a] + 'px;bottom:' + bloco_bottom[a] + 'px;z-index:10;width:50px;height:50px;background:url("src/min/images/inactivo.png");border:solid 1px #333333;';
-                        // adicionar blocos ao jogo
-                        background_jogo.appendChild(blocos_jogaveis[a]);
+                        blocks_jogaveis[a].style.cssText = 'position:absolute;left:' + block_left[a] + 'px;bottom:' + block_bottom[a] + 'px;z-index:10;width:50px;height:50px;background:url("src/min/images/inactivo.png");border:solid 1px #333333;';
+                        // adicionar blocks ao game
+                        background_game.appendChild(blocks_jogaveis[a]);
                         // se for o ultimo elemento  o DOURADO
-                        if (a === bloco_left.length - 1) {
-                            blocos_jogaveis[a].setAttribute('class', blocos_jogaveis[a].getAttribute('class') + 'bloco dourado');
+                        if (a === block_left.length - 1) {
+                            blocks_jogaveis[a].setAttribute('class', blocks_jogaveis[a].getAttribute('class') + 'block dourado');
                         }
                         // se for vermelho
                         if (a === 5 || a === 8 || a === 10 || a === 18) {
-                            blocos_jogaveis[a].setAttribute('class', blocos_jogaveis[a].getAttribute('class') + ' vermelho');
+                            blocks_jogaveis[a].setAttribute('class', blocks_jogaveis[a].getAttribute('class') + ' vermelho');
                         }
-                        // laranja_pontos
+                        // laranja_points
                         if (a === 6 || a === 9 || a === 13 || a === 14 || a === 16) {
                             numero_a++;
-                            blocos_jogaveis[a].setAttribute('class', blocos_jogaveis[a].getAttribute('class') + ' laranja_3');
-                            blocos_jogaveis[a].setAttribute('class', blocos_jogaveis[a].getAttribute('class') + ' b_' + numero_a);
+                            blocks_jogaveis[a].setAttribute('class', blocks_jogaveis[a].getAttribute('class') + ' laranja_3');
+                            blocks_jogaveis[a].setAttribute('class', blocks_jogaveis[a].getAttribute('class') + ' b_' + numero_a);
                             numero_a++;
-                            blocos_jogaveis[a].setAttribute('class', blocos_jogaveis[a].getAttribute('class') + ' b_' + numero_a);
+                            blocks_jogaveis[a].setAttribute('class', blocks_jogaveis[a].getAttribute('class') + ' b_' + numero_a);
                         }
                     }
-                    // CRIAR PEDRAS
+                    // CRIAR stoneS
                     for (b = 0; b < b_length; b++) {
                         numero_b++;
-                        // criar blocos
-                        pedras_jogaveis[b] = document.createElement('div');
+                        // criar blocks
+                        stones_jogaveis[b] = document.createElement('div');
                         // adicionar attributos
-                        pedras_jogaveis[b].setAttribute('class', 'pedra');
+                        stones_jogaveis[b].setAttribute('class', 'stone');
                         // definir CSS
-                        pedras_jogaveis[b].style.cssText = 'position:absolute;left:' + pedra_left[b] + 'px;bottom:' + pedra_bottom[b] + 'px;z-index:10;width:50px;height:50px;background:url("src/min/images/cinzento.png");border:solid 1px #000000;';
-                        // adicionar blocos ao jogo
-                        background_jogo.appendChild(pedras_jogaveis[b]);
+                        stones_jogaveis[b].style.cssText = 'position:absolute;left:' + stone_left[b] + 'px;bottom:' + stone_bottom[b] + 'px;z-index:10;width:50px;height:50px;background:url("src/min/images/cinzento.png");border:solid 1px #000000;';
+                        // adicionar blocks ao game
+                        background_game.appendChild(stones_jogaveis[b]);
                     }
                 };
-                nivel_5();
+                level_5();
             } else if (nvi === 6) {
-                var nivel_6 = function () {
+                var level_6 = function () {
                     // VARIAVEIS
-                    var blocos_jogaveis = [], pedras_jogaveis = [], aux_s_jogaveis = [],
-                    // array blocos pontos
-                        bloco_left = [
+                    var blocks_jogaveis = [], stones_jogaveis = [], aux_s_jogaveis = [],
+                    // array blocks points
+                        block_left = [
                             150,
                             200,
                             250,
@@ -1606,7 +1604,7 @@ var body = document.getElementsByTagName('body')[0],
                             1300,
                             1350,
                             1400
-                        ], bloco_bottom = [
+                        ], block_bottom = [
                             80,
                             80,
                             80,
@@ -1630,8 +1628,8 @@ var body = document.getElementsByTagName('body')[0],
                             280,
                             30
                         ],
-                    // array pedras
-                        pedra_left = [
+                    // array stones
+                        stone_left = [
                             100,
                             100,
                             100,
@@ -1702,7 +1700,7 @@ var body = document.getElementsByTagName('body')[0],
                             1450,
                             1450,
                             1450
-                        ], pedra_bottom = [
+                        ], stone_bottom = [
                             80,
                             130,
                             180,
@@ -1776,7 +1774,7 @@ var body = document.getElementsByTagName('body')[0],
                         ],
                     // array aux_s
                         aux_left = [
-                            parseInt((bloco_left[0] + bloco_left[bloco_left.length - 1]) / 2),
+                            parseInt((block_left[0] + block_left[block_left.length - 1]) / 2),
                             515,
                             800,
                             650,
@@ -1803,12 +1801,12 @@ var body = document.getElementsByTagName('body')[0],
                             330
                         ], numero_a = 0, id_aux = 0, a, b, c,
                     // comprimento das arrays
-                        a_length = bloco_left.length, b_length = pedra_left.length, c_length = aux_left.length, cor, border = 'solid 1px #ffffff;', display = '';
+                        a_length = block_left.length, b_length = stone_left.length, c_length = aux_left.length, cor, border = 'solid 1px #ffffff;', display = '';
                     // AUXILIARES
                     for (c = 0; c < c_length; c++) {
                         // id_aux
                         id_aux++;
-                        // criar blocos
+                        // criar blocks
                         aux_s_jogaveis[c] = document.createElement('div');
                         // adicionar attributos
                         aux_s_jogaveis[c].setAttribute('class', 'aux aux_' + id_aux);
@@ -1826,58 +1824,58 @@ var body = document.getElementsByTagName('body')[0],
                         }
                         // definir CSS
                         aux_s_jogaveis[c].style.cssText = 'position:absolute;left:' + aux_left[c] + 'px;bottom:' + aux_bottom[c] + 'px;z-index:10;width:50px;height:50px;background:url("src/min/images/' + cor + '.png");' + display + 'border:' + border;
-                        // adicionar blocos ao jogo
-                        background_jogo.appendChild(aux_s_jogaveis[c]);
+                        // adicionar blocks ao game
+                        background_game.appendChild(aux_s_jogaveis[c]);
                     }
-                    // CRIAR BLOCOS PONTOS
+                    // CRIAR blockS pointS
                     for (a = 0; a < a_length; a++) {
                         numero_a++;
-                        // criar blocos
-                        blocos_jogaveis[a] = document.createElement('div');
+                        // criar blocks
+                        blocks_jogaveis[a] = document.createElement('div');
                         // adicionar attributos
-                        blocos_jogaveis[a].setAttribute('class', 'bloco b_' + numero_a);
+                        blocks_jogaveis[a].setAttribute('class', 'block b_' + numero_a);
                         // definir CSS
-                        blocos_jogaveis[a].style.cssText = 'position:absolute;left:' + bloco_left[a] + 'px;bottom:' + bloco_bottom[a] + 'px;z-index:10;width:50px;height:50px;background:url("src/min/images/inactivo.png");border:solid 1px #333333;';
-                        // adicionar blocos ao jogo
-                        background_jogo.appendChild(blocos_jogaveis[a]);
-                        // TIPOS DE BLOCOS
+                        blocks_jogaveis[a].style.cssText = 'position:absolute;left:' + block_left[a] + 'px;bottom:' + block_bottom[a] + 'px;z-index:10;width:50px;height:50px;background:url("src/min/images/inactivo.png");border:solid 1px #333333;';
+                        // adicionar blocks ao game
+                        background_game.appendChild(blocks_jogaveis[a]);
+                        // TIPOS DE blockS
                         // dourado
-                        if (a === bloco_left.length - 1) {
-                            blocos_jogaveis[a].setAttribute('class', blocos_jogaveis[a].getAttribute('class') + 'bloco dourado');
+                        if (a === block_left.length - 1) {
+                            blocks_jogaveis[a].setAttribute('class', blocks_jogaveis[a].getAttribute('class') + 'block dourado');
                         }
                         // vermelho
                         if (a === 6 || a === 8 || a === 15) {
-                            blocos_jogaveis[a].setAttribute('class', blocos_jogaveis[a].getAttribute('class') + ' vermelho');
+                            blocks_jogaveis[a].setAttribute('class', blocks_jogaveis[a].getAttribute('class') + ' vermelho');
                         }
-                        // 3 pontos
+                        // 3 points
                         if (a === 1 || a === 7 || a === 10 || a === 18 || a === 20) {
                             numero_a++;
-                            blocos_jogaveis[a].setAttribute('class', blocos_jogaveis[a].getAttribute('class') + ' laranja_3');
-                            blocos_jogaveis[a].setAttribute('class', blocos_jogaveis[a].getAttribute('class') + ' b_' + numero_a);
+                            blocks_jogaveis[a].setAttribute('class', blocks_jogaveis[a].getAttribute('class') + ' laranja_3');
+                            blocks_jogaveis[a].setAttribute('class', blocks_jogaveis[a].getAttribute('class') + ' b_' + numero_a);
                             numero_a++;
-                            blocos_jogaveis[a].setAttribute('class', blocos_jogaveis[a].getAttribute('class') + ' b_' + numero_a);
+                            blocks_jogaveis[a].setAttribute('class', blocks_jogaveis[a].getAttribute('class') + ' b_' + numero_a);
                         }
                     }
-                    // fim blocos pontos
-                    // CRIAR PEDRAS
+                    // fim blocks points
+                    // CRIAR stoneS
                     for (b = 0; b < b_length; b++) {
-                        // criar blocos
-                        pedras_jogaveis[b] = document.createElement('div');
+                        // criar blocks
+                        stones_jogaveis[b] = document.createElement('div');
                         // adicionar attributos
-                        pedras_jogaveis[b].setAttribute('class', 'pedra');
+                        stones_jogaveis[b].setAttribute('class', 'stone');
                         // definir CSS
-                        pedras_jogaveis[b].style.cssText = 'position:absolute;left:' + pedra_left[b] + 'px;bottom:' + pedra_bottom[b] + 'px;z-index:10;width:50px;height:50px;background:url("src/min/images/cinzento.png");border:solid 1px #000000;';
-                        // adicionar blocos ao jogo
-                        background_jogo.appendChild(pedras_jogaveis[b]);
+                        stones_jogaveis[b].style.cssText = 'position:absolute;left:' + stone_left[b] + 'px;bottom:' + stone_bottom[b] + 'px;z-index:10;width:50px;height:50px;background:url("src/min/images/cinzento.png");border:solid 1px #000000;';
+                        // adicionar blocks ao game
+                        background_game.appendChild(stones_jogaveis[b]);
                     }
                 };
-                nivel_6();
+                level_6();
             } else if (nvi === 7) {
-                var nivel_7 = function () {
+                var level_7 = function () {
                     // VARIAVEIS
-                    var blocos_jogaveis = [], pedras_jogaveis = [], aux_s_jogaveis = [],
-                    // array blocos pontos
-                        bloco_left = [
+                    var blocks_jogaveis = [], stones_jogaveis = [], aux_s_jogaveis = [],
+                    // array blocks points
+                        block_left = [
                             400,
                             350,
                             300,
@@ -1896,7 +1894,7 @@ var body = document.getElementsByTagName('body')[0],
                             900,
                             1000,
                             1000
-                        ], bloco_bottom = [
+                        ], block_bottom = [
                             30,
                             100,
                             100,
@@ -1916,8 +1914,8 @@ var body = document.getElementsByTagName('body')[0],
                             80,
                             400
                         ],
-                    // array pedras
-                        pedra_left = [
+                    // array stones
+                        stone_left = [
                             80,
                             0,
                             160,
@@ -2063,7 +2061,7 @@ var body = document.getElementsByTagName('body')[0],
                             1350,
                             1400,
                             1450
-                        ], pedra_bottom = [
+                        ], stone_bottom = [
                             140,
                             240,
                             240,
@@ -2211,7 +2209,7 @@ var body = document.getElementsByTagName('body')[0],
                         ],
                     // array aux_s
                         aux_left = [
-                            parseInt((bloco_left[0] + bloco_left[bloco_left.length - 1]) / 2),
+                            parseInt((block_left[0] + block_left[block_left.length - 1]) / 2),
                             300,
                             800,
                             650,
@@ -2224,12 +2222,12 @@ var body = document.getElementsByTagName('body')[0],
                             380
                         ], numero_a = 0, id_aux = 0, a, b, c,
                     // comprimento das arrays
-                        a_length = bloco_left.length, b_length = pedra_left.length, c_length = aux_left.length, cor, border = 'solid 1px #ffffff;', display = 'block';
+                        a_length = block_left.length, b_length = stone_left.length, c_length = aux_left.length, cor, border = 'solid 1px #ffffff;', display = 'block';
                     // AUXILIARES
                     for (c = 0; c < c_length; c++) {
                         // id_aux
                         id_aux++;
-                        // criar blocos
+                        // criar blocks
                         aux_s_jogaveis[c] = document.createElement('div');
                         // adicionar attributos
                         aux_s_jogaveis[c].setAttribute('class', 'aux aux_' + id_aux);
@@ -2248,226 +2246,226 @@ var body = document.getElementsByTagName('body')[0],
                         }
                         // definir CSS
                         aux_s_jogaveis[c].style.cssText = 'position:absolute;left:' + aux_left[c] + 'px;bottom:' + aux_bottom[c] + 'px;z-index:10;width:50px;height:50px;background:url("src/min/images/' + cor + '.png");' + display + 'border:' + border;
-                        // adicionar blocos ao jogo
-                        background_jogo.appendChild(aux_s_jogaveis[c]);
+                        // adicionar blocks ao game
+                        background_game.appendChild(aux_s_jogaveis[c]);
                     }
-                    // CRIAR BLOCOS PONTOS
+                    // CRIAR blockS pointS
                     for (a = 0; a < a_length; a++) {
                         numero_a++;
-                        // criar blocos
-                        blocos_jogaveis[a] = document.createElement('div');
+                        // criar blocks
+                        blocks_jogaveis[a] = document.createElement('div');
                         // adicionar attributos
-                        blocos_jogaveis[a].setAttribute('class', 'bloco b_' + numero_a);
+                        blocks_jogaveis[a].setAttribute('class', 'block b_' + numero_a);
                         // definir CSS
-                        blocos_jogaveis[a].style.cssText = 'position:absolute;left:' + bloco_left[a] + 'px;bottom:' + bloco_bottom[a] + 'px;z-index:10;width:50px;height:50px;background:url("src/min/images/inactivo.png");border:solid 1px #333333;';
-                        // adicionar blocos ao jogo
-                        background_jogo.appendChild(blocos_jogaveis[a]);
-                        // TIPOS DE BLOCOS
+                        blocks_jogaveis[a].style.cssText = 'position:absolute;left:' + block_left[a] + 'px;bottom:' + block_bottom[a] + 'px;z-index:10;width:50px;height:50px;background:url("src/min/images/inactivo.png");border:solid 1px #333333;';
+                        // adicionar blocks ao game
+                        background_game.appendChild(blocks_jogaveis[a]);
+                        // TIPOS DE blockS
                         // dourado
-                        if (a === bloco_left.length - 1) {
-                            blocos_jogaveis[a].setAttribute('class', blocos_jogaveis[a].getAttribute('class') + 'bloco dourado');
+                        if (a === block_left.length - 1) {
+                            blocks_jogaveis[a].setAttribute('class', blocks_jogaveis[a].getAttribute('class') + 'block dourado');
                         }
                         // vermelho
                         if (a === 0 || a === 12 || a === 14) {
-                            blocos_jogaveis[a].setAttribute('class', blocos_jogaveis[a].getAttribute('class') + ' vermelho');
+                            blocks_jogaveis[a].setAttribute('class', blocks_jogaveis[a].getAttribute('class') + ' vermelho');
                         }
-                        // 3 pontos
+                        // 3 points
                         if (a === 2 || a === 3 || a === 6 || a === 8 || a === 10 || a === 13 || a === 15) {
                             numero_a++;
-                            blocos_jogaveis[a].setAttribute('class', blocos_jogaveis[a].getAttribute('class') + ' laranja_3');
-                            blocos_jogaveis[a].setAttribute('class', blocos_jogaveis[a].getAttribute('class') + ' b_' + numero_a);
+                            blocks_jogaveis[a].setAttribute('class', blocks_jogaveis[a].getAttribute('class') + ' laranja_3');
+                            blocks_jogaveis[a].setAttribute('class', blocks_jogaveis[a].getAttribute('class') + ' b_' + numero_a);
                             numero_a++;
-                            blocos_jogaveis[a].setAttribute('class', blocos_jogaveis[a].getAttribute('class') + ' b_' + numero_a);
+                            blocks_jogaveis[a].setAttribute('class', blocks_jogaveis[a].getAttribute('class') + ' b_' + numero_a);
                         }
                     }
-                    // fim blocos pontos
-                    // CRIAR PEDRAS
+                    // fim blocks points
+                    // CRIAR stoneS
                     for (b = 0; b < b_length; b++) {
-                        // criar blocos
-                        pedras_jogaveis[b] = document.createElement('div');
+                        // criar blocks
+                        stones_jogaveis[b] = document.createElement('div');
                         // adicionar attributos
-                        pedras_jogaveis[b].setAttribute('class', 'pedra');
+                        stones_jogaveis[b].setAttribute('class', 'stone');
                         // definir CSS
-                        pedras_jogaveis[b].style.cssText = 'position:absolute;left:' + pedra_left[b] + 'px;bottom:' + pedra_bottom[b] + 'px;z-index:10;width:50px;height:50px;background:url("src/min/images/cinzento.png");border:solid 1px #000000;';
-                        // adicionar blocos ao jogo
-                        background_jogo.appendChild(pedras_jogaveis[b]);
-                        // bombas
+                        stones_jogaveis[b].style.cssText = 'position:absolute;left:' + stone_left[b] + 'px;bottom:' + stone_bottom[b] + 'px;z-index:10;width:50px;height:50px;background:url("src/min/images/cinzento.png");border:solid 1px #000000;';
+                        // adicionar blocks ao game
+                        background_game.appendChild(stones_jogaveis[b]);
+                        // bombs
                         if (b === 14 || b === 15 || b === 18 || b === 35 || b === 46 || b === 50 || b === 58 || b === 59 || b === 60 || b === 69 || b === 72 || b === 77 || b === 78 || b === 80 || b === 82 || b === 83 || b === 86 || b === 87 || b === 89 || b === 90 || b === 91 || b === 94 || b === 98 || b === 100 || b === 101 || b === 107 || b === 108 || b === 109 || b === 117) {
-                            pedras_jogaveis[b].setAttribute('class', pedras_jogaveis[b].getAttribute('class') + ' dinamite');
+                            stones_jogaveis[b].setAttribute('class', stones_jogaveis[b].getAttribute('class') + ' dinamite');
                         }
                     }
                 };
-                nivel_7();
+                level_7();
             }
         },
 
-        espetaculo_nivel: function (nivel) {
+        espetaculo_level: function (level) {
 
             // adicionar event listener
-            document.addEventListener('keyup', function menu_jogo(vars) {
+            document.addEventListener('keyup', function menu_game(vars) {
                 switch (vars.keyCode) {
                     case 32:
-                        gosquares.gravidade();
-                        document.removeEventListener('keyup', menu_jogo, false);
+                        gosquares.gravity();
+                        document.removeEventListener('keyup', menu_game, false);
                         break;
                     case 13:
-                        gosquares.gravidade();
-                        document.removeEventListener('keyup', menu_jogo, false);
+                        gosquares.gravity();
+                        document.removeEventListener('keyup', menu_game, false);
                         break;
                 }
             }, false);
         },
 
-        espetaculo_pontos: function () {
-            // n do proximo nivel
-            janela_pontos = document.createElement('div');
-            janela_pontos.setAttribute('id', 'janela_pontos');
-            janela_pontos.style.cssText = 'position:absolute;width:300px;height:300px;left:175px;top:100px;background:#eeeeee;box-shadow:0 0 20px #777777;font-weight:bold';
-            janela_pontos.innerHTML = '<p style="line-height:50px;font-size:30px;text-align:center;color:#555555;font-family:arial;text-transform:lowercase;">succeed</p><p style="line-height:50px;font-size:25px;text-align:center;color:#fe9901;font-family:arial;text-transform:lowercase;">level ' + nvi + ' cleared!</p><button id="botao_pontos" onclick="gosquares.conteudos()" style="text-align:center;background:#dddddd;color:#555555;margin:0px auto;display:block;clear:both;cursor:pointer;box-shadow:0 0 5px #888888;border:2px solid #dddddd;font-size:40px;line-heigth:20px;">' + pvi + ' points!</button>';
-            janela_jogo.appendChild(janela_pontos);
+        espetaculo_points: function () {
+            // n do proximo level
+            window_points = document.createElement('div');
+            window_points.setAttribute('id', 'window_points');
+            window_points.style.cssText = 'position:absolute;width:300px;height:300px;left:175px;top:100px;background:#eeeeee;box-shadow:0 0 20px #777777;font-weight:bold';
+            window_points.innerHTML = '<p style="line-height:50px;font-size:30px;text-align:center;color:#555555;font-family:arial;text-transform:lowercase;">succeed</p><p style="line-height:50px;font-size:25px;text-align:center;color:#fe9901;font-family:arial;text-transform:lowercase;">level ' + nvi + ' cleared!</p><button id="botao_points" onclick="gosquares.conteudos()" style="text-align:center;background:#dddddd;color:#555555;margin:0px auto;display:block;clear:both;cursor:pointer;box-shadow:0 0 5px #888888;border:2px solid #dddddd;font-size:40px;line-heigth:20px;">' + pvi + ' points!</button>';
+            window_game.appendChild(window_points);
             // adicionar event listener
-            document.addEventListener('keyup', function menu_jogo(vars) {
+            document.addEventListener('keyup', function menu_game(vars) {
                 nvi++;
                 switch (vars.keyCode) {
                     case 32:
                         gosquares.start();
-                        document.removeEventListener('keyup', menu_jogo, false);
+                        document.removeEventListener('keyup', menu_game, false);
                         break;
                     case 13:
                         gosquares.start();
-                        document.removeEventListener('keyup', menu_jogo, false);
+                        document.removeEventListener('keyup', menu_game, false);
                         break;
                 }
             }, false);
-            var botao_pontos = document.getElementById('botao_pontos'),
-                c_pontos = 1;
+            var botao_points = document.getElementById('botao_points'),
+                c_points = 1;
 
             // correr pontuao
-            function correr_pontos() {
-                if (0 <= c_pontos && parseInt(pvi * 0.1) >= c_pontos) {
-                    c_pontos = c_pontos + 2;
-                    botao_pontos.innerHTML = c_pontos + ' points!';
-                } else if (parseInt(pvi * 0.1) + 1 <= c_pontos && c_pontos <= parseInt(pvi * 0.3)) {
-                    c_pontos = c_pontos + 4;
-                    botao_pontos.innerHTML = c_pontos + ' points!';
-                } else if (parseInt(pvi * 0.3) + 1 <= c_pontos && c_pontos <= parseInt(pvi * 0.8)) {
-                    c_pontos = c_pontos + 6;
-                    botao_pontos.innerHTML = c_pontos + ' points!';
-                } else if (parseInt(pvi * 0.8) + 1 <= c_pontos && c_pontos <= parseInt(pvi * 0.9)) {
-                    c_pontos = c_pontos + 4;
-                    botao_pontos.innerHTML = c_pontos + ' points!';
-                } else if (c_pontos >= parseInt(pvi * 0.9) + 1 && c_pontos < pvi && c_pontos + 2 < pvi) {
-                    c_pontos = c_pontos + 2;
-                    botao_pontos.innerHTML = c_pontos + ' points!';
+            function correr_points() {
+                if (0 <= c_points && parseInt(pvi * 0.1) >= c_points) {
+                    c_points = c_points + 2;
+                    botao_points.innerHTML = c_points + ' points!';
+                } else if (parseInt(pvi * 0.1) + 1 <= c_points && c_points <= parseInt(pvi * 0.3)) {
+                    c_points = c_points + 4;
+                    botao_points.innerHTML = c_points + ' points!';
+                } else if (parseInt(pvi * 0.3) + 1 <= c_points && c_points <= parseInt(pvi * 0.8)) {
+                    c_points = c_points + 6;
+                    botao_points.innerHTML = c_points + ' points!';
+                } else if (parseInt(pvi * 0.8) + 1 <= c_points && c_points <= parseInt(pvi * 0.9)) {
+                    c_points = c_points + 4;
+                    botao_points.innerHTML = c_points + ' points!';
+                } else if (c_points >= parseInt(pvi * 0.9) + 1 && c_points < pvi && c_points + 2 < pvi) {
+                    c_points = c_points + 2;
+                    botao_points.innerHTML = c_points + ' points!';
                 } else {
-                    clearInterval(int_correr_pontos);
-                    botao_pontos.innerHTML = pvi + ' points!';
+                    clearInterval(int_correr_points);
+                    botao_points.innerHTML = pvi + ' points!';
                 }
             }
 
-            var int_correr_pontos = setInterval(correr_pontos, 1);
+            var int_correr_points = setInterval(correr_points, 1);
         },
 
-        e_blocos: function (bloco_aux, bloco_aux_css, bloco_aux_class) {
+        e_blocks: function (block_aux, block_aux_css, block_aux_class) {
             var e_aum = 0;
-            bloco_aux.style.cssText = bloco_aux_css + ';opacity:0';
-            bloco_aux.style.display = 'block';
+            block_aux.style.cssText = block_aux_css + ';opacity:0';
+            block_aux.style.display = 'block';
             // aumentar opacidade
             var a_op = function () {
                 e_aum = e_aum + 0.05;
-                bloco_aux.style.opacity = e_aum;
+                block_aux.style.opacity = e_aum;
                 // limpar intervalo
-                if (bloco_aux.style.opacity >= 0.9) {
+                if (block_aux.style.opacity >= 0.9) {
                     clearInterval(i_a_op);
-                    bloco_aux.style.opacity = 1;
-                    bloco_aux.setAttribute('class', bloco_aux_class);
+                    block_aux.style.opacity = 1;
+                    block_aux.setAttribute('class', block_aux_class);
                 }
             };
 
             var i_a_op = setInterval(a_op, 50);
         },
 
-        cenario_bomba: function (bomba_bips, estado_som, pedra_tnt) {
-            var bomba = function () {
-                bomba_bips++;
-                // iniciar relogio bomba 3 segundos
-                if (estado_som === -1) {
-                    // som salto
-                    som_tic_tac_bomba.play();
+        cenario_bomb: function (bomb_bips, state_sound, stone_tnt) {
+            var bomb = function () {
+                bomb_bips++;
+                // iniciar relogio bomb 3 segundos
+                if (state_sound === -1) {
+                    // sound salto
+                    sound_tic_tac_bomb.play();
                 }
-                if (bomba_bips === 1) {
-                    pedra_tnt.style.background = 'url("src/min/images/dinamite.png")';
-                    e_num_f(3, 'perigo');
+                if (bomb_bips === 1) {
+                    stone_tnt.style.background = 'url("src/min/images/dinamite.png")';
+                    this.e_num_f(3, 'perigo');
                 }
-                if (bomba_bips === 3) {
-                    pedra_tnt.style.background = 'url("src/min/images/dinamite.png")';
-                    e_num_f(1, 'perigo');
+                if (bomb_bips === 3) {
+                    stone_tnt.style.background = 'url("src/min/images/dinamite.png")';
+                    this.e_num_f(1, 'perigo');
                 }
-                if (bomba_bips === 2) {
-                    pedra_tnt.style.background = 'url("src/min/images/cinzento.png")';
-                    e_num_f(2, 'perigo');
+                if (bomb_bips === 2) {
+                    stone_tnt.style.background = 'url("src/min/images/cinzento.png")';
+                    this.e_num_f(2, 'perigo');
                 }
-                if (bomba_bips === 4) {
-                    if (estado_som === -1) {
-                        som_bomba_rebenta.play();
+                if (bomb_bips === 4) {
+                    if (state_sound === -1) {
+                        sound_bomb_rebenta.play();
                     }
-                    e_num_f('BOOOOOMMM', 'perigo');
-                    pedra_tnt.style.display = 'none';
-                    clearInterval(i_bomba);
-                    // se a personagem estiver proxima
-                    var v_proximidade = personagem.offsetLeft - pedra_tnt.offsetLeft;
+                    this.e_num_f('BOOOOOMMM', 'perigo');
+                    stone_tnt.style.display = 'none';
+                    clearInterval(i_bomb);
+                    // se a hero estiver proxima
+                    var v_proximidade = hero.offsetLeft - stone_tnt.offsetLeft;
                     // se ...
                     if (v_proximidade > -100 && v_proximidade < 100) {
-                        // efeito bomba
-                        e_bomba(v_proximidade);
-                        pedra_tnt.style.cssText = '';
+                        // efeito bomb
+                        e_bomb(v_proximidade);
+                        stone_tnt.style.cssText = '';
                     }
                 }
             };
 
-            var i_bomba = setInterval(bomba, 1000);
+            var i_bomb = setInterval(bomb, 1000);
         },
 
-        e_bomba: function (v_proximidade) {
+        e_bomb: function (v_proximidade) {
             // salto para esquerda
             if (v_proximidade < 0) {
                 det_obj_pers(38, -23);
                 // function afastar
-                var afastar_bomba_e = function () {
+                var afastar_bomb_e = function () {
                     // redefinir class
-                    personagem.setAttribute('class', personagem.getAttribute('class').replace('dir_i', 'dir_p'));
+                    hero.setAttribute('class', hero.getAttribute('class').replace('left_init', 'left_stop'));
                     det_obj_pers(37, 'nada');
                     // parar evento listener
-                    if (personagem.getAttribute('class').search('cima_i') === -1) {
-                        clearInterval(i_afastar_bomba_e);
+                    if (hero.getAttribute('class').search('up_init') === -1) {
+                        clearInterval(i_afastar_bomb_e);
                         // redefinir class
-                        personagem.setAttribute('class', personagem.getAttribute('class').replace('esq_i', 'esq_p'));
+                        hero.setAttribute('class', hero.getAttribute('class').replace('right_init', 'right_stop'));
                     }
                 };
-                var i_afastar_bomba_e = setInterval(afastar_bomba_e, 30);
+                var i_afastar_bomb_e = setInterval(afastar_bomb_e, 30);
             }  // salto para direita
             else if (v_proximidade > 0) {
                 // fazer saltar
                 det_obj_pers(38, -23);
                 // function afastar
-                var afastar_bomba = function () {
-                    if (personagem.getAttribute('class').search('esq_i') !== -1) {
+                var afastar_bomb = function () {
+                    if (hero.getAttribute('class').search('right_init') !== -1) {
                         // redefinir class
-                        personagem.setAttribute('class', personagem.getAttribute('class').replace('esq_i', 'esq_p'));
+                        hero.setAttribute('class', hero.getAttribute('class').replace('right_init', 'right_stop'));
                     }
                     det_obj_pers(39, 'nada');
                     // parar evento listener
-                    if (personagem.getAttribute('class').search('cima_i') === -1) {
-                        clearInterval(i_afastar_bomba);
+                    if (hero.getAttribute('class').search('up_init') === -1) {
+                        clearInterval(i_afastar_bomb);
                         // redefinir class
-                        personagem.setAttribute('class', personagem.getAttribute('class').replace('dir_i', 'dir_p'));
+                        hero.setAttribute('class', hero.getAttribute('class').replace('left_init', 'left_stop'));
                     }
                 };
-                var i_afastar_bomba = setInterval(afastar_bomba, 30);
+                var i_afastar_bomb = setInterval(afastar_bomb, 30);
             }
         },
 
-        e_num_f: function (id_bloco, motivo) {
+        e_num_f: function (id_block, motive) {
             var e_numero = document.getElementById('e_numero');
             if (e_numero !== null) {
                 e_numero.innerHTML = '';
@@ -2476,29 +2474,29 @@ var body = document.getElementsByTagName('body')[0],
                 // Criar efeito
                 e_numero = document.createElement('span');
                 e_numero.setAttribute('id', 'e_numero');
-                e_numero.style.cssText = 'position:absolute;color:#ffffff;font-weight:bold;right:' + janela_jogo.offsetWidth / 2 + 'px;top:' + janela_jogo.offsetHeight / 2 + 'px;z-index:100;opacity:1.0;font-size:60px;';
-                e_numero.innerHTML = id_bloco;
-                janela_jogo.appendChild(e_numero);
+                e_numero.style.cssText = 'position:absolute;color:#ffffff;font-weight:bold;right:' + window_game.offsetWidth / 2 + 'px;top:' + window_game.offsetHeight / 2 + 'px;z-index:100;opacity:1.0;font-size:60px;';
+                e_numero.innerHTML = id_block;
+                window_game.appendChild(e_numero);
                 e_numero = document.getElementById('e_numero');
-                e_numero.style.left = janela_jogo.offsetWidth / 2 - e_numero.offsetWidth / 2 + 'px';
-                e_numero.style.top = janela_jogo.offsetHeight / 2 - e_numero.offsetHeight / 2 + 'px';
+                e_numero.style.left = window_game.offsetWidth / 2 - e_numero.offsetWidth / 2 + 'px';
+                e_numero.style.top = window_game.offsetHeight / 2 - e_numero.offsetHeight / 2 + 'px';
             }
-            if (id_bloco === '?' || motivo === 'perigo') {
+            if (id_block === '?' || motive === 'perigo') {
                 e_numero.style.color = 'red';
             }
             var e_num_i = function () {
                 // novo width efeito
                 e_numero.style.width = e_numero.innerHTML.length * parseInt(e_numero.style.fontSize) / 2 + 'px';
                 // novo left e novo top
-                e_numero.style.left = janela_jogo.offsetWidth / 2 - e_numero.offsetWidth / 2 + 'px';
-                e_numero.style.top = janela_jogo.offsetHeight / 2 - e_numero.offsetHeight / 2 + 'px';
+                e_numero.style.left = window_game.offsetWidth / 2 - e_numero.offsetWidth / 2 + 'px';
+                e_numero.style.top = window_game.offsetHeight / 2 - e_numero.offsetHeight / 2 + 'px';
                 // novo font-size
                 e_numero.style.fontSize = parseInt(e_numero.style.fontSize, 10) + 8 + 'px';
                 // diminuir a opacidade 3*0.01
                 e_numero.style.opacity = e_numero.style.opacity - 0.03;
                 // depois de concluido eliminar o efeito
                 if (e_numero.style.opacity < 0.05 || document.getElementById('e_numero') === null) {
-                    clearInterval(i_e_font_pontos);
+                    clearInterval(i_e_font_points);
                     e_numero.innerHTML = '';
                     if (document.getElementById('e_numero') !== null) {
                         e_numero.parentNode.removeChild(e_numero);
@@ -2506,39 +2504,39 @@ var body = document.getElementsByTagName('body')[0],
                 }
             };
 
-            var i_e_font_pontos = setInterval(e_num_i, 10);
+            var i_e_font_points = setInterval(e_num_i, 10);
         },
 
-        e_bloco_verde: function (bloco_verde) {
-            // bloco
-            var bloco_aux = bloco_verde,
-            // gravar atributos e propriedades do bloco
-                bloco_aux_id = bloco_verde.getAttribute('id'), bloco_aux_class = bloco_verde.getAttribute('class'), bloco_aux_css = bloco_verde.style.cssText,
+        e_block_verde: function (block_verde) {
+            // block
+            var block_aux = block_verde,
+            // gravar atributos e propriedades do block
+                block_aux_id = block_verde.getAttribute('id'), block_aux_class = block_verde.getAttribute('class'), block_aux_css = block_verde.style.cssText,
             // numero do aux
-                b_aux_id = bloco_verde.getAttribute('class').split(' ')[1].split('_')[1],
-            // estado bloco aux
-                e_b_aux = bloco_aux_class.search('activo');
+                b_aux_id = block_verde.getAttribute('class').split(' ')[1].split('_')[1],
+            // state block aux
+                e_b_aux = block_aux_class.search('activo');
             if (e_b_aux === -1) {
-                // actualizar estado do bloco
-                bloco_aux.setAttribute('class', bloco_aux_class + ' activo');
+                // actualizar state do block
+                block_aux.setAttribute('class', block_aux_class + ' activo');
                 var e_b_verde = function () {
                     // se tiver 0 de height desaparece
-                    if (bloco_aux.offsetHeight < 3) {
-                        // actualizar estado do bloco
-                        bloco_aux.setAttribute('class', '');
-                        bloco_aux.style.cssText = '';
+                    if (block_aux.offsetHeight < 3) {
+                        // actualizar state do block
+                        block_aux.setAttribute('class', '');
+                        block_aux.style.cssText = '';
                         clearInterval(i_e_b_verde);
-                        //	actualizar detectar blocos
+                        //	actualizar detectar blocks
                         det_obj_pers(0, 1);
                         var i_e_r_b_verde = setTimeout(function () {
                             clearInterval(i_e_r_b_verde);
-                            // reintroduzir propriedades no bloco
-                            e_blocos(bloco_aux, bloco_aux_css, bloco_aux_class);
+                            // reintroduzir propriedades no block
+                            e_blocks(block_aux, block_aux_css, block_aux_class);
                         }, 5000);
                     }
-                    // actualizar estado do bloco
-                    bloco_aux.style.height = (bloco_aux.offsetHeight - 1) + 'px';
-                    bloco_aux.style.bottom = (bloco_aux.offsetBottom + 1) + 'px';
+                    // actualizar state do block
+                    block_aux.style.height = (block_aux.offsetHeight - 1) + 'px';
+                    block_aux.style.bottom = (block_aux.offsetBottom + 1) + 'px';
                 };
                 var i_e_b_verde = setInterval(e_b_verde, 20);
             }

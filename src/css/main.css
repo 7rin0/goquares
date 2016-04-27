@@ -3,7 +3,7 @@ body {
     font-family: Arial, Helvetica, sans-serif;
 }
 
-#background_jogo {
+#background_game {
     position: absolute;
     top: 0;
     left: 0;
@@ -13,7 +13,7 @@ body {
     z-index: 0;
 }
 
-#janela_jogo {
+#window_game {
     background: #f0f0f0;
     color: #333333;
     width: 650px;
@@ -24,7 +24,7 @@ body {
     overflow: hidden;
 }
 
-#janela_nivel {
+#window_level {
     position: absolute;
     width: 300px;
     height: 300px;
@@ -36,7 +36,7 @@ body {
     background: rgb(238, 238, 238);
 }
 
-#personagem {
+#hero {
     width: 35px;
     height: 35px;
     position: absolute;
@@ -54,7 +54,7 @@ body {
     z-index: 150;
 }
 
-#game_status div:not(#som) {
+#game_status div:not(#sound) {
     position: absolute;
     left: 10px;
     font-size: 14px;
@@ -64,23 +64,23 @@ body {
     font-weight: bold;
 }
 
-#nivel {
+#level {
     top: 10px;
 }
 
-#tempo {
+#time {
     top: 40px;
 }
 
-#pontos {
+#points {
     top: 70px;
 }
 
-#quedas {
+#falls {
     top: 100px;
 }
 
-#interrogacoes {
+#questions {
     top: 130px;
 }
 
@@ -114,7 +114,7 @@ body {
     padding: 10px;
 }
 
-#som {
+#sound {
     position: absolute;
     top: 10px;
     right: 10px;
