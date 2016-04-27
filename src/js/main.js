@@ -123,6 +123,7 @@ var body = document.getElementsByTagName('body')[0],
 
             // adicionar background do nivel
             background_jogo.style.cssText += 'background: ' + imagem_background + ' left bottom;';
+            personagem.style.cssText += 'background: url("src/min/images/personagem_0_dir.png"); ';
         },
 
         removerfx: function () {
