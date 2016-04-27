@@ -49,7 +49,7 @@ module.exports = function (grunt) {
         },
         watch: {
             files: ['<%= jshint.files %>'],
-            tasks: ['jshint', 'uglify', 'cssmin', 'watch', 'htmlmin']
+            tasks: ['jshint', 'uglify', 'cssmin', 'htmlmin:min', 'watch']
         }
     });
 
@@ -62,6 +62,6 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-contrib-watch');
 
     // Register tasks
-    grunt.registerTask('default', ['jshint', 'uglify', 'cssmin', 'watch', 'htmlmin']);
+    grunt.registerTask('default', ['jshint', 'uglify', 'cssmin', 'htmlmin:min', 'watch']);
 
 };
