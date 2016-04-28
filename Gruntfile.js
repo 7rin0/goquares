@@ -25,7 +25,9 @@ module.exports = function (grunt) {
                     'min/js/',
                     {
                         rename: function (src, dest) {
-                            return src + dest.replace('.js', '.min.js');
+                            var filename = src + dest.replace('.js', '.min.js');
+                            filename = filename.replace('src/js/', '');
+                            return filename;
                         }
                     }
                 )
@@ -63,7 +65,7 @@ module.exports = function (grunt) {
             }
         },
         watch: {
-            files: ['Gruntfile.js', '<%= main.files.js %>', '<%= main.files.css %>', '<%= main.files.html %>'],
+            files: ['Gruntfile.js', '<%= main.files.js %>', '<%= main.files.css %>', '<%= main.files.html %>', 'src/js/levels/*.js'],
             tasks: ['jshint', 'uglify', 'cssmin', 'htmlmin:min']
         }
     });
