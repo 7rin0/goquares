@@ -19,8 +19,8 @@ module.exports = function (grunt) {
         uglify: {
             min: {
                 files: grunt.file.expandMapping([
-                        'src/js/*.js',
-                        'src/js/levels/*.js'
+                        'src/js/*.js'
+                        //'src/js/levels/*.js'
                     ],
                     'min/js/',
                     {
