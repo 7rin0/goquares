@@ -30,6 +30,4 @@ npm install
 - Code review
 - Migrate as Android and Chrome application
 
-
-Feel free to contribute :)
-![alt tag](https://raw.githubusercontent.com/7rin0/gosquares/master/src/images/screenshot.png)
+![alt tag](https://raw.githubusercontent.com/7rin0/gosquares/e0d029136f01972763435df186c15c62ed15d07f/game.png)
