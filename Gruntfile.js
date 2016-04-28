@@ -1,8 +1,15 @@
 module.exports = function (grunt) {
 
     grunt.initConfig({
+        main: {
+          files: {
+              js: 'src/js/main.js',
+              css: 'src/css/main.css',
+              html: 'src/html/index.html'
+          }
+        },
         jshint: {
-            files: ['Gruntfile.js', 'src/js/main.js'],
+            files: ['Gruntfile.js', '<%= main.files.js %>'],
             options: {
                 globals: {
                     jQuery: true
@@ -12,14 +19,14 @@ module.exports = function (grunt) {
         uglify: {
             min: {
                 files: {
-                    'min/js/main.min.js': ['src/js/main.js']
+                    'min/js/main.min.js': ['<%= main.files.js %>']
                 }
             }
         },
         cssmin: {
             min: {
                 files: {
-                    'min/css/main.min.css': ['src/css/main.css']
+                    'min/css/main.min.css': ['<%= main.files.css %>']
                 }
             }
         },
@@ -30,7 +37,7 @@ module.exports = function (grunt) {
                     collapseWhitespace: true
                 },
                 files: {
-                    'index.html': 'src/html/index.html'
+                    'index.html': '<%= main.files.html %>'
                 }
             }
         },
@@ -48,8 +55,8 @@ module.exports = function (grunt) {
             }
         },
         watch: {
-            files: ['<%= jshint.files %>'],
-            tasks: ['jshint', 'uglify', 'cssmin', 'htmlmin:min', 'watch']
+            files: ['Gruntfile.js', '<%= main.files.js %>', '<%= main.files.css %>', '<%= main.files.html %>'],
+            tasks: ['jshint', 'uglify', 'cssmin', 'htmlmin:min']
         }
     });
 
