@@ -2,11 +2,11 @@ module.exports = function (grunt) {
 
     grunt.initConfig({
         main: {
-          files: {
-              js: 'src/js/main.js',
-              css: 'src/css/main.css',
-              html: 'src/html/index.html'
-          }
+            files: {
+                js: 'src/js/main.js',
+                css: 'src/css/main.css',
+                html: 'src/html/index.html'
+            }
         },
         jshint: {
             files: ['Gruntfile.js', '<%= main.files.js %>'],
@@ -18,9 +18,17 @@ module.exports = function (grunt) {
         },
         uglify: {
             min: {
-                files: {
-                    'min/js/main.min.js': ['<%= main.files.js %>']
-                }
+                files: grunt.file.expandMapping([
+                        'src/js/*.js',
+                        'src/js/levels/*.js'
+                    ],
+                    'min/js/',
+                    {
+                        rename: function (src, dest) {
+                            return src + dest.replace('.js', '.min.js');
+                        }
+                    }
+                )
             }
         },
         cssmin: {
