@@ -20,7 +20,6 @@ module.exports = function (grunt) {
             min: {
                 files: grunt.file.expandMapping([
                         'src/js/*.js'
-                        //'src/js/levels/*.js'
                     ],
                     'min/js/',
                     {
@@ -65,7 +64,7 @@ module.exports = function (grunt) {
             }
         },
         watch: {
-            files: ['Gruntfile.js', '<%= main.files.js %>', '<%= main.files.css %>', '<%= main.files.html %>', 'src/js/levels/*.js'],
+            files: ['Gruntfile.js', '<%= main.files.js %>', '<%= main.files.css %>', '<%= main.files.html %>'],
             tasks: ['jshint', 'uglify', 'cssmin', 'htmlmin:min']
         }
     });
