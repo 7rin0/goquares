@@ -2,7 +2,7 @@ var VirtualJoystick	= function(opts)
 {
 	opts			= opts			|| {};
 	this._container		= opts.container	|| document.body;
-	this._strokeStyle	= opts.strokeStyle	|| "rgba(255,0,255, 0.5)";
+	this._strokeStyle	= opts.strokeStyle	|| "rgba(255,0,255, 0.0)";
 	this._stickEl		= opts.stickElement	|| this._buildJoystickStick();
 	this._baseEl		= opts.baseElement	|| this._buildJoystickBase();
 	this._mouseSupport	= opts.mouseSupport !== undefined ? opts.mouseSupport : false;
@@ -323,18 +323,18 @@ VirtualJoystick.prototype._buildJoystickBase	= function()
 	
 	var ctx		= canvas.getContext('2d');
 	ctx.beginPath(); 
-	ctx.strokeStyle = "rgba(255,0,255, 0.5)";
+	ctx.strokeStyle = "rgba(255,0,255, 0.0)";
 	ctx.lineWidth	= 6;
 	ctx.arc( canvas.width/2, canvas.width/2, 35, 0, Math.PI*2, true);
-    ctx.fillStyle = "rgba(255,0,255, 0.5)";
+    ctx.fillStyle = "rgba(255,0,255, 0.0)";
     ctx.fill();
 	ctx.stroke();	
 
 	ctx.beginPath(); 
-	ctx.strokeStyle	= "rgba(0,255,255, 0.5)";
+	ctx.strokeStyle	= "rgba(0,255,255, 0.0)";
 	ctx.lineWidth	= 3;
 	ctx.arc( canvas.width/2, canvas.width/2, 45, 0, Math.PI*2, true);
-    ctx.fillStyle = "rgba(0,255,255, 0.5)";
+    ctx.fillStyle = "rgba(0,255,255, 0.0)";
     ctx.fill();
     ctx.stroke();
 	
